@@ -132,14 +132,26 @@
       <div class="modal-head"><div><p class="eyebrow">RESERVATION</p><h3 id="reservationModalTitle">New reservation</h3></div><button type="button" class="icon-button close-modal">×</button></div>
       <input type="hidden" name="id" />
       <div class="form-grid">
-        <label>Guest name<input name="guestName" required></label><label>Confirmation number<input name="confirmationNumber"></label>
-        <label>Platform<select name="platform"><option>Airbnb</option><option>Vrbo</option><option>Booking.com</option><option>Direct</option><option>Agency</option></select></label><label>Agency name<input name="agencyName"></label>
+        <div class="form-section-title">Record details</div>
+        <label>Record type<select name="recordType"><option>Reservation</option><option>Calendar Block</option></select><span class="field-help">Calendar blocks only reserve dates and do not create revenue or cleaning tasks.</span></label>
+        <label>Information status<select name="dataComplete" disabled><option>Information Pending</option><option>Complete</option></select></label>
+        <label>Guest name<input name="guestName"></label><label>Confirmation number<input name="confirmationNumber"></label>
+        <label>Platform<select name="platform"><option>Airbnb</option><option>Vrbo</option><option>Booking.com</option><option>Direct</option><option>Agency</option></select></label><label>Agency name<input name="agencyName" disabled></label>
+        <label class="wide">Reservation URL<input name="reservationUrl" type="url" placeholder="https://..."><span class="field-help">Optional direct link to the reservation inside Airbnb, Vrbo, or Booking.com.</span></label>
+
+        <div class="form-section-title">Stay and operations</div>
         <label>Check-in<input name="checkIn" type="date" required></label><label>Check-out<input name="checkOut" type="date" required></label>
         <label>Guests<input name="guests" type="number" min="1" value="2"></label><label>Status<select name="status"><option>Confirmed</option><option>Pending</option><option>Cancelled</option><option>Completed</option></select></label>
-        <label>Reservation amount<input name="reservationAmount" type="number" min="0" step="0.01"></label><label>Amount received<input name="amountReceived" type="number" min="0" step="0.01"></label>
-        <label>Cleaning fee<input name="cleaningFee" type="number" min="0" step="0.01"></label><label>Commission<input name="commission" type="number" min="0" step="0.01"></label>
-        <label>Taxes<input name="taxes" type="number" min="0" step="0.01"></label><label>Cleaning status<select name="cleaningStatus"><option>Pending</option><option>Scheduled</option><option>Completed</option><option>Not Required</option></select></label>
-        <label class="wide">Notes<textarea name="notes" rows="3"></textarea></label>
+        <label>Cleaning status<select name="cleaningStatus"><option>Pending</option><option>Scheduled</option><option>Completed</option><option>Not Required</option></select></label>
+        <label>Payment status<select name="paymentStatus"><option>Pending</option><option>Partial</option><option>Paid</option><option>Not Required</option></select></label>
+
+        <div class="form-section-title">Financial information</div>
+        <label>Reservation amount<input name="reservationAmount" type="number" min="0" step="0.01"></label><label>Cleaning fee<input name="cleaningFee" type="number" min="0" step="0.01"></label>
+        <label>Amount received<input name="amountReceived" type="number" min="0" step="0.01"></label><label>Commission<input name="commission" type="number" min="0" step="0.01"></label>
+        <label>Taxes<input name="taxes" type="number" min="0" step="0.01"></label>
+
+        <div class="form-section-title">Notes</div>
+        <label class="wide">Notes<textarea name="notes" rows="4" placeholder="Guest requests, arrival notes, access instructions, or missing information..."></textarea></label>
       </div>
       <div class="modal-actions"><button type="button" id="deleteReservationBtn" class="danger" hidden>Delete</button><span></span><button type="button" class="secondary close-modal">Cancel</button><button type="submit" class="primary">Save reservation</button></div>
     </form>
@@ -149,13 +161,24 @@
     <form id="expenseForm" method="dialog">
       <div class="modal-head"><div><p class="eyebrow">EXPENSE</p><h3>Add expense</h3></div><button type="button" class="icon-button close-expense">×</button></div>
       <input type="hidden" name="id" />
-      <div class="form-grid"><label>Date<input name="date" type="date" required></label><label>Category<select name="category"><option>Cleaning</option><option>Electricity</option><option>Water</option><option>Internet</option><option>Repairs</option><option>Maintenance</option><option>Supplies</option><option>Furniture</option><option>Platform Fees</option><option>Agency Commission</option><option>Taxes</option><option>Insurance</option><option>Other</option></select></label><label>Vendor<input name="vendor"></label><label>Amount<input name="amount" type="number" min="0" step="0.01" required></label><label class="wide">Description<input name="description"></label><label class="wide">Reservation<select name="reservationId" id="expenseReservationSelect"><option value="">Not linked</option></select></label><label class="wide">Notes<textarea name="notes" rows="3"></textarea></label></div>
+      <div class="form-grid">
+        <label>Date<input name="date" type="date" required></label>
+        <label>Category<select name="category"><option>Cleaning</option><option>Electricity</option><option>Water</option><option>Internet</option><option>Repairs</option><option>Maintenance</option><option>Supplies</option><option>Furniture</option><option>Platform Fees</option><option>Agency Commission</option><option>Taxes</option><option>Insurance</option><option>Other</option></select></label>
+        <label>Vendor<input name="vendor"></label>
+        <label>Amount<input name="amount" type="number" min="0.01" step="0.01" required></label>
+        <label>Payment method<select name="paymentMethod"><option>Cash</option><option>Card</option><option>Bank Transfer</option><option>Other</option></select></label>
+        <label>Receipt link<input name="receiptLink" type="url" placeholder="https://..."></label>
+        <label class="wide">Description<input name="description"></label>
+        <label class="wide">Reservation<select name="reservationId" id="expenseReservationSelect"><option value="">Not linked</option></select></label>
+        <label class="wide">Notes<textarea name="notes" rows="3"></textarea></label>
+      </div>
       <div class="modal-actions"><span></span><button type="button" class="secondary close-expense">Cancel</button><button type="submit" class="primary">Save expense</button></div>
     </form>
   </dialog>
 
   <div id="toast" class="toast" hidden></div>
   <script src="app.js"></script>
+  <script src="frontend-readiness.js"></script>
   <script src="role-ui.js"></script>
 </body>
 </html>
