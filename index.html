@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#143f31" />
+  <title>Ichkiichpan Cabin Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="loginView" class="login-shell">
+    <div class="login-card">
+      <div class="brand-mark">I</div>
+      <p class="eyebrow">CABIN OPERATIONS</p>
+      <h1>Ichkiichpan</h1>
+      <p class="muted">Reservations, payments, cleaning, and expenses in one place.</p>
+      <form id="loginForm" class="stack">
+        <label>Password
+          <input id="passwordInput" type="password" autocomplete="current-password" placeholder="Enter password" required />
+        </label>
+        <p id="loginError" class="error-text" hidden>Incorrect password.</p>
+        <button class="primary" type="submit">Open dashboard</button>
+      </form>
+      <p class="security-note">This is a convenience lock. Real security will be enforced when the Google Apps Script backend is connected.</p>
+    </div>
+  </div>
+
+  <div id="appView" class="app-shell" hidden>
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-mark small">I</div>
+        <div><strong>Ichkiichpan</strong><span>Bacalar, Q. Roo</span></div>
+      </div>
+      <nav id="mainNav">
+        <button class="nav-item active" data-view="dashboard">Dashboard</button>
+        <button class="nav-item" data-view="calendar">Calendar</button>
+        <button class="nav-item" data-view="reservations">Reservations</button>
+        <button class="nav-item" data-view="expenses">Expenses</button>
+        <button class="nav-item" data-view="reports">Reports</button>
+        <button class="nav-item" data-view="settings">Settings</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <button id="syncButton" class="secondary full">Sync data</button>
+        <button id="logoutButton" class="ghost full">Log out</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">PROPERTY OVERVIEW</p>
+          <h2 id="viewTitle">Dashboard</h2>
+        </div>
+        <div class="top-actions">
+          <span id="syncStatus" class="status-pill">Local mode</span>
+          <button id="newReservationBtn" class="primary">+ New reservation</button>
+        </div>
+      </header>
+
+      <section id="dashboardView" class="view active">
+        <div id="metricsGrid" class="metrics-grid"></div>
+        <div class="dashboard-grid">
+          <section class="panel calendar-preview-panel">
+            <div class="panel-head"><div><p class="eyebrow">THIS MONTH</p><h3>Calendar</h3></div><button class="link-button" data-go="calendar">Full calendar</button></div>
+            <div id="miniCalendar" class="mini-calendar"></div>
+          </section>
+          <section class="panel task-panel">
+            <div class="panel-head"><div><p class="eyebrow">NEEDS ATTENTION</p><h3>Priority queue</h3></div></div>
+            <div id="priorityList" class="priority-list"></div>
+          </section>
+        </div>
+        <div class="dashboard-grid lower">
+          <section class="panel">
+            <div class="panel-head"><div><p class="eyebrow">UPCOMING</p><h3>Next reservations</h3></div><button class="link-button" data-go="reservations">View all</button></div>
+            <div id="upcomingList" class="reservation-cards"></div>
+          </section>
+          <section class="panel">
+            <div class="panel-head"><div><p class="eyebrow">FINANCIAL</p><h3>Pending payments</h3></div></div>
+            <div id="pendingList" class="pending-list"></div>
+          </section>
+        </div>
+      </section>
+
+      <section id="calendarView" class="view">
+        <div class="panel calendar-panel">
+          <div class="calendar-toolbar">
+            <button id="prevMonth" class="icon-button">‹</button>
+            <h3 id="calendarTitle"></h3>
+            <button id="nextMonth" class="icon-button">›</button>
+            <div class="calendar-legend"><span class="dot airbnb"></span>Airbnb <span class="dot vrbo"></span>Vrbo <span class="dot booking"></span>Booking <span class="dot agency"></span>Agency/Direct</div>
+          </div>
+          <div id="fullCalendar" class="full-calendar"></div>
+        </div>
+      </section>
+
+      <section id="reservationsView" class="view">
+        <div class="panel">
+          <div class="table-toolbar">
+            <input id="reservationSearch" type="search" placeholder="Search guest, confirmation, platform..." />
+            <select id="reservationFilter"><option value="all">All reservations</option><option value="upcoming">Upcoming</option><option value="checked-in">Checked in</option><option value="pending-payment">Pending payment</option><option value="cleaning">Cleaning pending</option><option value="cancelled">Cancelled</option></select>
+          </div>
+          <div class="table-wrap"><table><thead><tr><th>Guest</th><th>Platform</th><th>Stay</th><th>Guests</th><th>Total</th><th>Balance</th><th>Cleaning</th><th>Status</th><th></th></tr></thead><tbody id="reservationsTableBody"></tbody></table></div>
+        </div>
+      </section>
+
+      <section id="expensesView" class="view">
+        <div class="section-actions"><button id="newExpenseBtn" class="primary">+ Add expense</button></div>
+        <div class="panel"><div class="table-wrap"><table><thead><tr><th>Date</th><th>Category</th><th>Vendor</th><th>Description</th><th>Reservation</th><th>Amount</th><th></th></tr></thead><tbody id="expensesTableBody"></tbody></table></div></div>
+      </section>
+
+      <section id="reportsView" class="view">
+        <div id="reportsGrid" class="metrics-grid"></div>
+        <div class="dashboard-grid lower"><section class="panel"><div class="panel-head"><h3>Revenue by platform</h3></div><div id="platformReport" class="bar-list"></div></section><section class="panel"><div class="panel-head"><h3>Expense categories</h3></div><div id="expenseReport" class="bar-list"></div></section></div>
+      </section>
+
+      <section id="settingsView" class="view">
+        <div class="panel settings-panel">
+          <h3>Property settings</h3>
+          <div class="form-grid"><label>Property name<input value="Ichkiichpan" disabled></label><label>Location<input value="Bacalar, Quintana Roo" disabled></label><label>Check-in<input value="3:00 PM" disabled></label><label>Check-out<input value="11:00 AM" disabled></label><label class="wide">Apps Script URL<input id="apiUrlInput" placeholder="Paste deployed Google Apps Script web app URL"></label></div>
+          <div class="settings-actions"><button id="saveSettingsBtn" class="primary">Save connection</button></div>
+          <p class="muted small-text">Calendar links remain private in Apps Script properties. They should never be committed to this public repository.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="reservationDialog" class="modal">
+    <form id="reservationForm" method="dialog">
+      <div class="modal-head"><div><p class="eyebrow">RESERVATION</p><h3 id="reservationModalTitle">New reservation</h3></div><button type="button" class="icon-button close-modal">×</button></div>
+      <input type="hidden" name="id" />
+      <div class="form-grid">
+        <label>Guest name<input name="guestName" required></label><label>Confirmation number<input name="confirmationNumber"></label>
+        <label>Platform<select name="platform"><option>Airbnb</option><option>Vrbo</option><option>Booking.com</option><option>Direct</option><option>Agency</option></select></label><label>Agency name<input name="agencyName"></label>
+        <label>Check-in<input name="checkIn" type="date" required></label><label>Check-out<input name="checkOut" type="date" required></label>
+        <label>Guests<input name="guests" type="number" min="1" value="2"></label><label>Status<select name="status"><option>Confirmed</option><option>Pending</option><option>Cancelled</option><option>Completed</option></select></label>
+        <label>Reservation amount<input name="reservationAmount" type="number" min="0" step="0.01"></label><label>Amount received<input name="amountReceived" type="number" min="0" step="0.01"></label>
+        <label>Cleaning fee<input name="cleaningFee" type="number" min="0" step="0.01"></label><label>Commission<input name="commission" type="number" min="0" step="0.01"></label>
+        <label>Taxes<input name="taxes" type="number" min="0" step="0.01"></label><label>Cleaning status<select name="cleaningStatus"><option>Pending</option><option>Scheduled</option><option>Completed</option><option>Not Required</option></select></label>
+        <label class="wide">Notes<textarea name="notes" rows="3"></textarea></label>
+      </div>
+      <div class="modal-actions"><button type="button" id="deleteReservationBtn" class="danger" hidden>Delete</button><span></span><button type="button" class="secondary close-modal">Cancel</button><button type="submit" class="primary">Save reservation</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="expenseDialog" class="modal">
+    <form id="expenseForm" method="dialog">
+      <div class="modal-head"><div><p class="eyebrow">EXPENSE</p><h3>Add expense</h3></div><button type="button" class="icon-button close-expense">×</button></div>
+      <input type="hidden" name="id" />
+      <div class="form-grid"><label>Date<input name="date" type="date" required></label><label>Category<select name="category"><option>Cleaning</option><option>Electricity</option><option>Water</option><option>Internet</option><option>Repairs</option><option>Maintenance</option><option>Supplies</option><option>Furniture</option><option>Platform Fees</option><option>Agency Commission</option><option>Taxes</option><option>Insurance</option><option>Other</option></select></label><label>Vendor<input name="vendor"></label><label>Amount<input name="amount" type="number" min="0" step="0.01" required></label><label class="wide">Description<input name="description"></label><label class="wide">Reservation<select name="reservationId" id="expenseReservationSelect"><option value="">Not linked</option></select></label><label class="wide">Notes<textarea name="notes" rows="3"></textarea></label></div>
+      <div class="modal-actions"><span></span><button type="button" class="secondary close-expense">Cancel</button><button type="submit" class="primary">Save expense</button></div>
+    </form>
+  </dialog>
+
+  <div id="toast" class="toast" hidden></div>
+  <script src="app.js"></script>
+</body>
+</html>
