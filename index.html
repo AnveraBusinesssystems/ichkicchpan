@@ -7,8 +7,9 @@
   <title>Ichkiichpan Cabin Manager</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="role-ui.css" />
 </head>
 <body>
   <div id="loginView" class="login-shell">
@@ -16,7 +17,7 @@
       <div class="brand-mark">I</div>
       <p class="eyebrow">CABIN OPERATIONS</p>
       <h1>Ichkiichpan</h1>
-      <p class="muted">Reservations, payments, cleaning, and expenses in one place.</p>
+      <p class="muted">A focused operating system for reservations, housekeeping, and property performance.</p>
       <form id="loginForm" class="stack">
         <label>Password
           <input id="passwordInput" type="password" autocomplete="current-password" placeholder="Enter password" required />
@@ -24,7 +25,7 @@
         <p id="loginError" class="error-text" hidden>Incorrect password.</p>
         <button class="primary" type="submit">Open dashboard</button>
       </form>
-      <p class="security-note">This is a convenience lock. Real security will be enforced when the Google Apps Script backend is connected.</p>
+      <p class="security-note">Role selection is a visual preview for this version. Secure permissions will be added with the backend connection.</p>
     </div>
   </div>
 
@@ -43,7 +44,7 @@
         <button class="nav-item" data-view="settings">Settings</button>
       </nav>
       <div class="sidebar-bottom">
-        <button id="syncButton" class="secondary full">Sync data</button>
+        <button id="syncButton" class="secondary full">Download backup</button>
         <button id="logoutButton" class="ghost full">Log out</button>
       </div>
     </aside>
@@ -119,9 +120,8 @@
       <section id="settingsView" class="view">
         <div class="panel settings-panel">
           <h3>Property settings</h3>
-          <div class="form-grid"><label>Property name<input value="Ichkiichpan" disabled></label><label>Location<input value="Bacalar, Quintana Roo" disabled></label><label>Check-in<input value="3:00 PM" disabled></label><label>Check-out<input value="11:00 AM" disabled></label><label class="wide">Apps Script URL<input id="apiUrlInput" placeholder="Paste deployed Google Apps Script web app URL"></label></div>
-          <div class="settings-actions"><button id="saveSettingsBtn" class="primary">Save connection</button></div>
-          <p class="muted small-text">Calendar links remain private in Apps Script properties. They should never be committed to this public repository.</p>
+          <div class="form-grid"><label>Property name<input value="Ichkiichpan" disabled></label><label>Location<input value="Bacalar, Quintana Roo" disabled></label><label>Check-in<input value="3:00 PM" disabled></label><label>Check-out<input value="11:00 AM" disabled></label></div>
+          <p class="muted small-text">Connection and secure user controls will be added after the visual system is approved.</p>
         </div>
       </section>
     </main>
@@ -156,5 +156,6 @@
 
   <div id="toast" class="toast" hidden></div>
   <script src="app.js"></script>
+  <script src="role-ui.js"></script>
 </body>
 </html>
