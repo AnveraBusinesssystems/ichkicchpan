@@ -1,0 +1,82 @@
+/* Media mapping for the public Ichkiichpan homepage.
+   These rules intentionally override the placeholder asset paths in styles.css. */
+
+.wordmark{
+  width:122px;
+  height:64px;
+  background:url("assets/logo.webp") center/contain no-repeat;
+  flex:none;
+}
+.wordmark-main,.wordmark-sub{display:none}
+.site-header:not(.scrolled) .wordmark{filter:invert(1);mix-blend-mode:screen}
+.site-header.scrolled .wordmark{filter:none;mix-blend-mode:multiply}
+
+/* Main visual story */
+.hero-photo{
+  background-image:linear-gradient(180deg,rgba(11,23,17,.04),rgba(11,23,17,.06)),url("_DSC6949.jpg");
+  background-position:center 48%;
+}
+.dock-path-photo{
+  background-image:linear-gradient(rgba(18,34,26,.06),rgba(18,34,26,.06)),url("_DSC7081.jpg");
+  background-position:center;
+}
+.cabin-photo{
+  background-image:url("_DSC7283web.jpg");
+  background-position:center 36%;
+}
+.aerial-photo{
+  background-image:url("assets/aerial.webp");
+  background-position:center;
+}
+
+/* Spaces */
+.bedroom-photo{
+  background-image:url("_DSC6882.jpg");
+  background-position:center;
+}
+.house-photo{
+  background-image:url("IMGL7817.jpg");
+  background-position:center;
+}
+.grill-photo{
+  background-image:url("_DSC6735.jpg");
+  background-position:center 56%;
+}
+
+/* Full-width atmosphere */
+.sunset-photo{
+  background-image:url("_DSC6964.jpg");
+  background-position:center;
+}
+
+/* Gallery */
+.jungle-dock-photo{
+  background-image:url("_DSC6735.jpg");
+  background-position:center;
+}
+.blue-water-photo{
+  background-image:url("_DSC7091.jpg");
+  background-position:center;
+}
+.sunset-dock-photo{
+  background-image:url("_DSC6779.jpg");
+  background-position:center;
+}
+.topdown-photo{
+  background-image:url("assets/aerial.webp");
+  background-position:center;
+}
+
+/* Temporary location image until _DSC6727.jpg is added to this branch. */
+.road-photo{
+  background-image:url("_DSC7081.jpg");
+  background-position:center;
+}
+
+@media(max-width:760px){
+  .wordmark{width:96px;height:52px}
+  .hero-photo{background-position:58% center}
+  .cabin-photo{background-position:center top}
+  .bedroom-photo{background-position:center}
+  .sunset-photo{background-position:58% center}
+}
