@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#1c3028" />
-  <meta name="description" content="Ichkiichpan — a private cabin retreat on the Bacalar lagoon for families and groups." />
+  <meta name="description" content="Ichkiichpan — a private retreat between jungle and lagoon in Bacalar." />
   <title>Ichkiichpan — Bacalar Lagoon Retreat</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,95 +13,142 @@
 </head>
 <body>
   <header class="site-header" id="siteHeader">
-    <a class="wordmark" href="#top" aria-label="Ichkiichpan home">
-      <span class="wordmark-main">ICHKIICHPAN</span>
-      <span class="wordmark-sub">BACALAR · QUINTANA ROO</span>
-    </a>
+    <a class="wordmark" href="#top" aria-label="Ichkiichpan home"></a>
     <nav class="desktop-nav" aria-label="Primary navigation">
-      <a href="#stay">The stay</a>
-      <a href="#lagoon">Lagoon</a>
-      <a href="#spaces">Spaces</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#location">Location</a>
+      <a href="#stay" data-i18n="navStay">The stay</a>
+      <a href="#lagoon" data-i18n="navLagoon">Lagoon</a>
+      <a href="#spaces" data-i18n="navSpaces">Spaces</a>
+      <a href="#gallery" data-i18n="navGallery">Gallery</a>
+      <a href="#location" data-i18n="navLocation">Location</a>
     </nav>
     <div class="header-actions">
-      <button class="lang-button" type="button" aria-label="Language">EN <span>·</span> ES</button>
-      <a class="outline-button" href="#availability">Check availability</a>
+      <button class="lang-button" id="langButton" type="button" aria-label="Change language">EN <span>·</span> ES</button>
+      <a class="outline-button" href="#availability" data-i18n="checkAvailability">Check availability</a>
       <button class="menu-button" id="menuButton" type="button" aria-label="Open menu"><span></span><span></span></button>
     </div>
   </header>
 
   <main id="top">
     <section class="hero">
-      <div class="hero-media image-fallback hero-photo" role="img" aria-label="Sunset over the Bacalar lagoon from Ichkiichpan"></div>
+      <div class="hero-photo image-fallback" role="img" aria-label="Sunset over the Bacalar lagoon from Ichkiichpan"></div>
       <div class="hero-shade"></div>
-      <div class="hero-content">
-        <p class="kicker light">A private retreat on the Bacalar lagoon</p>
-        <h1>Room for everyone.<br><em>Water at your door.</em></h1>
-        <p class="hero-copy">A quiet cabin surrounded by jungle, made for families and groups who want to share the lagoon together.</p>
-        <div class="hero-actions">
-          <a class="solid-button light-button" href="#availability">Check availability</a>
-          <a class="text-link light-link" href="#stay">Explore Ichkiichpan <span>↘</span></a>
-        </div>
+      <div class="hero-center">
+        <p class="hero-name">ICHKIICHPAN</p>
+        <h1 data-i18n="heroLine">HIDDEN IN THE NATURE</h1>
+        <span class="hero-rule"></span>
+        <p class="hero-location">BACALAR · QUINTANA ROO</p>
       </div>
       <div class="hero-facts" aria-label="Property highlights">
-        <div><span>01</span><strong>Entire private cabin</strong></div>
-        <div><span>02</span><strong>5 bedrooms</strong></div>
-        <div><span>03</span><strong>Direct lagoon access</strong></div>
-        <div><span>04</span><strong>Private docks & kayaks</strong></div>
+        <div><span>01</span><strong data-i18n="factPrivate">Entire private cabin</strong></div>
+        <div><span>02</span><strong data-i18n="factBedrooms">5 bedrooms</strong></div>
+        <div><span>03</span><strong data-i18n="factWater">Direct lagoon access</strong></div>
+        <div><span>04</span><strong data-i18n="factDocks">Private docks & kayaks</strong></div>
       </div>
     </section>
 
     <section class="intro section-pad" id="stay">
-      <div class="intro-label reveal"><p class="kicker">Ichkiichpan, Bacalar</p><span class="mini-rule"></span></div>
-      <div class="intro-copy reveal"><h2>Not a resort.<br><em>Your place by the lagoon.</em></h2><p>Come with the people you love and settle into one private place. Wake up under the palms, walk through the trees, and step straight onto the water.</p></div>
+      <div class="intro-label"><p class="kicker">ICHKIICHPAN · BACALAR</p><span class="mini-rule"></span></div>
+      <div class="intro-copy">
+        <h2 data-i18n="introTitle">Between the jungle<br><em>and the lagoon.</em></h2>
+        <p data-i18n="introBody">A private place to slow down, reconnect and spend the day moving between shade, water and open sky.</p>
+      </div>
     </section>
 
     <section class="editorial-grid section-pad-tight">
-      <div class="editorial-image large image-fallback dock-path-photo reveal" role="img" aria-label="Wooden path through jungle to a private dock"></div>
-      <div class="editorial-note reveal"><span class="number">01</span><p class="kicker">The feeling</p><h3>Hidden in the trees.<br>Open to the water.</h3><p>The property unfolds slowly: jungle paths, hand-built wood, shaded palapas and quiet corners that lead to the lagoon.</p></div>
-      <div class="editorial-image portrait image-fallback cabin-photo reveal" role="img" aria-label="Ichkiichpan cabin among tropical trees"></div>
+      <div class="editorial-image large image-fallback dock-path-photo" role="img" aria-label="Wooden path through jungle to a private dock"></div>
+      <div class="editorial-note">
+        <span class="number">01</span>
+        <p class="kicker" data-i18n="feelingLabel">The feeling</p>
+        <h3 data-i18n="feelingTitle">Hidden in the trees.<br>Open to the water.</h3>
+        <p data-i18n="feelingBody">Jungle paths, hand-built wood, shaded palapas and quiet corners unfold naturally toward the lagoon.</p>
+      </div>
+      <div class="editorial-image portrait image-fallback cabin-photo" role="img" aria-label="Ichkiichpan cabin among tropical trees"></div>
     </section>
 
     <section class="lagoon-story" id="lagoon">
       <div class="lagoon-image image-fallback aerial-photo" role="img" aria-label="Aerial view of Ichkiichpan and its lagoon docks"></div>
       <div class="lagoon-overlay"></div>
-      <div class="lagoon-copy reveal"><p class="kicker light">The lagoon experience</p><h2>Wake up to<br><em>seven shades of blue.</em></h2><p>Swim before breakfast, kayak into the calm, or do absolutely nothing from the end of the dock.</p></div>
-      <div class="lagoon-stats reveal"><div><strong>Direct</strong><span>water access</span></div><div><strong>Private</strong><span>docks</span></div><div><strong>Included</strong><span>kayaks</span></div></div>
-    </section>
-
-    <section class="spaces section-pad" id="spaces">
-      <div class="section-heading reveal"><p class="kicker">Inside Ichkiichpan</p><h2>Simple spaces.<br><em>Made to be lived in.</em></h2></div>
-      <div class="spaces-layout">
-        <div class="space-card space-card-wide reveal"><div class="space-image image-fallback bedroom-photo" role="img" aria-label="Warm bedroom at Ichkiichpan"></div><div class="space-caption"><span>01</span><div><strong>Bedrooms</strong><p>Warm, spacious rooms under traditional palapa roofs.</p></div></div></div>
-        <div class="space-card reveal"><div class="space-image image-fallback house-photo" role="img" aria-label="Main Ichkiichpan cabin exterior"></div><div class="space-caption"><span>02</span><div><strong>The cabin</strong><p>Wood, limestone tones and open-air living among the jungle.</p></div></div></div>
-        <div class="space-card reveal"><div class="space-image image-fallback outdoor-photo" role="img" aria-label="Lagoon-side outdoor living"></div><div class="space-caption"><span>03</span><div><strong>Outdoor living</strong><p>Gather outside, slow down, and spend the day close to the water.</p></div></div></div>
+      <div class="lagoon-copy">
+        <p class="kicker light" data-i18n="lagoonLabel">The lagoon</p>
+        <h2 data-i18n="lagoonTitle">A different blue<br><em>at every hour.</em></h2>
+        <p data-i18n="lagoonBody">Swim in the morning, drift out by kayak, or stay still at the end of the dock and let the day pass slowly.</p>
+      </div>
+      <div class="lagoon-stats">
+        <div><strong data-i18n="statDirect">Direct</strong><span data-i18n="statAccess">water access</span></div>
+        <div><strong data-i18n="statPrivate">Private</strong><span data-i18n="statDocks">docks</span></div>
+        <div><strong data-i18n="statIncluded">Included</strong><span data-i18n="statKayaks">kayaks</span></div>
       </div>
     </section>
 
-    <section class="sunset-break image-fallback sunset-photo" aria-label="Sunset on the Bacalar lagoon"><div class="sunset-shade"></div><blockquote class="reveal">“The kind of place where the day<br>ends without anyone noticing.”</blockquote></section>
+    <section class="spaces section-pad" id="spaces">
+      <div class="section-heading">
+        <p class="kicker" data-i18n="spacesLabel">Inside Ichkiichpan</p>
+        <h2 data-i18n="spacesTitle">Natural spaces.<br><em>Made to be lived in.</em></h2>
+      </div>
+      <div class="spaces-layout">
+        <div class="space-card space-card-wide">
+          <div class="space-image image-fallback bedroom-photo" role="img" aria-label="Warm bedroom at Ichkiichpan"></div>
+          <div class="space-caption"><span>01</span><div><strong data-i18n="bedroomsTitle">Bedrooms</strong><p data-i18n="bedroomsBody">Warm, spacious rooms beneath traditional palapa roofs.</p></div></div>
+        </div>
+        <div class="space-card">
+          <div class="space-image image-fallback house-photo" role="img" aria-label="Main Ichkiichpan cabin exterior"></div>
+          <div class="space-caption"><span>02</span><div><strong data-i18n="cabinTitle">The cabin</strong><p data-i18n="cabinBody">Wood, earth tones and open-air living surrounded by jungle.</p></div></div>
+        </div>
+        <div class="space-card">
+          <div class="space-image image-fallback outdoor-photo" role="img" aria-label="Lagoon-side outdoor living"></div>
+          <div class="space-caption"><span>03</span><div><strong data-i18n="outdoorTitle">Outdoor living</strong><p data-i18n="outdoorBody">Gather outside and spend the day close to the water.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sunset-break image-fallback sunset-photo" aria-label="Sunset on the Bacalar lagoon">
+      <div class="sunset-shade"></div>
+      <blockquote data-i18n="sunsetQuote">“Some places ask you<br>to slow down.”</blockquote>
+    </section>
 
     <section class="gallery section-pad" id="gallery">
-      <div class="section-heading gallery-heading reveal"><div><p class="kicker">A closer look</p><h2>A place that feels<br><em>different at every hour.</em></h2></div></div>
-      <div class="gallery-grid" id="gallery-grid">
-        <div class="gallery-tile tall image-fallback jungle-dock-photo reveal" role="img" aria-label="Private dock framed by jungle foliage"></div>
-        <div class="gallery-tile image-fallback blue-water-photo reveal" role="img" aria-label="Turquoise Bacalar lagoon and lounge chairs"></div>
-        <div class="gallery-tile image-fallback sunset-dock-photo reveal" role="img" aria-label="Private dock at sunset"></div>
-        <div class="gallery-tile wide image-fallback cabin-gallery-photo reveal" role="img" aria-label="Ichkiichpan cabin in the jungle"></div>
+      <div class="section-heading gallery-heading">
+        <div><p class="kicker" data-i18n="galleryLabel">A closer look</p><h2 data-i18n="galleryTitle">Light, water, wood<br><em>and the jungle around you.</em></h2></div>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-tile tall image-fallback jungle-dock-photo" role="img" aria-label="Private dock framed by jungle foliage"></div>
+        <div class="gallery-tile image-fallback blue-water-photo" role="img" aria-label="Turquoise Bacalar lagoon and lounge chairs"></div>
+        <div class="gallery-tile image-fallback sunset-dock-photo" role="img" aria-label="Private dock at sunset"></div>
+        <div class="gallery-tile wide image-fallback cabin-gallery-photo" role="img" aria-label="Ichkiichpan cabin in the jungle"></div>
       </div>
     </section>
 
     <section class="location-block section-pad" id="location">
-      <div class="location-copy reveal"><p class="kicker">Bacalar · Quintana Roo</p><h2>Far enough to switch off.<br><em>Close enough to arrive.</em></h2><p>Ichkiichpan sits in a quiet natural setting on the lagoon, surrounded by tropical vegetation and away from the busiest part of town.</p></div>
-      <div class="location-visual image-fallback location-photo reveal" role="img" aria-label="Ichkiichpan surrounded by tropical vegetation"></div>
+      <div class="location-copy">
+        <p class="kicker">BACALAR · QUINTANA ROO</p>
+        <h2 data-i18n="locationTitle">Away from the noise.<br><em>Close to the water.</em></h2>
+        <p data-i18n="locationBody">Ichkiichpan rests in a quiet natural setting on the lagoon, surrounded by tropical vegetation and space to disconnect.</p>
+      </div>
+      <div class="location-visual image-fallback location-photo" role="img" aria-label="Ichkiichpan surrounded by tropical vegetation"></div>
     </section>
 
-    <section class="availability" id="availability"><div class="availability-inner reveal"><p class="kicker light">Your stay starts here</p><h2>Bring everyone<br><em>together by the lagoon.</em></h2><p>Availability and booking will be connected later. For now, this is the visual direction for the public site.</p><button class="solid-button light-button" type="button">Check availability</button></div></section>
+    <section class="availability" id="availability">
+      <div class="availability-inner">
+        <p class="kicker light" data-i18n="availabilityLabel">Your stay starts here</p>
+        <h2 data-i18n="availabilityTitle">Come closer<br><em>to what matters.</em></h2>
+        <p data-i18n="availabilityBody">Availability and booking will be connected later. For now, explore the place and imagine your stay.</p>
+        <button class="solid-button light-button" type="button" data-i18n="checkAvailability">Check availability</button>
+      </div>
+    </section>
   </main>
 
-  <footer class="site-footer"><div class="footer-brand"><strong>ICHKIICHPAN</strong><span>Bacalar Lagoon · Quintana Roo, Mexico</span></div><div class="footer-links"><a href="#stay">The stay</a><a href="#lagoon">Lagoon</a><a href="#spaces">Spaces</a><a href="#gallery">Gallery</a></div><div class="footer-bottom"><span>Private cabin retreat</span><a href="#top">Back to top ↑</a></div></footer>
+  <footer class="site-footer">
+    <div class="footer-brand"><strong>ICHKIICHPAN</strong><span>BACALAR · QUINTANA ROO · MÉXICO</span></div>
+    <div class="footer-links"><a href="#stay" data-i18n="navStay">The stay</a><a href="#lagoon" data-i18n="navLagoon">Lagoon</a><a href="#spaces" data-i18n="navSpaces">Spaces</a><a href="#gallery" data-i18n="navGallery">Gallery</a></div>
+    <div class="footer-bottom"><span data-i18n="footerLine">Private cabin retreat</span><a href="#top" data-i18n="backTop">Back to top ↑</a></div>
+  </footer>
 
-  <div class="mobile-menu" id="mobileMenu" aria-hidden="true"><button class="mobile-close" id="menuClose" type="button">Close ×</button><nav><a href="#stay">The stay</a><a href="#lagoon">Lagoon</a><a href="#spaces">Spaces</a><a href="#gallery">Gallery</a><a href="#location">Location</a></nav><a class="solid-button" href="#availability">Check availability</a></div>
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <button class="mobile-close" id="menuClose" type="button" data-i18n="close">Close ×</button>
+    <nav><a href="#stay" data-i18n="navStay">The stay</a><a href="#lagoon" data-i18n="navLagoon">Lagoon</a><a href="#spaces" data-i18n="navSpaces">Spaces</a><a href="#gallery" data-i18n="navGallery">Gallery</a><a href="#location" data-i18n="navLocation">Location</a></nav>
+    <a class="solid-button" href="#availability" data-i18n="checkAvailability">Check availability</a>
+  </div>
+
   <script src="public-home.js"></script>
 </body>
 </html>
