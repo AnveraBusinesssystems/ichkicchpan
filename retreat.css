@@ -1,0 +1,37 @@
+.retreat-page{background:var(--stone)}
+.retreat-hero,.retreat-landscape,.retreat-closing{position:relative;overflow:hidden;color:#fff}
+.retreat-hero{height:100svh;min-height:700px;display:flex;align-items:flex-end}
+.retreat-hero-photo,.retreat-landscape-photo,.retreat-closing-image{position:absolute;inset:0;background-size:cover;background-position:center}
+.retreat-hero-photo{background-image:url("assets/cabin-portrait.jpg");background-position:center 36%}
+.retreat-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,17,13,.18),rgba(7,17,13,.04) 42%,rgba(7,17,13,.58)),linear-gradient(90deg,rgba(8,17,13,.34),rgba(8,17,13,.04) 70%)}
+.retreat-hero-copy{position:relative;z-index:2;padding:0 6.5vw 10vh;max-width:1120px}
+.retreat-hero-copy h1,.retreat-landscape-copy h2,.retreat-closing-copy h2{font-family:var(--serif);font-weight:400;margin:0;font-size:clamp(72px,7.4vw,118px);line-height:.92;letter-spacing:-.02em}
+.retreat-hero-copy>p:last-child{font-size:18px;margin:28px 0 0;color:rgba(255,255,255,.9)}
+.retreat-intro{display:grid;grid-template-columns:1fr 2fr;gap:8vw}
+.retreat-intro-copy{max-width:900px}
+.retreat-intro-copy h2,.retreat-editorial-copy h2,.retreat-facts-head h2,.retreat-privacy h2{font-family:var(--serif);font-weight:400;margin:0;font-size:clamp(62px,6vw,98px);line-height:.95;letter-spacing:-.02em}
+.retreat-intro-copy>p{margin:34px 0 0 auto;max-width:560px;font-size:17px;line-height:1.8;color:#4f5f57}
+.retreat-editorial{display:grid;grid-template-columns:1.35fr .65fr;gap:6vw;align-items:center}
+.retreat-editorial-image{min-height:760px;background:url("assets/dock-path.jpg") center/cover no-repeat}
+.retreat-editorial-copy{padding:50px 0}
+.retreat-editorial-copy .number{display:block;font-family:var(--serif);font-size:50px;color:#9d8f79;margin-bottom:48px}
+.retreat-editorial-copy>p:last-child{font-size:17px;line-height:1.75;color:#5d6c64;max-width:420px;margin-top:26px}
+.retreat-facts-head{max-width:980px;margin-bottom:62px}
+.retreat-fact-row{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:54px}
+.retreat-fact-row div{padding:25px 18px 22px 0;display:grid;gap:5px}
+.retreat-fact-row strong{font-family:var(--serif);font-size:48px;font-weight:400;line-height:1}
+.retreat-fact-row span{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.11em;color:#617068}
+.retreat-facts-image{height:660px;background:url("assets/cabin-exterior.jpg") center 52%/cover no-repeat}
+.retreat-landscape{min-height:88vh;display:flex;align-items:center}
+.retreat-landscape-photo{background-image:url("assets/aerial-lagoon.jpg")}
+.retreat-landscape-copy{position:relative;z-index:2;padding-left:6.5vw;max-width:880px}
+.retreat-landscape-copy>p:last-child{max-width:520px;font-size:17px;line-height:1.75;color:rgba(255,255,255,.9);margin-top:30px}
+.retreat-privacy{display:grid;grid-template-columns:1fr 1fr;gap:9vw;align-items:end}
+.retreat-privacy-body{max-width:520px;padding-bottom:10px}
+.retreat-privacy-body p{font-size:17px;line-height:1.8;color:#526159;margin:0}
+.retreat-closing{min-height:76vh;display:flex;align-items:center;justify-content:center;text-align:center}
+.retreat-closing-image{background-image:url("assets/sunset-dock.jpg")}
+.retreat-closing-copy{position:relative;z-index:2;padding:80px 24px}
+.retreat-closing-copy .solid-button{margin-top:34px}
+@media(max-width:1050px){.retreat-editorial{grid-template-columns:1.15fr .85fr}.retreat-fact-row{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:760px){.retreat-hero{min-height:690px}.retreat-hero-copy{padding:0 24px 90px}.retreat-hero-copy h1,.retreat-landscape-copy h2,.retreat-closing-copy h2{font-size:58px}.retreat-hero-copy>p:last-child{font-size:16px}.retreat-intro{grid-template-columns:1fr;gap:35px}.retreat-intro-copy h2,.retreat-editorial-copy h2,.retreat-facts-head h2,.retreat-privacy h2{font-size:54px}.retreat-intro-copy>p,.retreat-editorial-copy>p:last-child,.retreat-landscape-copy>p:last-child,.retreat-privacy-body p{font-size:16px}.retreat-editorial{display:flex;flex-direction:column;align-items:stretch}.retreat-editorial-image{min-height:580px}.retreat-editorial-copy{padding:38px 0 0}.retreat-editorial-copy .number{margin-bottom:36px}.retreat-fact-row{grid-template-columns:1fr 1fr}.retreat-fact-row strong{font-size:38px}.retreat-facts-image{height:520px}.retreat-landscape{min-height:740px;align-items:flex-end}.retreat-landscape-copy{padding:0 24px 95px}.retreat-privacy{grid-template-columns:1fr;gap:42px}.retreat-closing{min-height:660px}}
