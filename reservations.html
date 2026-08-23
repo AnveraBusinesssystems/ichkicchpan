@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f5f1e8" />
+  <meta name="description" content="Check availability and manage your stay at Ichkiichpan, Bacalar." />
+  <title>Reservations — Ichkiichpan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=20260818-0102" />
+  <link rel="stylesheet" href="reservations.css?v=20260823-01" />
+</head>
+<body class="reservations-page">
+<header class="site-header booking-header scrolled" id="siteHeader">
+  <a class="wordmark" href="index.html" aria-label="Ichkiichpan home"></a>
+  <nav class="desktop-nav" aria-label="Primary navigation">
+    <a href="the-retreat.html">The Retreat</a>
+    <a href="your-stay.html">Your Stay</a>
+    <a href="the-experience.html">The Experience</a>
+    <a href="gallery.html">Gallery</a>
+  </nav>
+  <div class="header-actions">
+    <button class="lang-button" id="langButton" type="button" aria-label="Change language">EN <span>·</span> ES</button>
+    <a class="outline-button booking-current" href="#availabilitySearch">Check availability</a>
+    <button class="menu-button" id="menuButton" type="button" aria-label="Open menu"><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="top">
+  <section class="booking-hero" id="availabilitySearch">
+    <div class="booking-copy">
+      <p class="kicker">Reservations · Ichkiichpan</p>
+      <h1>Your place<br><em>on the lagoon.</em></h1>
+      <p class="booking-lede">Choose your dates and the number of guests. Ichkiichpan is reserved as one private retreat for your group.</p>
+
+      <form class="availability-form" id="availabilityForm" novalidate>
+        <label>
+          <span>Check-in</span>
+          <input type="date" name="checkIn" id="checkIn" required />
+        </label>
+        <label>
+          <span>Check-out</span>
+          <input type="date" name="checkOut" id="checkOut" required />
+        </label>
+        <label>
+          <span>Guests</span>
+          <select name="guests" id="guests" required>
+            <option value="2">2 guests</option>
+            <option value="3">3 guests</option>
+            <option value="4">4 guests</option>
+            <option value="5">5 guests</option>
+            <option value="6">6 guests</option>
+            <option value="7">7 guests</option>
+            <option value="8">8 guests</option>
+            <option value="9">9 guests</option>
+            <option value="10">10 guests</option>
+            <option value="11">11 guests</option>
+            <option value="12">12 guests</option>
+            <option value="13">13 guests</option>
+            <option value="14">14 guests</option>
+          </select>
+        </label>
+        <button class="solid-button availability-submit" type="submit">Check availability</button>
+      </form>
+
+      <div class="booking-result" id="bookingResult" aria-live="polite" hidden>
+        <div>
+          <p class="kicker" id="resultLabel">Selected stay</p>
+          <h2 id="resultTitle">Your dates are ready to check.</h2>
+          <p id="resultBody"></p>
+        </div>
+        <button class="text-action" id="changeDates" type="button">Change dates</button>
+      </div>
+
+      <div class="booking-note-row">
+        <span>Entire private retreat</span>
+        <span>Up to 14 guests</span>
+        <span>Direct lagoon access</span>
+      </div>
+    </div>
+
+    <div class="booking-visual" role="img" aria-label="Sunset over the Bacalar Lagoon from Ichkiichpan">
+      <div class="booking-visual-shade"></div>
+      <div class="booking-visual-copy">
+        <p class="kicker light">Bacalar · Quintana Roo</p>
+        <blockquote>“Wake up with the lagoon already waiting outside.”</blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section class="reservation-path section-pad">
+    <div class="reservation-path-head">
+      <p class="kicker">How it works</p>
+      <h2>From dates<br><em>to your stay.</em></h2>
+    </div>
+    <div class="reservation-steps">
+      <article><span>01</span><strong>Choose your dates</strong><p>Tell us when you want to arrive, leave and how many people are staying.</p></article>
+      <article><span>02</span><strong>Confirm availability</strong><p>We check the retreat against the reservation calendar before you continue.</p></article>
+      <article><span>03</span><strong>Complete your reservation</strong><p>Review the stay details, guest information and payment before confirmation.</p></article>
+    </div>
+  </section>
+
+  <section class="manage-stay" id="manageStay">
+    <div class="manage-photo" role="img" aria-label="Private dock at Ichkiichpan"></div>
+    <div class="manage-copy">
+      <p class="kicker">Already reserved?</p>
+      <h2>Manage<br><em>your stay.</em></h2>
+      <p>Guests will be able to securely view only their own reservation, payment status, dates and arrival information.</p>
+      <form class="manage-form" id="manageForm" novalidate>
+        <label><span>Email</span><input type="email" name="email" autocomplete="email" placeholder="you@example.com" required /></label>
+        <label><span>Reservation code</span><input type="text" name="reservationCode" autocomplete="off" placeholder="Reservation code" required /></label>
+        <button class="outline-dark-button" type="submit">Find my reservation</button>
+      </form>
+      <p class="form-status" id="manageStatus" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <section class="booking-closing">
+    <div class="booking-closing-copy">
+      <p class="kicker light">Ichkiichpan</p>
+      <h2>Come for the water.<br><em>Keep the place to yourselves.</em></h2>
+      <a class="solid-button light-button" href="#availabilitySearch">Check your dates</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-brand"><strong>ICHKIICHPAN</strong><span>BACALAR · QUINTANA ROO · MÉXICO</span></div>
+  <div class="footer-links"><a href="the-retreat.html">The Retreat</a><a href="your-stay.html">Your Stay</a><a href="the-experience.html">The Experience</a><a href="gallery.html">Gallery</a></div>
+  <div class="footer-bottom"><span>Private lagoon retreat</span><a href="#top">Back to top ↑</a></div>
+</footer>
+
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <button class="mobile-close" id="menuClose" type="button">Close ×</button>
+  <nav><a href="the-retreat.html">The Retreat</a><a href="your-stay.html">Your Stay</a><a href="the-experience.html">The Experience</a><a href="gallery.html">Gallery</a></nav>
+  <a class="solid-button" href="#availabilitySearch">Check availability</a>
+  <a class="mobile-manage-link" href="#manageStay">Manage my reservation</a>
+</div>
+
+<a class="mobile-booking-bar" href="#availabilitySearch">Check availability</a>
+<script src="reservations.js?v=20260823-01"></script>
+</body>
+</html>
