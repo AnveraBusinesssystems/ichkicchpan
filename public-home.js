@@ -16,7 +16,7 @@ menu?.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
 
 const copy={
   en:{
-    navRetreat:'The retreat',navStay:'Your stay',navLagoon:'The lagoon',navGallery:'Gallery',checkAvailability:'Check availability',
+    navRetreat:'The retreat',navStay:'Your stay',navLagoon:'The experience',navGallery:'Gallery',checkAvailability:'Check availability',
     heroLine:'HIDDEN IN THE NATURE',
     introTitle:'Between the jungle<br><em>and the lagoon.</em>',introBody:'A private place to slow down, reconnect and spend the day moving between shade, water and open sky.',
     feelingLabel:'The retreat',feelingTitle:'Hidden in the trees.<br>Open to the water.',feelingBody:'Jungle paths, hand-built wood, shaded palapas and quiet corners unfold naturally toward the lagoon.',discoverRetreat:'Discover the retreat →',
@@ -28,7 +28,7 @@ const copy={
     footerLine:'Private lagoon retreat',backTop:'Back to top ↑',close:'Close ×'
   },
   es:{
-    navRetreat:'El refugio',navStay:'Tu estancia',navLagoon:'La laguna',navGallery:'Galería',checkAvailability:'Ver disponibilidad',
+    navRetreat:'El refugio',navStay:'Tu estancia',navLagoon:'La experiencia',navGallery:'Galería',checkAvailability:'Ver disponibilidad',
     heroLine:'ESCONDIDA EN LA NATURALEZA',
     introTitle:'Entre la selva<br><em>y la laguna.</em>',introBody:'Un lugar privado para bajar el ritmo, reconectar y pasar el día entre sombra, agua y cielo abierto.',
     feelingLabel:'El refugio',feelingTitle:'Escondida entre los árboles.<br>Abierta al agua.',feelingBody:'Senderos entre la selva, madera, palapas con sombra y rincones tranquilos que se abren naturalmente hacia la laguna.',discoverRetreat:'Descubre el refugio →',
