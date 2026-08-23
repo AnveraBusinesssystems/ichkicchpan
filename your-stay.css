@@ -2,6 +2,7 @@
 .stay-hero,.room-feature,.stay-closing{position:relative;overflow:hidden;color:#fff}
 .stay-hero{height:100svh;min-height:700px;display:flex;align-items:flex-end}
 .stay-hero-photo,.stay-closing-image{position:absolute;inset:0;background-size:cover;background-position:center}
+.stay-hero-photo{background-image:url("IMGL7834.jpg");background-position:center 45%}
 .stay-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,17,13,.15),rgba(7,17,13,.02) 40%,rgba(7,17,13,.62)),linear-gradient(90deg,rgba(8,17,13,.38),rgba(8,17,13,.04) 72%)}
 .stay-hero-copy{position:relative;z-index:2;padding:0 6.5vw 10vh;max-width:1180px}
 .stay-hero-copy h1,.room-feature-copy h2,.stay-closing-copy h2{font-family:var(--serif);font-weight:400;margin:0;font-size:clamp(72px,7.2vw,116px);line-height:.92;letter-spacing:-.02em}
