@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#17271f" />
+  <meta name="robots" content="noindex,nofollow" />
+  <meta name="description" content="Ichkiichpan owner command center demo." />
+  <title>Owner Command Center — Ichkiichpan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="owner-portal.css?v=20260825-01" />
+</head>
+<body class="owner-page">
+  <section class="owner-login" id="ownerLogin">
+    <div class="owner-login-visual">
+      <div class="owner-login-brand"><span>ICHKIICHPAN</span><small>BACALAR · OWNER SYSTEM</small></div>
+      <div class="owner-login-copy"><p class="eyebrow light">Private owner access</p><h1>Know the property.<br><em>Run it clearly.</em></h1><p>Reservations, operations, finances and performance in one place.</p></div>
+    </div>
+    <div class="owner-login-panel">
+      <div class="owner-login-form-wrap">
+        <p class="eyebrow">Owner access · Demo</p>
+        <h2>Welcome back.</h2>
+        <p class="muted">This is a frontend demo. Production access will use secure server-side authentication and 2FA.</p>
+        <form id="ownerLoginForm" class="owner-login-form">
+          <label><span>Email</span><input type="email" value="owner@ichkiichpan.com" autocomplete="username" required></label>
+          <label><span>Password</span><input type="password" value="demo" autocomplete="current-password" required></label>
+          <button class="primary-action" type="submit">Open owner demo</button>
+        </form>
+        <a class="return-link" href="index.html">← Return to Ichkiichpan</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="owner-app" id="ownerApp" hidden>
+    <aside class="owner-sidebar" id="ownerSidebar">
+      <div class="owner-brand"><strong>ICHKIICHPAN</strong><span>Owner Command Center</span></div>
+      <nav class="owner-nav" id="ownerNav">
+        <button class="active" data-view="overview"><span>Overview</span></button>
+        <button data-view="calendar"><span>Calendar</span></button>
+        <button data-view="reservations"><span>Reservations</span></button>
+        <button data-view="intake"><span>Reservation Intake</span><i class="nav-count">2</i></button>
+        <button data-view="guests"><span>Guests</span></button>
+        <button data-view="operations"><span>Operations</span><i class="nav-count warning">3</i></button>
+        <button data-view="financials"><span>Financials</span></button>
+        <button data-view="performance"><span>Performance</span></button>
+        <button data-view="marketing"><span>Marketing</span></button>
+        <button data-view="settings"><span>Settings</span></button>
+      </nav>
+      <div class="sidebar-footer"><span class="connection-pill">Demo data</span><button id="ownerLogout" type="button">Log out</button></div>
+    </aside>
+
+    <main class="owner-main">
+      <header class="owner-topbar">
+        <button class="sidebar-toggle" id="sidebarToggle" type="button" aria-label="Toggle navigation">☰</button>
+        <div><p class="eyebrow" id="viewEyebrow">PROPERTY OVERVIEW</p><h2 id="viewTitle">Good evening.</h2></div>
+        <div class="topbar-actions"><span class="today-label" id="todayLabel"></span><button class="secondary-action" id="quickAdd" type="button">+ Add reservation</button></div>
+      </header>
+
+      <section class="owner-view active" data-view-panel="overview">
+        <div class="hero-status">
+          <div><p class="eyebrow light">RIGHT NOW</p><h3>Ichkiichpan is occupied.</h3><p>8 guests · Direct booking · Checkout Aug 28</p></div>
+          <div class="hero-status-next"><span>Next arrival</span><strong>Aug 30</strong><small>2-night vacancy before arrival</small></div>
+        </div>
+
+        <div class="metric-strip" id="overviewMetrics"></div>
+
+        <div class="dashboard-grid dashboard-grid-primary">
+          <article class="owner-card attention-card">
+            <div class="card-head"><div><p class="eyebrow">NEEDS ATTENTION</p><h3>3 items</h3></div><button class="text-button" data-go="operations">View operations</button></div>
+            <div class="attention-list" id="attentionList"></div>
+          </article>
+          <article class="owner-card next-stay-card">
+            <div class="card-head"><div><p class="eyebrow">NEXT RESERVATION</p><h3>Aug 30 – Sep 4</h3></div><span class="channel-badge airbnb">Airbnb</span></div>
+            <div class="next-stay-body"><strong>Mariana Torres</strong><span>6 guests · 5 nights</span><dl><div><dt>Arrival</dt><dd>4:30 PM</dd></div><div><dt>Payment</dt><dd>Paid</dd></div><div><dt>Cleaning</dt><dd>Scheduled</dd></div></dl></div>
+          </article>
+        </div>
+
+        <div class="dashboard-grid">
+          <article class="owner-card calendar-preview-card">
+            <div class="card-head"><div><p class="eyebrow">AUGUST 2026</p><h3>Calendar</h3></div><button class="text-button" data-go="calendar">Full calendar</button></div>
+            <div class="mini-calendar" id="miniCalendar"></div>
+            <div class="calendar-key"><span><i class="airbnb-dot"></i>Airbnb</span><span><i class="booking-dot"></i>Booking</span><span><i class="vrbo-dot"></i>Vrbo</span><span><i class="direct-dot"></i>Direct</span></div>
+          </article>
+          <article class="owner-card pace-card">
+            <div class="card-head"><div><p class="eyebrow">NEXT 30 DAYS</p><h3>Booking pace</h3></div><span class="positive-pill">Ahead</span></div>
+            <div class="pace-number"><strong>63%</strong><span>future occupancy</span></div>
+            <div class="pace-bar"><i style="width:63%"></i></div>
+            <p>+4 booked nights versus the same point last month.</p>
+            <div class="gap-callout"><span>Opportunity</span><strong>2-night gap · Aug 28–30</strong><small>Consider promoting these nights or allowing a shorter stay.</small></div>
+          </article>
+        </div>
+
+        <div class="dashboard-grid">
+          <article class="owner-card"><div class="card-head"><div><p class="eyebrow">THIS MONTH</p><h3>Channel mix</h3></div><button class="text-button" data-go="performance">Details</button></div><div class="channel-bars" id="channelBars"></div></article>
+          <article class="owner-card"><div class="card-head"><div><p class="eyebrow">PROFITABILITY</p><h3>August operating view</h3></div><button class="text-button" data-go="financials">Financials</button></div><div class="profit-stack" id="profitStack"></div></article>
+        </div>
+      </section>
+
+      <section class="owner-view" data-view-panel="calendar" hidden>
+        <div class="section-intro"><div><p class="eyebrow">UNIFIED AVAILABILITY</p><h1>Calendar.</h1></div><p>Airbnb, Booking.com, Vrbo, direct reservations and calendar-only blocks in one owner view.</p></div>
+        <article class="owner-card calendar-full-card">
+          <div class="calendar-toolbar"><button id="calendarPrev" type="button">←</button><h3 id="calendarMonthTitle">August 2026</h3><button id="calendarNext" type="button">→</button><div class="calendar-key wide"><span><i class="airbnb-dot"></i>Airbnb</span><span><i class="booking-dot"></i>Booking</span><span><i class="vrbo-dot"></i>Vrbo</span><span><i class="direct-dot"></i>Direct</span><span><i class="block-dot"></i>Calendar block</span></div></div>
+          <div class="full-calendar" id="fullCalendar"></div>
+        </article>
+        <div class="gap-grid" id="gapGrid"></div>
+      </section>
+
+      <section class="owner-view" data-view-panel="reservations" hidden>
+        <div class="section-intro"><div><p class="eyebrow">ALL CHANNELS</p><h1>Reservations.</h1></div><p>Search every stay, payment state and booking source from one place.</p></div>
+        <article class="owner-card table-card">
+          <div class="table-toolbar"><input id="reservationSearch" type="search" placeholder="Search guest, confirmation or source…"><select id="reservationFilter"><option value="all">All reservations</option><option value="upcoming">Upcoming</option><option value="current">Current stay</option><option value="balance">Balance due</option></select></div>
+          <div class="table-scroll"><table><thead><tr><th>Guest</th><th>Source</th><th>Stay</th><th>Guests</th><th>Gross</th><th>Balance</th><th>Status</th></tr></thead><tbody id="reservationRows"></tbody></table></div>
+        </article>
+      </section>
+
+      <section class="owner-view" data-view-panel="intake" hidden>
+        <div class="section-intro"><div><p class="eyebrow">RESERVATION INTAKE</p><h1>Capture. Match. Confirm.</h1></div><p>Turn platform emails and uploaded reservation files into structured reservations, then reconcile them against dates already blocked on the calendar.</p></div>
+        <div class="intake-summary" id="intakeSummary"></div>
+        <div class="dashboard-grid intake-grid">
+          <article class="owner-card">
+            <div class="card-head"><div><p class="eyebrow">EMAIL INBOX</p><h3>Detected reservation emails</h3></div><span class="connection-pill">Demo parser</span></div>
+            <div class="intake-list" id="emailIntakeList"></div>
+          </article>
+          <article class="owner-card upload-card">
+            <div class="card-head"><div><p class="eyebrow">UPLOAD</p><h3>Import reservation file</h3></div></div>
+            <label class="upload-zone" for="reservationUpload"><strong>Drop a CSV or spreadsheet here</strong><span>or choose a file to simulate an import</span><input id="reservationUpload" type="file" accept=".csv,.xlsx,.xls"></label>
+            <div class="upload-status" id="uploadStatus">No file selected.</div>
+            <div class="match-logic"><p class="eyebrow">MATCHING LOGIC</p><ol><li>Confirmation number / platform reference</li><li>Exact check-in + check-out dates</li><li>Platform / source identity</li><li>Guest name and party size</li><li>Overlap/conflict detection</li></ol></div>
+          </article>
+        </div>
+        <article class="owner-card reconciliation-card">
+          <div class="card-head"><div><p class="eyebrow">RECONCILIATION QUEUE</p><h3>Calendar block matching</h3></div><span>Owner review only when confidence is not high</span></div>
+          <div class="reconciliation-list" id="reconciliationList"></div>
+        </article>
+      </section>
+
+      <section class="owner-view" data-view-panel="guests" hidden>
+        <div class="section-intro"><div><p class="eyebrow">GUEST HISTORY</p><h1>Guests.</h1></div><p>Understand who stays at Ichkiichpan without exposing private owner notes to the guest portal.</p></div>
+        <div class="guest-grid" id="guestGrid"></div>
+      </section>
+
+      <section class="owner-view" data-view-panel="operations" hidden>
+        <div class="section-intro"><div><p class="eyebrow">TODAY + NEXT</p><h1>Operations.</h1></div><p>Arrivals, departures, cleaning, maintenance and guest requests—focused only on what needs action.</p></div>
+        <div class="operations-grid" id="operationsGrid"></div>
+      </section>
+
+      <section class="owner-view" data-view-panel="financials" hidden>
+        <div class="section-intro"><div><p class="eyebrow">PROPERTY ECONOMICS</p><h1>Financials.</h1></div><p>Revenue, commissions, operating costs, outstanding balances and reservation-level contribution.</p></div>
+        <div class="metric-strip financial-metrics" id="financialMetrics"></div>
+        <div class="dashboard-grid"><article class="owner-card"><div class="card-head"><div><p class="eyebrow">AUGUST</p><h3>Income → operating profit</h3></div></div><div id="financialWaterfall" class="financial-waterfall"></div></article><article class="owner-card"><div class="card-head"><div><p class="eyebrow">EXPENSES</p><h3>Cost categories</h3></div></div><div id="expenseBars" class="channel-bars"></div></article></div>
+      </section>
+
+      <section class="owner-view" data-view-panel="performance" hidden>
+        <div class="section-intro"><div><p class="eyebrow">REVENUE MANAGEMENT</p><h1>Performance.</h1></div><p>Occupancy, ADR, revenue per available night, booking pace and channel quality—with comparisons, not isolated numbers.</p></div>
+        <div class="performance-grid" id="performanceGrid"></div>
+        <article class="owner-card comparison-card"><div class="card-head"><div><p class="eyebrow">MONTHLY COMPARISON</p><h3>July → August</h3></div></div><div class="comparison-table" id="comparisonTable"></div></article>
+      </section>
+
+      <section class="owner-view" data-view-panel="marketing" hidden>
+        <div class="section-intro"><div><p class="eyebrow">DIRECT DEMAND</p><h1>Marketing.</h1></div><p>Reserved for website conversion and advertising performance once tracking and campaigns are live.</p></div>
+        <div class="marketing-empty"><p class="eyebrow light">READY FOR PHASE TWO</p><h3>Traffic → availability search → booking → revenue.</h3><p>Future metrics: website visitors, Check Availability clicks, checkout starts, direct bookings, ad spend, CAC, conversion rate and ROAS.</p></div>
+      </section>
+
+      <section class="owner-view" data-view-panel="settings" hidden>
+        <div class="section-intro"><div><p class="eyebrow">SYSTEM</p><h1>Settings.</h1></div><p>Property configuration, channel feeds, permissions and integrations.</p></div>
+        <div class="settings-grid">
+          <article class="owner-card"><p class="eyebrow">PROPERTY</p><h3>Ichkiichpan</h3><dl class="settings-list"><div><dt>Location</dt><dd>Bacalar, Quintana Roo</dd></div><div><dt>Timezone</dt><dd>America/Cancun</dd></div><div><dt>Currency</dt><dd>MXN</dd></div><div><dt>Capacity</dt><dd>14 guests · 5 bedrooms</dd></div></dl></article>
+          <article class="owner-card"><p class="eyebrow">CHANNEL CONNECTIONS</p><h3>Calendar feeds</h3><dl class="settings-list"><div><dt>Airbnb</dt><dd><span class="status-good">Configured</span></dd></div><div><dt>Booking.com</dt><dd><span class="status-good">Configured</span></dd></div><div><dt>Vrbo</dt><dd><span class="status-good">Configured</span></dd></div><div><dt>Direct website</dt><dd><span class="status-warn">Frontend only</span></dd></div></dl></article>
+          <article class="owner-card"><p class="eyebrow">AUTOMATION</p><h3>Planned connections</h3><dl class="settings-list"><div><dt>Reservation email parser</dt><dd>Planned</dd></div><div><dt>File import</dt><dd>Planned</dd></div><div><dt>Stripe</dt><dd>Planned</dd></div><div><dt>Google Apps Script</dt><dd>Final implementation phase</dd></div></dl></article>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <dialog class="owner-dialog" id="detailDialog"><button class="dialog-close" id="dialogClose" type="button">×</button><div id="dialogContent"></div></dialog>
+  <div class="owner-toast" id="ownerToast" hidden></div>
+  <script src="owner-portal.js?v=20260825-01"></script>
+</body>
+</html>
