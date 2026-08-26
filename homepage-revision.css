@@ -1,0 +1,242 @@
+.wordmark {
+  width: 190px;
+  height: 82px;
+}
+
+.lang-button {
+  border: 1px solid currentColor;
+  min-width: 62px;
+  padding: 8px 10px;
+}
+
+.hero-summary {
+  margin: 18px 0 0;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: .08em;
+  opacity: .9;
+}
+
+.light-text-link {
+  color: #fff;
+  margin-top: 4px;
+}
+
+.glance-bedroom-photo {
+  background-image: url("assets/room-king-1.jpg");
+  background-position: center 48%;
+}
+
+.glance-property-photo {
+  background-image: url("_DSC7283web.jpg");
+  background-position: center 32%;
+}
+
+.sleep-photo {
+  background-image: url("assets/room-double-1.jpg");
+  background-position: center 40%;
+}
+
+.gather-photo {
+  background-image: url("assets/room-king-3.jpg");
+  background-position: center 54%;
+}
+
+.outside-photo {
+  background-image: url("assets/cabin-exterior.jpg");
+  background-position: center 48%;
+}
+
+.space-card {
+  display: block;
+  overflow: hidden;
+}
+
+.space-card .space-image {
+  transition: transform .55s ease, filter .55s ease;
+}
+
+.space-card:hover .space-image {
+  filter: saturate(1.04);
+  transform: scale(1.015);
+}
+
+.space-card:focus-visible {
+  outline: 3px solid var(--green);
+  outline-offset: 6px;
+}
+
+.card-link {
+  display: inline-block;
+  margin: 5px 0 14px;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 3px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+}
+
+.practical {
+  display: grid;
+  grid-template-columns: .9fr 1.5fr;
+  align-items: start;
+  gap: 9vw;
+  background: var(--sand);
+}
+
+.practical-heading h2 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(58px, 5.4vw, 88px);
+  font-weight: 400;
+  letter-spacing: -.02em;
+  line-height: .96;
+}
+
+.practical-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--line);
+}
+
+.practical-grid > div {
+  border-bottom: 1px solid var(--line);
+  padding: 28px 28px 10px 0;
+}
+
+.practical-grid > div + div {
+  border-left: 1px solid var(--line);
+  padding-left: 28px;
+}
+
+.practical-grid span {
+  display: block;
+  margin-bottom: 26px;
+  color: #7d8982;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.practical-grid strong {
+  font-family: var(--serif);
+  font-size: 27px;
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.practical-grid p {
+  margin: 12px 0 18px;
+  color: #5f6e66;
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.gallery-heading {
+  display: flex;
+  max-width: none;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 50px;
+}
+
+.gallery-link {
+  flex: 0 0 auto;
+  margin-bottom: 8px;
+}
+
+.mosaic-outdoor-photo {
+  background-image: url("assets/outdoor.jpg");
+  background-position: center 55%;
+}
+
+.mosaic-house-photo {
+  background-image: url("IMGL7817.jpg");
+  background-position: center 45%;
+}
+
+.gallery-cta-card {
+  display: flex;
+  min-height: 520px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 42px;
+  background: var(--green-deep);
+  color: #fff;
+}
+
+.gallery-cta-card > span:first-child {
+  margin-bottom: auto;
+  font-size: 11px;
+  letter-spacing: .14em;
+  opacity: .68;
+  text-transform: uppercase;
+}
+
+.gallery-cta-card strong {
+  font-family: var(--serif);
+  font-size: 38px;
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.gallery-cta-card .card-link {
+  margin-top: 26px;
+}
+
+.closing-assurance {
+  margin: 22px 0 0;
+  color: rgba(255, 255, 255, .86);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 1050px) {
+  .practical {
+    grid-template-columns: 1fr;
+    gap: 55px;
+  }
+
+  .practical-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .gallery-heading {
+    display: block;
+  }
+}
+
+@media (max-width: 760px) {
+  .hero-summary {
+    max-width: 300px;
+    margin-top: 14px;
+    font-size: 11px;
+    line-height: 1.5;
+  }
+
+  .practical-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .practical-grid > div + div {
+    border-left: 0;
+    padding-left: 0;
+  }
+
+  .gallery-link {
+    margin-top: 24px;
+  }
+
+  .gallery-cta-card {
+    min-height: 380px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .space-card .space-image {
+    transition: none;
+  }
+}
