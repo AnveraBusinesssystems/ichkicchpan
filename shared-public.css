@@ -11,6 +11,10 @@
   border-radius: 999px;
 }
 
+.desktop-nav a[aria-current="page"]::after {
+  right: 0;
+}
+
 .site-footer {
   display: grid;
   grid-template-columns: 1.25fr .8fr .8fr;

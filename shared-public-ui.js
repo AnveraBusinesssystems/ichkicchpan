@@ -2,7 +2,8 @@
   const footer = document.querySelector('.site-footer');
   const social = document.querySelector('.social-float');
   const pageName = location.pathname.split('/').pop();
-  const supportsFullTranslation = !pageName || pageName === 'index.html';
+  const fullyTranslatedPages = new Set(['', 'index.html', 'the-retreat.html']);
+  const supportsFullTranslation = fullyTranslatedPages.has(pageName);
 
   if (!supportsFullTranslation) {
     document.documentElement.lang = 'en';
