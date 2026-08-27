@@ -33,18 +33,18 @@
 }
 
 .sleep-photo {
-  background-image: url("assets/room-double-1.jpg");
-  background-position: center 40%;
+  background-image: url("IMGL7834.jpg");
+  background-position: center 58%;
 }
 
 .gather-photo {
-  background-image: url("assets/room-king-3.jpg");
-  background-position: center 54%;
+  background-image: url("IMGL7817.jpg");
+  background-position: center 55%;
 }
 
 .outside-photo {
-  background-image: url("assets/cabin-exterior.jpg");
-  background-position: center 48%;
+  background-image: url("_DSC7081.jpg");
+  background-position: center;
 }
 
 .space-card {
@@ -83,6 +83,7 @@
   align-items: start;
   gap: 9vw;
   background: var(--sand);
+  padding-bottom: 92px;
 }
 
 .practical-heading h2 {

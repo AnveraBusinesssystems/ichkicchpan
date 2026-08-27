@@ -1,6 +1,13 @@
 (() => {
   const footer = document.querySelector('.site-footer');
   const social = document.querySelector('.social-float');
+  const pageName = location.pathname.split('/').pop();
+  const supportsFullTranslation = !pageName || pageName === 'index.html';
+
+  if (!supportsFullTranslation) {
+    document.documentElement.lang = 'en';
+    document.querySelector('.lang-button')?.setAttribute('hidden', '');
+  }
 
   const text = {
     en: {
@@ -18,6 +25,7 @@
       back: 'Back to top ↑',
       language: 'Change language',
       menu: 'Open menu',
+      close: 'Close ×',
       contactGroup: 'Contact Ichkiichpan',
       instagramAria: 'Open Ichkiichpan on Instagram',
       whatsappAria: 'Message Ichkiichpan on WhatsApp',
@@ -38,6 +46,7 @@
       back: 'Volver arriba ↑',
       language: 'Cambiar idioma',
       menu: 'Abrir menú',
+      close: 'Cerrar ×',
       contactGroup: 'Contactar a Ichkiichpan',
       instagramAria: 'Abrir Ichkiichpan en Instagram',
       whatsappAria: 'Enviar un mensaje a Ichkiichpan por WhatsApp',
@@ -77,11 +86,17 @@
   }
 
   function updateSharedUi() {
-    const lang = document.documentElement.lang === 'es' ? 'es' : 'en';
+    const lang = supportsFullTranslation && document.documentElement.lang === 'es' ? 'es' : 'en';
     const translated = text[lang];
     document.querySelectorAll('[data-shared]').forEach(element => {
       const value = translated[element.dataset.shared];
       if (value) element.textContent = value;
+    });
+    const navigationLabels = [translated.retreat, translated.stay, translated.experience, translated.gallery];
+    document.querySelectorAll('.desktop-nav, .mobile-menu nav').forEach(navigation => {
+      navigation.querySelectorAll('a').forEach((link, index) => {
+        if (navigationLabels[index]) link.textContent = navigationLabels[index];
+      });
     });
     document.querySelectorAll('.site-header .outline-button, .mobile-menu > .solid-button, .shared-closing .solid-button, .stay-closing .solid-button').forEach(link => {
       link.textContent = translated.planLink;
@@ -90,6 +105,8 @@
     const menuButton = document.querySelector('.menu-button');
     languageButton?.setAttribute('aria-label', translated.language);
     menuButton?.setAttribute('aria-label', translated.menu);
+    const menuClose = document.querySelector('.mobile-close');
+    if (menuClose) menuClose.textContent = translated.close;
     social?.setAttribute('aria-label', translated.contactGroup);
     const instagram = social?.querySelector('.instagram');
     const whatsapp = social?.querySelector('.whatsapp');

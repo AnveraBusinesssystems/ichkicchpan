@@ -61,7 +61,7 @@ const copy = {
     galleryCtaLabel: 'The full story', galleryCtaTitle: 'See every room,<br>dock and detail.',
     closingLabel: 'Your stay', closingTitle: 'Come together.<br><em>Then make the place your own.</em>', closingAssurance: 'Five bedrooms · Seven beds · Up to 14 guests',
     close: 'Close ×', languageLabel: 'Change language',
-    propertyHighlightsAria: 'Property highlights', glanceBedroomAlt: 'Spacious bedroom at Ichkiichpan', glancePropertyAlt: 'Ichkiichpan cabin surrounded by tropical vegetation',
+    heroImageAlt: 'Sunset over the Bacalar lagoon from Ichkiichpan', propertyHighlightsAria: 'Property highlights', glanceBedroomAlt: 'Spacious bedroom at Ichkiichpan', glancePropertyAlt: 'Ichkiichpan cabin surrounded by tropical vegetation',
     lagoonImageAlt: 'Aerial view of Ichkiichpan and its lagoon docks', sleepAlt: 'Double-bed room at Ichkiichpan', gatherAlt: 'Spacious interior beneath the palapa roof', outsideAlt: 'Ichkiichpan cabin and open-air living spaces',
     galleryDockAlt: 'Private dock framed by jungle foliage', galleryWaterAlt: 'Turquoise Bacalar lagoon', gallerySunsetAlt: 'Private dock at sunset',
     galleryCabinAlt: 'Ichkiichpan cabin in the jungle', galleryOutdoorAlt: 'Lagoon-side outdoor living at Ichkiichpan', galleryHouseAlt: 'Main Ichkiichpan cabin among tropical trees'
@@ -89,7 +89,7 @@ const copy = {
     galleryCtaLabel: 'La historia completa', galleryCtaTitle: 'Descubre cada habitación,<br>muelle y detalle.',
     closingLabel: 'Tu estancia', closingTitle: 'Vengan juntos.<br><em>Luego hagan suyo el lugar.</em>', closingAssurance: 'Cinco habitaciones · Siete camas · Hasta 14 huéspedes',
     close: 'Cerrar ×', languageLabel: 'Cambiar idioma',
-    propertyHighlightsAria: 'Datos principales de la propiedad', glanceBedroomAlt: 'Habitación amplia en Ichkiichpan', glancePropertyAlt: 'Cabaña Ichkiichpan rodeada de vegetación tropical',
+    heroImageAlt: 'Atardecer sobre la Laguna de Bacalar desde Ichkiichpan', propertyHighlightsAria: 'Datos principales de la propiedad', glanceBedroomAlt: 'Habitación amplia en Ichkiichpan', glancePropertyAlt: 'Cabaña Ichkiichpan rodeada de vegetación tropical',
     lagoonImageAlt: 'Vista aérea de Ichkiichpan y sus muelles en la laguna', sleepAlt: 'Habitación con camas dobles en Ichkiichpan', gatherAlt: 'Interior amplio bajo el techo de palapa', outsideAlt: 'Cabaña Ichkiichpan y sus espacios al aire libre',
     galleryDockAlt: 'Muelle privado enmarcado por vegetación tropical', galleryWaterAlt: 'Agua turquesa de la Laguna de Bacalar', gallerySunsetAlt: 'Muelle privado al atardecer',
     galleryCabinAlt: 'Cabaña Ichkiichpan entre la selva', galleryOutdoorAlt: 'Espacio exterior de Ichkiichpan junto a la laguna', galleryHouseAlt: 'Cabaña principal de Ichkiichpan entre árboles tropicales'
