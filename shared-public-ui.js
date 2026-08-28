@@ -2,7 +2,7 @@
   const footer = document.querySelector('.site-footer');
   const social = document.querySelector('.social-float');
   const pageName = location.pathname.split('/').pop();
-  const fullyTranslatedPages = new Set(['', 'index.html', 'the-retreat.html']);
+  const fullyTranslatedPages = new Set(['', 'index.html', 'the-retreat.html', 'your-stay.html']);
   const supportsFullTranslation = fullyTranslatedPages.has(pageName);
 
   if (!supportsFullTranslation) {
