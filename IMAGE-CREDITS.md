@@ -8,30 +8,12 @@ The following Experience-page assets were produced from photographs supplied by 
 - `assets/experience-lagoon.jpg`
 - `assets/experience-kayaks.jpg`
 
-## External Creative Commons photography
+## Client-supplied destination photography
 
-The following files were resized and compressed for web delivery. Any page using them should retain this attribution record.
+The following Experience-page assets were produced from the destination images supplied in the Desktop `ichkich` folder. They were resized or recompressed for web delivery:
 
-### Bacalar
+- `assets/experience-bacalar.jpg` from `Bacalar_2.jpeg`
+- `assets/experience-chacchoben.jpg` from `chacchoben_1.jpg`
+- `assets/experience-mahahual.jpg` from `mahahual_3.jpg`
 
-- Website asset: `assets/experience-bacalar.jpg`
-- Source: [Fuerte de Bacalar - Quintana Roo - México](https://commons.wikimedia.org/wiki/File:Fuerte_de_Bacalar_-_Quintana_Roo_-_M%C3%A9xico.jpg)
-- Photographer: D. Zupperdoni
-- License: [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/)
-- Changes: resized and compressed
-
-### Chacchoben
-
-- Website asset: `assets/experience-chacchoben.jpg`
-- Source: [Ruinas Mayas de Chacchoben](https://commons.wikimedia.org/wiki/File:Ruinas_Mayas_de_Chacchoben.jpg)
-- Photographer: Pabernosmatao
-- License: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
-- Changes: resized and compressed
-
-### Mahahual
-
-- Website asset: `assets/experience-mahahual.jpg`
-- Source: [Mahahual, Quintana Roo, México - panoramio](https://commons.wikimedia.org/wiki/File:Mahahual,_Quintana_Roo,_M%C3%A9xico._-_panoramio.jpg)
-- Photographer: Misael Lavadores
-- License: [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/)
-- Changes: resized and compressed
+Usage rights for these supplied source files should be confirmed before the website's final public launch.
