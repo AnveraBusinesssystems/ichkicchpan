@@ -19,7 +19,6 @@
       gallery: 'Gallery',
       plan: 'Plan your stay',
       planLink: 'Plan your stay',
-      availability: 'Check availability',
       manage: 'Manage my stay',
       contact: 'Contact on WhatsApp',
       instagram: 'Instagram',
@@ -41,7 +40,6 @@
       gallery: 'Galería',
       plan: 'Planea tu estancia',
       planLink: 'Planea tu estancia',
-      availability: 'Ver disponibilidad',
       manage: 'Gestiona tu estancia',
       contact: 'Contacto por WhatsApp',
       instagram: 'Instagram',
@@ -101,9 +99,8 @@
         if (navigationLabels[index]) link.textContent = navigationLabels[index];
       });
     });
-    const reservationLabel = pageName === 'the-experience.html' ? translated.availability : translated.planLink;
     document.querySelectorAll('.site-header .outline-button, .mobile-menu > .solid-button, .shared-closing .solid-button, .stay-closing .solid-button').forEach(link => {
-      link.textContent = reservationLabel;
+      link.textContent = translated.planLink;
     });
     const languageButton = document.querySelector('.lang-button');
     const menuButton = document.querySelector('.menu-button');

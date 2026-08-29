@@ -3,6 +3,14 @@ const menu = document.getElementById('mobileMenu');
 const menuButton = document.getElementById('menuButton');
 const menuClose = document.getElementById('menuClose');
 const langButton = document.getElementById('langButton');
+const introParagraph = document.querySelector('.experience-intro-copy > p');
+const introLink = document.createElement('a');
+
+if (introParagraph) {
+  introLink.className = 'experience-intro-link';
+  introLink.href = 'reservations.html#book';
+  introParagraph.insertAdjacentElement('afterend', introLink);
+}
 
 function syncHeader() {
   header?.classList.toggle('scrolled', window.scrollY > 40);
@@ -42,6 +50,7 @@ const copy = {
     introLabel: 'FROM ICHKIICHPAN',
     introTitle: 'Start with the water.<br><em>Then choose how far to go.</em>',
     introBody: 'The experience begins with direct access to Bacalar Lagoon and the kayaks at the property. Beyond the retreat, Bacalar town, the Maya city of Chacchoben and the Caribbean coast at Mahahual each offer a completely different kind of day.',
+    introCta: 'Plan your stay →',
     lagoonLabel: 'Bacalar Lagoon',
     lagoonTitle: 'The Seven Colors<br><em>start right outside.</em>',
     lagoonBody: 'Bacalar is a freshwater lagoon known for its changing blue tones. From Ichkiichpan, the water is not an excursion—it is part of the stay: swim, sit on the dock or move out across the lagoon at your own pace.',
@@ -64,14 +73,14 @@ const copy = {
     promptLabel: 'Your Bacalar stay',
     promptTitle: 'Build the days around your group.',
     assurance: 'Private retreat · Up to 14 guests · Direct lagoon access',
-    availability: 'Check availability →',
+    availability: 'Plan your stay →',
     careLabel: 'Respect the lagoon',
     careTitle: 'Beautiful because<br><em>it is alive.</em>',
     careBody: 'Bacalar is also an unusually delicate ecosystem, including living stromatolites. Enjoy the water responsibly: never touch or stand on stromatolites and follow local conservation guidance while on the lagoon.',
     closingLabel: 'Your stay',
     closingTitle: 'Come together.<br><em>Then make the place your own.</em>',
     closingAssurance: 'Private retreat · Up to 14 guests · Direct lagoon access',
-    closingButton: 'Check availability',
+    closingButton: 'Plan your stay',
     carouselLabels: ['Bacalar photo gallery', 'Chacchoben photo gallery', 'Mahahual photo gallery'],
     previousLabels: ['Previous Bacalar image', 'Previous Chacchoben image', 'Previous Mahahual image'],
     nextLabels: ['Next Bacalar image', 'Next Chacchoben image', 'Next Mahahual image'],
@@ -98,6 +107,7 @@ const copy = {
     introLabel: 'DESDE ICHKIICHPAN',
     introTitle: 'Empiecen por el agua.<br><em>Luego elijan hasta dónde llegar.</em>',
     introBody: 'La experiencia comienza con acceso directo a la Laguna de Bacalar y los kayaks de la propiedad. Más allá del refugio, el pueblo de Bacalar, la ciudad maya de Chacchoben y la costa caribeña de Mahahual ofrecen tres formas completamente distintas de vivir el día.',
+    introCta: 'Planea tu estancia →',
     lagoonLabel: 'Laguna de Bacalar',
     lagoonTitle: 'Los Siete Colores<br><em>comienzan aquí mismo.</em>',
     lagoonBody: 'Bacalar es una laguna de agua dulce conocida por sus tonos cambiantes de azul. Desde Ichkiichpan, el agua no es una excursión: es parte de la estancia. Naden, descansen en el muelle o recorran la laguna a su propio ritmo.',
@@ -120,14 +130,14 @@ const copy = {
     promptLabel: 'Tu estancia en Bacalar',
     promptTitle: 'Diseñen los días a su manera.',
     assurance: 'Retiro privado · Hasta 14 huéspedes · Acceso directo a la laguna',
-    availability: 'Ver disponibilidad →',
+    availability: 'Planea tu estancia →',
     careLabel: 'Cuiden la laguna',
     careTitle: 'Hermosa porque<br><em>está viva.</em>',
     careBody: 'Bacalar también es un ecosistema extraordinariamente delicado que incluye estromatolitos vivos. Disfruten el agua de manera responsable: nunca los toquen ni se paren sobre ellos y sigan las recomendaciones locales de conservación.',
     closingLabel: 'Tu estancia',
     closingTitle: 'Vengan juntos.<br><em>Luego hagan suyo el lugar.</em>',
     closingAssurance: 'Retiro privado · Hasta 14 huéspedes · Acceso directo a la laguna',
-    closingButton: 'Ver disponibilidad',
+    closingButton: 'Planea tu estancia',
     carouselLabels: ['Galería de fotos de Bacalar', 'Galería de fotos de Chacchoben', 'Galería de fotos de Mahahual'],
     previousLabels: ['Imagen anterior de Bacalar', 'Imagen anterior de Chacchoben', 'Imagen anterior de Mahahual'],
     nextLabels: ['Siguiente imagen de Bacalar', 'Siguiente imagen de Chacchoben', 'Siguiente imagen de Mahahual'],
@@ -169,6 +179,7 @@ function applyLanguage(lang) {
   setHtml('.experience-intro-label .kicker', translated.introLabel);
   setHtml('.experience-intro-copy h2', translated.introTitle);
   setHtml('.experience-intro-copy p', translated.introBody);
+  setHtml('.experience-intro-link', translated.introCta);
 
   const features = document.querySelectorAll('.feature-copy');
   if (features[0]) {
