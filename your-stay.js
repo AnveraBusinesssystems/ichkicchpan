@@ -70,8 +70,8 @@ const copy = {
     planningBody: 'Ichkiichpan is intentionally removed from Bacalar’s busiest areas. We recommend purchasing groceries before arrival; the nearest store is approximately 10 minutes away.',
     locationLabel: 'Getting here', locationTitle: 'Close to Bacalar.<br><em>Away from the crowds.</em>',
     locationPlace: 'Pedro Antonio Santos · Quintana Roo · México',
-    locationBody: 'Ichkiichpan sits in the Bacalar lagoon region, outside the town’s busiest areas. Open the exact location in Google Maps before setting out and save the route in advance. Detailed arrival instructions are shared with confirmed guests.',
-    locationMapCta: 'Open in Google Maps ↗', locationBookCta: 'Check availability →',
+    locationMapEyebrow: 'Location', locationMapTitle: 'Map showing the location of Ichkiichpan',
+    locationMapAria: 'Open the Ichkiichpan location in Google Maps', locationBookCta: 'Check availability',
     closingLabel: 'Your stay', closingTitle: 'Come together.<br><em>Then make the place your own.</em>',
     closingAssurance: 'Five bedrooms · Seven beds · Up to 14 guests', planStay: 'Plan your stay',
     languageLabel: 'Change language', previousPhoto: 'Previous photo', nextPhoto: 'Next photo',
@@ -127,8 +127,8 @@ const copy = {
     planningBody: 'Ichkiichpan está intencionalmente alejado de las zonas más concurridas de Bacalar. Recomendamos comprar víveres antes de llegar; la tienda más cercana está aproximadamente a 10 minutos.',
     locationLabel: 'Cómo llegar', locationTitle: 'Cerca de Bacalar.<br><em>Lejos del movimiento.</em>',
     locationPlace: 'Pedro Antonio Santos · Quintana Roo · México',
-    locationBody: 'Ichkiichpan se encuentra en la región de la Laguna de Bacalar, fuera de las zonas más concurridas. Abre la ubicación exacta en Google Maps antes de salir y guarda la ruta con anticipación. Las indicaciones detalladas de llegada se comparten con los huéspedes confirmados.',
-    locationMapCta: 'Abrir en Google Maps ↗', locationBookCta: 'Consultar disponibilidad →',
+    locationMapEyebrow: 'Ubicación', locationMapTitle: 'Mapa con la ubicación de Ichkiichpan',
+    locationMapAria: 'Abrir la ubicación de Ichkiichpan en Google Maps', locationBookCta: 'Consultar disponibilidad',
     closingLabel: 'Tu estancia', closingTitle: 'Vengan juntos.<br><em>Luego hagan suyo el lugar.</em>',
     closingAssurance: 'Cinco habitaciones · Siete camas · Hasta 14 huéspedes', planStay: 'Planea tu estancia',
     languageLabel: 'Cambiar idioma', previousPhoto: 'Foto anterior', nextPhoto: 'Foto siguiente',
@@ -262,6 +262,10 @@ function applyLanguage(lang) {
   document.querySelectorAll('[data-i18n-alt]').forEach(element => {
     const value = translated[element.dataset.i18nAlt];
     if (value) element.setAttribute('alt', value);
+  });
+  document.querySelectorAll('[data-i18n-title]').forEach(element => {
+    const value = translated[element.dataset.i18nTitle];
+    if (value) element.setAttribute('title', value);
   });
   document.querySelectorAll('.carousel-dots button').forEach(dot => {
     dot.setAttribute('aria-label', `${translated.showPhoto} ${Number(dot.dataset.slideIndex) + 1}`);

@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css?v=20260818-0102"/>
-<link rel="stylesheet" href="your-stay.css?v=20260829-01"/>
+<link rel="stylesheet" href="your-stay.css?v=20260829-02"/>
 <link rel="stylesheet" href="social-float.css?v=20260824-01"/>
 <link rel="stylesheet" href="shared-public.css?v=20260827-02"/>
 </head>
@@ -274,12 +274,18 @@
 <h2 id="locationTitle" data-i18n="locationTitle">Close to Bacalar.<br><em>Away from the crowds.</em></h2>
 </div>
 <div class="stay-location-details">
-<p class="location-place" data-i18n="locationPlace">Pedro Antonio Santos · Quintana Roo · México</p>
-<p data-i18n="locationBody">Ichkiichpan sits in the Bacalar lagoon region, outside the town’s busiest areas. Open the exact location in Google Maps before setting out and save the route in advance. Detailed arrival instructions are shared with confirmed guests.</p>
-<div class="stay-location-actions">
-<a class="outline-button location-map-link" href="https://maps.app.goo.gl/G43nz4ibD5nMp6gG7" target="_blank" rel="noopener noreferrer" data-i18n="locationMapCta">Open in Google Maps ↗</a>
-<a class="stay-text-cta" href="reservations.html#book" data-i18n="locationBookCta">Check availability →</a>
+<div class="location-map-card">
+<iframe src="https://www.google.com/maps?q=18.9200295,-88.1703821&amp;z=14&amp;output=embed" title="Map showing the location of Ichkiichpan" data-i18n-title="locationMapTitle" loading="lazy" referrerpolicy="no-referrer-when-downgrade" tabindex="-1"></iframe>
+<a class="location-map-link" href="https://maps.app.goo.gl/G43nz4ibD5nMp6gG7" target="_blank" rel="noopener noreferrer" data-i18n-aria="locationMapAria">
+<span class="location-map-label">
+<small data-i18n="locationMapEyebrow">Location</small>
+<strong>Ichkiichpan</strong>
+<span data-i18n="locationPlace">Pedro Antonio Santos · Quintana Roo · México</span>
+</span>
+<span class="location-map-arrow" aria-hidden="true">↗</span>
+</a>
 </div>
+<a class="outline-button location-book-link" href="reservations.html#book" data-i18n="locationBookCta">Check availability</a>
 </div>
 </section>
 <section class="stay-closing">
@@ -327,7 +333,7 @@
 </div>
 <script src="social-float.js?v=20260824-01">
 </script>
-<script src="your-stay.js?v=20260829-01">
+<script src="your-stay.js?v=20260829-02">
 </script>
 <script src="shared-public-ui.js?v=20260827-03">
 </script>
