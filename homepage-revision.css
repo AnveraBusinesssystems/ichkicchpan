@@ -264,15 +264,16 @@
   }
 
   .mobile-menu nav {
-    gap: 8px;
-    margin: auto 0 36px;
+    gap: 3px;
+    margin: 24px 0;
+    overflow-y: auto;
   }
 
   .mobile-menu nav a {
     width: max-content;
     max-width: 100%;
-    padding: 4px 0;
-    font-size: clamp(38px, 11.5vw, 48px);
+    padding: 3px 0;
+    font-size: clamp(31px, 9.5vw, 41px);
     line-height: 1.02;
   }
 

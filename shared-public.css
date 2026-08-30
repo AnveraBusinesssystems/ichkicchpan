@@ -90,6 +90,24 @@
 }
 
 @media (max-width: 760px) {
+  .mobile-menu nav {
+    gap: 3px;
+    margin: 26px 0 24px;
+    overflow-y: auto;
+  }
+
+  .mobile-menu nav a {
+    width: max-content;
+    max-width: 100%;
+    padding: 3px 0;
+    font-size: clamp(31px, 9.5vw, 41px);
+    line-height: 1.02;
+  }
+
+  .mobile-menu nav a[aria-current="page"] {
+    color: #66766e;
+  }
+
   .site-footer {
     grid-template-columns: 1fr;
     gap: 38px;

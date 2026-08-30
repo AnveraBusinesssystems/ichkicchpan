@@ -50,7 +50,7 @@ document.addEventListener('keydown', event => {
 });
 
 function syncGalleryLinks() {
-  document.querySelectorAll('.desktop-nav a:last-child,.mobile-menu nav a:last-child').forEach(link => {
+  document.querySelectorAll('.desktop-nav a[data-i18n="navGallery"],.mobile-menu nav a[data-shared="gallery"]').forEach(link => {
     link.href = 'gallery.html';
   });
 }

@@ -13,10 +13,13 @@
   const text = {
     en: {
       explore: 'Explore',
+      home: 'Home',
       retreat: 'The Retreat',
       stay: 'Your Stay',
       experience: 'The Experience',
       gallery: 'Gallery',
+      reservations: 'Reservations',
+      portal: 'Guest Portal',
       plan: 'Plan your stay',
       planLink: 'Plan your stay',
       manage: 'Manage my stay',
@@ -34,10 +37,13 @@
     },
     es: {
       explore: 'Explora',
+      home: 'Inicio',
       retreat: 'El Refugio',
       stay: 'Tu Estancia',
       experience: 'La Experiencia',
       gallery: 'Galería',
+      reservations: 'Reservaciones',
+      portal: 'Portal del huésped',
       plan: 'Planea tu estancia',
       planLink: 'Planea tu estancia',
       manage: 'Gestiona tu estancia',
@@ -54,6 +60,30 @@
       whatsappMessage: '¡Hola! Me interesa hospedarme en Ichkiichpan.'
     }
   };
+
+  const mobileNavigation = [
+    { href: 'index.html', label: 'home', pages: ['', 'index.html'] },
+    { href: 'the-retreat.html', label: 'retreat', pages: ['the-retreat.html'] },
+    { href: 'your-stay.html', label: 'stay', pages: ['your-stay.html'] },
+    { href: 'the-experience.html', label: 'experience', pages: ['the-experience.html'] },
+    { href: 'gallery.html', label: 'gallery', pages: ['gallery.html'] },
+    { href: 'reservations.html#book', label: 'reservations', pages: ['reservations.html'] },
+    { href: 'guest-portal.html', label: 'portal', pages: ['guest-portal.html'] }
+  ];
+
+  document.querySelectorAll('.mobile-menu nav').forEach(navigation => {
+    navigation.innerHTML = mobileNavigation.map(item => {
+      const current = item.pages.includes(pageName) ? ' aria-current="page"' : '';
+      return `<a href="${item.href}" data-shared="${item.label}"${current}>${text.en[item.label]}</a>`;
+    }).join('');
+    navigation.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      const mobileMenu = navigation.closest('.mobile-menu');
+      mobileMenu?.classList.remove('open');
+      mobileMenu?.setAttribute('aria-hidden', 'true');
+      document.querySelector('.menu-button')?.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }));
+  });
 
   if (footer) {
     footer.innerHTML = `
@@ -94,7 +124,7 @@
       if (value) element.textContent = value;
     });
     const navigationLabels = [translated.retreat, translated.stay, translated.experience, translated.gallery];
-    document.querySelectorAll('.desktop-nav, .mobile-menu nav').forEach(navigation => {
+    document.querySelectorAll('.desktop-nav').forEach(navigation => {
       navigation.querySelectorAll('a').forEach((link, index) => {
         if (navigationLabels[index]) link.textContent = navigationLabels[index];
       });
