@@ -2,7 +2,7 @@
   const footer = document.querySelector('.site-footer');
   const social = document.querySelector('.social-float');
   const pageName = location.pathname.split('/').pop();
-  const fullyTranslatedPages = new Set(['', 'index.html', 'the-retreat.html', 'your-stay.html', 'the-experience.html', 'gallery.html']);
+  const fullyTranslatedPages = new Set(['', 'index.html', 'the-retreat.html', 'your-stay.html', 'the-experience.html', 'gallery.html', 'reservations.html']);
   const supportsFullTranslation = fullyTranslatedPages.has(pageName);
 
   if (!supportsFullTranslation) {
@@ -99,7 +99,7 @@
         if (navigationLabels[index]) link.textContent = navigationLabels[index];
       });
     });
-    document.querySelectorAll('.site-header .outline-button, .mobile-menu > .solid-button, .shared-closing .solid-button, .stay-closing .solid-button').forEach(link => {
+    document.querySelectorAll('.site-header .outline-button:not(.booking-current), .mobile-menu > .solid-button:not([data-i18n]), .shared-closing .solid-button, .stay-closing .solid-button').forEach(link => {
       link.textContent = translated.planLink;
     });
     const languageButton = document.querySelector('.lang-button');

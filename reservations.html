@@ -1,66 +1,129 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#f5f1e8" />
-  <meta name="description" content="Check availability and reserve Ichkiichpan, a private lagoon retreat in Bacalar." />
-  <title>Reservations — Ichkiichpan</title><link rel="icon" href="assets/logo-cropped.png" type="image/png"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260818-0102" />
-  <link rel="stylesheet" href="reservations.css?v=20260824-01" />
-  <link rel="stylesheet" href="social-float.css?v=20260824-01" />
-<link rel="stylesheet" href="shared-public.css?v=20260827-01"/></head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="theme-color" content="#f5f1e8"/>
+  <meta name="description" content="Select dates and prepare a reservation for Ichkiichpan, a private lagoon retreat in Bacalar."/>
+  <title>Reservations — Ichkiichpan</title>
+  <link rel="canonical" href="https://anverabusinesssystems.github.io/ichkicchpan/reservations.html"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="Reservations — Ichkiichpan"/>
+  <meta property="og:description" content="Select your dates and prepare your stay at Ichkiichpan."/>
+  <meta property="og:url" content="https://anverabusinesssystems.github.io/ichkicchpan/reservations.html"/>
+  <link rel="icon" href="assets/logo-cropped.png" type="image/png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css?v=20260818-0102"/>
+  <link rel="stylesheet" href="reservations.css?v=20260830-01"/>
+  <link rel="stylesheet" href="social-float.css?v=20260824-01"/>
+  <link rel="stylesheet" href="shared-public.css?v=20260827-01"/>
+</head>
 <body class="reservations-page" data-booking-step="1">
 <header class="site-header booking-header scrolled" id="siteHeader">
   <a class="wordmark" href="index.html" aria-label="Ichkiichpan home"></a>
-  <nav class="desktop-nav" aria-label="Primary navigation">
-    <a href="the-retreat.html">The Retreat</a>
-    <a href="your-stay.html">Your Stay</a>
-    <a href="the-experience.html">The Experience</a>
-    <a href="gallery.html">Gallery</a>
-  </nav>
+  <nav class="desktop-nav" aria-label="Primary navigation"><a href="the-retreat.html">The Retreat</a><a href="your-stay.html">Your Stay</a><a href="the-experience.html">The Experience</a><a href="gallery.html">Gallery</a></nav>
   <div class="header-actions">
     <button class="lang-button" id="langButton" type="button" aria-label="Change language">EN <span>·</span> ES</button>
-    <a class="outline-button booking-current" href="#book">Check availability</a>
+    <a class="outline-button booking-current" href="#book" data-i18n="availability">Review dates</a>
     <button class="menu-button" id="menuButton" type="button" aria-label="Open menu"><span></span><span></span></button>
   </div>
 </header>
+
 <main id="top">
   <section class="booking-shell" id="book">
-    <div class="booking-intro"><div><p class="kicker">Reservations · Ichkiichpan</p><h1>Plan your stay.</h1></div><p>Select your dates, tell us who is coming, and complete your reservation securely.</p></div>
-    <div class="booking-progress" aria-label="Reservation progress"><button class="progress-step active" type="button" data-step-button="1" aria-current="step"><span>01</span><strong>Your stay</strong></button><button class="progress-step" type="button" data-step-button="2" disabled><span>02</span><strong>Your details</strong></button><button class="progress-step" type="button" data-step-button="3" disabled><span>03</span><strong>Payment</strong></button></div>
+    <div class="booking-intro">
+      <div><p class="kicker" data-i18n="introLabel">Reservations · Ichkiichpan</p><h1 data-i18n="introTitle">Plan your stay.</h1></div>
+      <div class="booking-intro-copy"><p data-i18n="introBody">Select your dates and tell us who is coming. Availability and final pricing are confirmed before secure payment.</p><p class="booking-trust-line" data-i18n="trustLine">Private retreat · Up to 14 guests · Secure payment</p></div>
+    </div>
+
+    <div class="booking-progress" aria-label="Reservation progress" data-i18n-aria="progressLabel">
+      <button class="progress-step active" type="button" data-step-button="1" aria-current="step"><span>01</span><strong data-i18n="progressStay">Your stay</strong></button>
+      <button class="progress-step" type="button" data-step-button="2" disabled><span>02</span><strong data-i18n="progressDetails">Your details</strong></button>
+      <button class="progress-step" type="button" data-step-button="3" disabled><span>03</span><strong data-i18n="progressPayment">Payment</strong></button>
+    </div>
+
     <div class="booking-layout">
       <div class="booking-main">
         <section class="booking-step active" data-step="1">
           <div class="stay-selection-grid">
             <div class="stay-date-panel">
-              <div class="step-heading compact-heading"><p class="kicker">01 · Select your stay</p><h2>Choose your dates.</h2></div>
-              <div class="date-selection-bar" aria-live="polite"><div><span>Check-in</span><strong id="selectedCheckIn">Select date</strong></div><div><span>Check-out</span><strong id="selectedCheckOut">Select date</strong></div><button class="clear-dates" id="clearDates" type="button">Clear</button></div>
-              <div class="calendar-card" aria-label="Select reservation dates"><div class="calendar-toolbar"><button class="calendar-arrow" id="calendarPrev" type="button" aria-label="Previous month">←</button><p>Select check-in and check-out</p><button class="calendar-arrow" id="calendarNext" type="button" aria-label="Next month">→</button></div><div class="calendar-months" id="calendarMonths"></div><div class="calendar-legend"><span><i class="legend-selected"></i> Selected</span><span><i class="legend-unavailable"></i> Unavailable</span></div></div>
+              <div class="step-heading compact-heading"><p class="kicker" data-i18n="stepOneLabel">01 · Select your stay</p><h2 data-i18n="stepOneTitle">Choose your dates.</h2></div>
+              <div class="date-selection-bar" aria-live="polite"><div><span data-i18n="checkIn">Check-in</span><strong id="selectedCheckIn">Select date</strong></div><div><span data-i18n="checkOut">Check-out</span><strong id="selectedCheckOut">Select date</strong></div><button class="clear-dates" id="clearDates" type="button" data-i18n="clear">Clear</button></div>
+              <div class="calendar-card" aria-label="Select reservation dates" data-i18n-aria="calendarLabel">
+                <div class="calendar-toolbar"><button class="calendar-arrow" id="calendarPrev" type="button" aria-label="Previous month" data-i18n-aria="previousMonth">←</button><p data-i18n="calendarPrompt">Select check-in and check-out</p><button class="calendar-arrow" id="calendarNext" type="button" aria-label="Next month" data-i18n-aria="nextMonth">→</button></div>
+                <div class="calendar-months" id="calendarMonths"></div>
+                <div class="calendar-legend"><span><i class="legend-selected"></i><span data-i18n="selected">Selected</span></span><span><i class="legend-unavailable"></i><span data-i18n="unavailable">Unavailable</span></span></div>
+              </div>
             </div>
+
             <div class="stay-guest-panel">
-              <div class="guest-picker-card"><div class="guest-picker-heading"><div><p class="kicker">Guests</p><h3>Who is coming?</h3></div><strong id="guestTotal">2 guests</strong></div><div class="guest-counter-row"><div><strong>Adults</strong><span>Ages 13+</span></div><div class="counter-control"><button type="button" data-counter="adults" data-change="-1" aria-label="Remove adult">−</button><strong id="adultCount">2</strong><button type="button" data-counter="adults" data-change="1" aria-label="Add adult">+</button></div></div><div class="guest-counter-row"><div><strong>Children</strong><span>Ages 0–12</span></div><div class="counter-control"><button type="button" data-counter="children" data-change="-1" aria-label="Remove child">−</button><strong id="childCount">0</strong><button type="button" data-counter="children" data-change="1" aria-label="Add child">+</button></div></div><p class="guest-limit">Maximum 14 guests.</p></div>
-              <div class="booking-facts"><div><strong>Entire retreat</strong><span>Private for your group</span></div><div><strong>5 bedrooms</strong><span>Up to 14 guests</span></div><div><strong>Lagoon access</strong><span>Two docks · kayaks</span></div></div>
-              <p class="field-message" id="dateMessage" aria-live="polite"></p><button class="solid-button booking-primary full-action" id="checkAvailabilityButton" type="button">Check availability</button>
+              <div class="guest-picker-card">
+                <div class="guest-picker-heading"><div><p class="kicker" data-i18n="guestsLabel">Guests</p><h3 data-i18n="guestsTitle">Who is coming?</h3></div><strong id="guestTotal">2 guests</strong></div>
+                <div class="guest-counter-row"><div><strong data-i18n="adults">Adults</strong><span data-i18n="adultAges">Ages 13+</span></div><div class="counter-control"><button type="button" data-counter="adults" data-change="-1" aria-label="Remove adult" data-i18n-aria="removeAdult">−</button><strong id="adultCount">2</strong><button type="button" data-counter="adults" data-change="1" aria-label="Add adult" data-i18n-aria="addAdult">+</button></div></div>
+                <div class="guest-counter-row"><div><strong data-i18n="children">Children</strong><span data-i18n="childAges">Ages 0–12</span></div><div class="counter-control"><button type="button" data-counter="children" data-change="-1" aria-label="Remove child" data-i18n-aria="removeChild">−</button><strong id="childCount">0</strong><button type="button" data-counter="children" data-change="1" aria-label="Add child" data-i18n-aria="addChild">+</button></div></div>
+                <p class="guest-limit" data-i18n="guestLimit">Maximum 14 guests.</p>
+              </div>
+              <div class="booking-facts"><div><strong data-i18n="factRetreat">Entire retreat</strong><span data-i18n="factRetreatBody">Private for your group</span></div><div><strong data-i18n="factRooms">5 bedrooms</strong><span data-i18n="factRoomsBody">Up to 14 guests</span></div><div><strong data-i18n="factLagoon">Lagoon access</strong><span data-i18n="factLagoonBody">Two docks · kayaks</span></div></div>
+              <p class="field-message" id="dateMessage" aria-live="polite"></p>
+              <button class="solid-button booking-primary full-action" id="reviewDatesButton" type="button" data-i18n="reviewDates">Review selected dates</button>
             </div>
           </div>
-          <div class="availability-result" id="availabilityResult" hidden aria-live="polite"><div class="availability-result-copy"><span class="availability-status">Stay selection ready</span><h3 id="availabilityTitle">Your dates are ready to check.</h3><p id="availabilityText">Live calendar availability will be confirmed here when the reservation backend is connected.</p><div class="inline-price-summary"><div><span>Accommodation</span><strong id="inlineAccommodation">MXN —</strong></div><div><span>Taxes &amp; fees</span><strong id="inlineTaxes">MXN —</strong></div><div class="inline-total"><span>Total</span><strong id="inlineTotal">MXN —</strong></div><div class="inline-due"><span>Due today</span><strong id="inlineDue">MXN —</strong></div></div><p class="pricing-note">Exact pricing and deposit terms will appear here from the live pricing engine before payment.</p><button class="solid-button booking-primary" id="continueFromAvailability" type="button">Continue reservation</button></div></div>
+
+          <div class="availability-result" id="availabilityResult" hidden aria-live="polite">
+            <div class="availability-result-copy">
+              <span class="availability-status" data-i18n="selectionStatus">Dates selected</span><h3 data-i18n="selectionTitle">Review your stay.</h3><p data-i18n="selectionBody">Your dates are ready. Live availability and final pricing will be verified before payment.</p>
+              <div class="selection-review-grid"><div><span data-i18n="checkIn">Check-in</span><strong id="reviewCheckIn">—</strong></div><div><span data-i18n="checkOut">Check-out</span><strong id="reviewCheckOut">—</strong></div><div><span data-i18n="nights">Nights</span><strong id="reviewNights">—</strong></div><div><span data-i18n="guestsLabel">Guests</span><strong id="reviewGuests">—</strong></div></div>
+              <p class="pricing-note" data-i18n="selectionNote">No charge is made at this stage.</p>
+              <button class="solid-button booking-primary" id="continueFromAvailability" type="button" data-i18n="continueReservation">Continue with your details</button>
+            </div>
+          </div>
         </section>
-        <section class="booking-step" data-step="2" hidden><div class="step-heading"><p class="kicker">02 · Your details</p><h2>Who should we<br><em>welcome?</em></h2><p>We will use these details for your reservation confirmation and arrival information.</p></div><form id="guestForm" class="guest-form" novalidate><div class="field-grid two"><label class="booking-field"><span>First name</span><input name="firstName" autocomplete="given-name" required /></label><label class="booking-field"><span>Last name</span><input name="lastName" autocomplete="family-name" required /></label><label class="booking-field"><span>Email</span><input type="email" name="email" autocomplete="email" required /></label><label class="booking-field"><span>Phone</span><input type="tel" name="phone" autocomplete="tel" required /></label><label class="booking-field"><span>Country</span><input name="country" autocomplete="country-name" required /></label><label class="booking-field"><span>Preferred language</span><select name="preferredLanguage"><option>English</option><option>Español</option></select></label></div><label class="booking-field full"><span>Anything we should know? <small>Optional</small></span><textarea name="requests" rows="4" placeholder="Arrival notes, special requests, celebrations…"></textarea></label><label class="policy-check"><input type="checkbox" name="policy" required /><span>I confirm the reservation details are correct and agree to review the cancellation and house policies before payment.</span></label><p class="field-message" id="guestMessage" aria-live="polite"></p><div class="step-actions split"><button class="text-action" type="button" data-back="1">← Back</button><button class="solid-button booking-primary" type="submit">Continue to payment</button></div></form></section>
-        <section class="booking-step" data-step="3" hidden><div class="step-heading"><p class="kicker">03 · Secure payment</p><h2>Secure your<br><em>reservation.</em></h2><p>Your card details will be handled securely by Stripe and will not be stored on the Ichkiichpan website.</p></div><div class="payment-total-card"><span>Due today</span><strong id="paymentDue">MXN —</strong><p id="paymentBalance">Final deposit and balance terms will appear once live pricing is connected.</p></div><div class="payment-choice selected"><div class="payment-choice-head"><span class="payment-radio"></span><div><strong>Credit or debit card</strong><p>Visa · Mastercard · American Express</p></div></div><span class="secure-label">Secure with Stripe</span></div><div class="wallet-row"><div><strong>Apple Pay</strong><span>When available</span></div><div><strong>Google Pay</strong><span>When available</span></div></div><div class="payment-trust-row"><span>🔒 Encrypted payment</span><span>Secure checkout</span><span>Reservation confirmed after payment</span></div><div class="step-actions split"><button class="text-action" type="button" data-back="2">← Back</button><button class="solid-button booking-primary" id="stripeButton" type="button">Pay &amp; confirm reservation</button></div><p class="field-message" id="paymentMessage" aria-live="polite"></p></section>
-        <section class="booking-step confirmation-step" data-step="4" hidden><div class="confirmation-mark">✓</div><p class="kicker">Reservation confirmed</p><h2>You’re coming<br><em>to Bacalar.</em></h2><p class="confirmation-intro">After Stripe confirms payment, this page will show the real reservation number, amount paid and balance information.</p><div class="confirmation-card"><div><span>Reservation</span><strong id="confirmationNumber">ICH-••••••</strong></div><div><span>Guest</span><strong id="confirmationGuest">—</strong></div><div><span>Stay</span><strong id="confirmationDates">—</strong></div><div><span>Guests</span><strong id="confirmationGuests">—</strong></div></div><div class="confirmation-actions"><a class="outline-dark-button confirmation-home" href="index.html">Return to Ichkiichpan</a><a class="text-action confirmation-manage" href="guest-portal.html">Manage my stay</a></div></section>
+
+        <section class="booking-step" data-step="2" hidden>
+          <div class="step-heading"><p class="kicker" data-i18n="stepTwoLabel">02 · Your details</p><h2 data-i18n="stepTwoTitle">Who should we<br><em>welcome?</em></h2><p data-i18n="stepTwoBody">We will use these details for reservation communication and arrival information.</p></div>
+          <form id="guestForm" class="guest-form" novalidate>
+            <div class="field-grid two">
+              <label class="booking-field"><span data-i18n="firstName">First name</span><input name="firstName" autocomplete="given-name" required/></label>
+              <label class="booking-field"><span data-i18n="lastName">Last name</span><input name="lastName" autocomplete="family-name" required/></label>
+              <label class="booking-field"><span data-i18n="email">Email</span><input type="email" name="email" autocomplete="email" required/></label>
+              <label class="booking-field phone-booking-field"><span data-i18n="phone">Phone</span><span class="phone-input-group"><select name="dialCode" aria-label="Country calling code" data-i18n-aria="dialCodeLabel"><option value="+52">MX +52</option><option value="+1">US/CA +1</option><option value="+34">ES +34</option><option value="+44">UK +44</option><option value="+33">FR +33</option><option value="+49">DE +49</option></select><input type="tel" name="phone" autocomplete="tel-national" inputmode="tel" required aria-label="Phone number" data-i18n-aria="phoneNumberLabel"/></span></label>
+              <label class="booking-field"><span data-i18n="country">Country</span><input name="country" autocomplete="country-name" list="countrySuggestions" required/></label>
+              <label class="booking-field"><span data-i18n="preferredLanguage">Preferred language</span><select name="preferredLanguage"><option value="English">English</option><option value="Español">Español</option></select></label>
+            </div>
+            <datalist id="countrySuggestions"><option value="México"></option><option value="United States"></option><option value="Canada"></option><option value="España"></option><option value="United Kingdom"></option><option value="France"></option><option value="Germany"></option></datalist>
+            <label class="booking-field full"><span><span data-i18n="requests">Anything we should know?</span> <small data-i18n="optional">Optional</small></span><textarea name="requests" rows="4" placeholder="Arrival notes, special requests, celebrations…" data-i18n-placeholder="requestsPlaceholder"></textarea></label>
+            <div class="policies-preview"><span aria-hidden="true">i</span><p data-i18n="policiesPreview">Cancellation and house policies will be presented for review before payment.</p></div>
+            <p class="field-message" id="guestMessage" aria-live="polite"></p>
+            <div class="step-actions split"><button class="text-action" type="button" data-back="1" data-i18n="back">← Back</button><button class="solid-button booking-primary" type="submit" data-i18n="continuePayment">Continue to payment</button></div>
+          </form>
+        </section>
+
+        <section class="booking-step" data-step="3" hidden>
+          <div class="step-heading"><p class="kicker" data-i18n="stepThreeLabel">03 · Secure payment</p><h2 data-i18n="stepThreeTitle">Secure your<br><em>reservation.</em></h2><p data-i18n="stepThreeBody">Your payment details will be handled securely by Stripe and will never be stored on the Ichkiichpan website.</p></div>
+          <div class="payment-total-card"><span data-i18n="totalLabel">Reservation total</span><strong data-i18n="pendingPricing">Pending live pricing</strong><p data-i18n="paymentTotalBody">The final rate, taxes and deposit will appear here after live availability is verified.</p></div>
+          <div class="payment-placeholder"><div class="payment-placeholder-head"><span aria-hidden="true">••••</span><div><strong data-i18n="paymentReadyTitle">Secure payment area</strong><p data-i18n="paymentReadyBody">Secure card fields and supported digital wallets appear here after verification.</p></div></div><span class="secure-label" data-i18n="stripeSecure">Secured by Stripe</span></div>
+          <div class="payment-trust-row"><span data-i18n="encrypted">🔒 Encrypted payment</span><span data-i18n="secureCheckout">Secure checkout</span><span data-i18n="confirmAfterPayment">Confirmation only after payment</span></div>
+          <div class="step-actions split"><button class="text-action" type="button" data-back="2" data-i18n="back">← Back</button><button class="solid-button booking-primary" id="stripeButton" type="button" disabled data-i18n="paymentUnavailable">Payment available after verification</button></div>
+          <p class="field-message payment-wait-message" data-i18n="paymentWait">No reservation has been created and no payment has been taken.</p>
+        </section>
       </div>
-      <aside class="booking-summary" id="bookingSummary"><div class="summary-content"><p class="kicker">Your stay</p><h3>Ichkiichpan</h3><p class="summary-subtitle">Private lagoon retreat · Bacalar</p><dl><div><dt>Check-in</dt><dd id="summaryCheckIn">Choose date</dd></div><div><dt>Check-out</dt><dd id="summaryCheckOut">Choose date</dd></div><div><dt>Guests</dt><dd id="summaryGuests">2 guests</dd></div><div><dt>Nights</dt><dd id="summaryNights">—</dd></div></dl><div class="summary-price-lines"><div><span>Accommodation</span><strong id="summaryAccommodation">MXN —</strong></div><div><span>Taxes &amp; fees</span><strong id="summaryTaxes">MXN —</strong></div></div><div class="summary-total"><span>Total</span><strong id="summaryTotal">MXN —</strong></div><div class="summary-due"><span>Due today</span><strong id="summaryDue">MXN —</strong></div><p class="summary-small">Final rate and payment terms will be confirmed before payment.</p></div></aside>
+
+      <aside class="booking-summary" id="bookingSummary"><div class="summary-content"><p class="kicker" data-i18n="summaryLabel">Your stay</p><h3>Ichkiichpan</h3><p class="summary-subtitle" data-i18n="summarySubtitle">Private lagoon retreat · Bacalar</p><dl><div><dt data-i18n="checkIn">Check-in</dt><dd id="summaryCheckIn">Choose date</dd></div><div><dt data-i18n="checkOut">Check-out</dt><dd id="summaryCheckOut">Choose date</dd></div><div><dt data-i18n="guestsLabel">Guests</dt><dd id="summaryGuests">2 guests</dd></div><div><dt data-i18n="nights">Nights</dt><dd id="summaryNights">—</dd></div></dl><div class="summary-pending"><span data-i18n="pricing">Pricing</span><strong data-i18n="afterVerification">After availability verification</strong></div><p class="summary-small" data-i18n="summaryNote">Final rate and payment terms will be shown before any charge.</p></div></aside>
     </div>
   </section>
-  <section class="manage-stay" id="manageStay"><div class="manage-copy"><div><p class="kicker">Already reserved?</p><h2>Manage your stay.</h2><p>Securely access your dates, payment status, balance, arrival information and guest requests.</p></div><div class="manage-form"><div class="manage-portal-summary"><span>Private guest access</span><strong>No account or password required.</strong><p>Use the email attached to your reservation and your reservation code. A secure access link verifies your email before opening the stay portal.</p></div><a class="outline-dark-button" href="guest-portal.html">Open Manage My Stay</a></div></div></section>
+
+  <section class="manage-stay" id="manageStay"><div class="manage-copy"><div><p class="kicker" data-i18n="manageLabel">Already reserved?</p><h2 data-i18n="manageTitle">Manage your stay.</h2><p data-i18n="manageBody">Access your dates, payment status, balance, arrival information and guest requests securely.</p></div><div class="manage-form"><div class="manage-portal-summary"><span data-i18n="privateAccess">Private guest access</span><strong data-i18n="noPassword">No account or password required.</strong><p data-i18n="manageInstructions">Use the email attached to your reservation and your reservation code. A secure access link verifies your email before opening the stay portal.</p></div><a class="outline-dark-button" href="guest-portal.html" data-i18n="openManage">Open Manage My Stay</a></div></div></section>
 </main>
-<footer class="site-footer"><div class="footer-brand"><strong>ICHKIICHPAN</strong><span>BACALAR · QUINTANA ROO · MÉXICO</span></div><div class="footer-links"><a href="the-retreat.html">The Retreat</a><a href="your-stay.html">Your Stay</a><a href="the-experience.html">The Experience</a><a href="gallery.html">Gallery</a></div><div class="footer-bottom"><span>Private lagoon retreat</span><a href="#top">Back to top ↑</a></div></footer>
+
+<footer class="site-footer"></footer>
 <div class="social-float" aria-label="Contact Ichkiichpan"></div>
-<div class="mobile-menu" id="mobileMenu" aria-hidden="true"><button class="mobile-close" id="menuClose" type="button">Close ×</button><nav><a href="the-retreat.html">The Retreat</a><a href="your-stay.html">Your Stay</a><a href="the-experience.html">The Experience</a><a href="gallery.html">Gallery</a></nav><a class="solid-button" href="#book">Check availability</a><a class="mobile-manage-link" href="guest-portal.html">Manage my reservation</a></div>
-<a class="mobile-booking-bar" id="mobileBookingBar" href="#book">Check availability</a>
-<script src="social-float.js?v=20260824-01"></script><script src="reservations.js?v=20260824-01"></script>
-<script src="shared-public-ui.js?v=20260827-01"></script></body></html>
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true"><button class="mobile-close" id="menuClose" type="button">Close ×</button><nav><a href="the-retreat.html">The Retreat</a><a href="your-stay.html">Your Stay</a><a href="the-experience.html">The Experience</a><a href="gallery.html">Gallery</a></nav><a class="solid-button" href="#book" data-i18n="availability">Review dates</a><a class="mobile-manage-link" href="guest-portal.html" data-i18n="manageReservation">Manage my reservation</a></div>
+<a class="mobile-booking-bar" id="mobileBookingBar" href="#book" data-i18n="availability">Review dates</a>
+
+<script src="social-float.js?v=20260824-01"></script>
+<script src="reservations.js?v=20260830-01"></script>
+<script src="shared-public-ui.js?v=20260830-01"></script>
+</body>
+</html>
