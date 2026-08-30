@@ -1,25 +1,27 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#f5f1e8" />
-  <meta name="robots" content="noindex,nofollow" />
-  <meta name="description" content="Secure guest access for Ichkiichpan reservations." />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="theme-color" content="#f5f1e8"/>
+  <meta name="robots" content="noindex,nofollow"/>
+  <meta name="description" content="Secure guest access for Ichkiichpan reservations."/>
   <title>Manage My Stay — Ichkiichpan</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260818-0102" />
-  <link rel="stylesheet" href="guest-portal.css?v=20260825-02" />
+  <link rel="icon" href="assets/logo-cropped.png" type="image/png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css?v=20260818-0102"/>
+  <link rel="stylesheet" href="guest-portal.css?v=20260830-01"/>
 </head>
 <body class="guest-portal-page">
   <header class="portal-header">
     <a class="portal-wordmark" href="index.html" aria-label="Ichkiichpan home">ICHKIICHPAN</a>
     <div class="portal-header-actions">
-      <span class="demo-badge">Guest portal demo</span>
-      <a class="portal-home-link" href="index.html">Return to website</a>
-      <button class="portal-logout" id="logoutButton" type="button" hidden>Log out</button>
+      <span class="demo-badge" id="previewBadge" hidden data-i18n="previewBadge">Frontend preview</span>
+      <button class="portal-lang-button" id="portalLangButton" type="button" aria-label="Change language">EN <span>·</span> ES</button>
+      <a class="portal-home-link" href="index.html" data-i18n="returnWebsite">Return to website</a>
+      <button class="portal-logout" id="logoutButton" type="button" hidden data-i18n="logout">Log out</button>
     </div>
   </header>
 
@@ -28,107 +30,101 @@
       <div class="access-image" aria-hidden="true"></div>
       <div class="access-panel">
         <div class="access-copy">
-          <p class="portal-kicker">Manage my stay</p>
-          <h1>Your stay,<br><em>in one place.</em></h1>
-          <p>Access your reservation, payment status, arrival details and requests without creating an account or remembering another password.</p>
+          <p class="portal-kicker" data-i18n="manageStay">Manage my stay</p>
+          <h1 data-i18n="accessTitle">Your stay,<br><em>in one place.</em></h1>
+          <p data-i18n="accessBody">View your reservation, arrival information, payments and requests without creating another account.</p>
         </div>
 
         <div class="access-card" id="identifyCard">
-          <div class="access-step"><span>01</span><strong>Find your reservation</strong></div>
-          <form id="accessForm" novalidate>
-            <label class="portal-field"><span>Email used for the reservation</span><input id="guestEmail" name="email" type="email" autocomplete="email" placeholder="you@example.com" required /></label>
-            <label class="portal-field"><span>Reservation code</span><input id="reservationCode" name="reservationCode" type="text" autocomplete="off" placeholder="ICH-XXXXXX" required /></label>
-            <button class="portal-primary" type="submit">Send secure access link</button>
+          <div class="access-step"><span>01</span><strong data-i18n="findReservation">Find your reservation</strong></div>
+          <form id="accessForm" method="post" novalidate>
+            <label class="portal-field"><span data-i18n="reservationEmail">Email used for the reservation</span><input id="guestEmail" name="email" type="email" autocomplete="email" placeholder="you@example.com" required/></label>
+            <label class="portal-field"><span data-i18n="reservationCode">Reservation code</span><input id="reservationCode" name="reservationCode" type="text" autocomplete="off" placeholder="ICH-XXXXXX" pattern="[A-Za-z0-9-]{6,20}" required/></label>
+            <button class="portal-primary" type="submit" data-i18n="sendAccessLink">Send secure access link</button>
             <p class="portal-message" id="accessMessage" aria-live="polite"></p>
           </form>
-          <div class="demo-credentials">
-            <span>Choose a demo reservation</span>
-            <button type="button" data-demo-reservation="paid">Upcoming · paid</button>
-            <small>See a confirmed direct booking with no balance due.</small>
-            <button type="button" data-demo-reservation="balance">Upcoming · balance due</button>
-            <small>See how a guest would view and pay an outstanding balance.</small>
-            <button type="button" data-demo-reservation="current">Currently staying</button>
-            <small>See the portal while the guest is already at Ichkiichpan.</small>
-          </div>
+          <div class="access-assurance"><span aria-hidden="true">🔒</span><p data-i18n="accessAssurance">We only send access to the email connected to the reservation. No password is required.</p></div>
+          <p class="access-help"><span data-i18n="needAccessHelp">Having trouble accessing your stay?</span> <a href="https://wa.me/19563393012" target="_blank" rel="noopener noreferrer" data-i18n="contactWhatsApp">Contact us on WhatsApp</a></p>
         </div>
 
         <div class="access-card verification-card" id="verificationCard" hidden>
-          <div class="access-step"><span>02</span><strong>Verify your email</strong></div>
-          <div class="verification-icon">✉</div>
-          <h2>Check your inbox.</h2>
-          <p>We sent a secure access link to <strong id="verificationEmail">—</strong>. The real portal will only open after that email link is verified.</p>
-          <button class="portal-primary" id="openDemoLinkButton" type="button">Open demo secure link</button>
-          <button class="portal-text-button" id="backToLoginButton" type="button">Use a different reservation</button>
-          <p class="demo-note">Demo only: this button simulates clicking the secure link in the guest's email.</p>
+          <div class="access-step"><span>02</span><strong data-i18n="verifyEmail">Verify your email</strong></div>
+          <div class="verification-icon" aria-hidden="true">✉</div>
+          <h2 data-i18n="checkInbox">Check your inbox.</h2>
+          <p><span data-i18n="verificationBody">If those details match a reservation, a secure access link will be sent to</span> <strong id="verificationEmail">—</strong>.</p>
+          <button class="portal-secondary full" id="backToLoginButton" type="button" data-i18n="differentReservation">Use a different reservation</button>
         </div>
       </div>
     </section>
 
     <section class="portal-app" id="portalApp" hidden>
       <aside class="portal-sidebar">
-        <div class="sidebar-brand"><span>Welcome back</span><strong id="sidebarGuestName">Guest</strong><small id="sidebarReservationCode">ICH-••••••</small></div>
-        <nav class="portal-nav" aria-label="Guest portal">
-          <button class="active" type="button" data-portal-view="overview"><span>01</span>Overview</button>
-          <button type="button" data-portal-view="reservation"><span>02</span>Reservation</button>
-          <button type="button" data-portal-view="arrival"><span>03</span>Arrival &amp; stay</button>
-          <button type="button" data-portal-view="payments"><span>04</span>Payments</button>
-          <button type="button" data-portal-view="requests"><span>05</span>Requests</button>
+        <div class="sidebar-brand"><span data-i18n="welcomeBack">Welcome back</span><strong id="sidebarGuestName">Guest</strong><small id="sidebarReservationCode">ICH-••••••</small></div>
+        <nav class="portal-nav" aria-label="Guest portal" data-i18n-aria="portalNavigation">
+          <button class="active" type="button" data-portal-view="overview" aria-current="page"><span>01</span><span data-i18n="navOverview">Overview</span></button>
+          <button type="button" data-portal-view="reservation"><span>02</span><span data-i18n="navReservation">Reservation</span></button>
+          <button type="button" data-portal-view="arrival"><span>03</span><span data-i18n="navArrival">Arrival &amp; stay</span></button>
+          <button type="button" data-portal-view="payments"><span>04</span><span data-i18n="navPayments">Payments</span></button>
+          <button type="button" data-portal-view="requests"><span>05</span><span data-i18n="navRequests">Requests</span></button>
         </nav>
-        <div class="sidebar-security"><strong>Private guest access</strong><p>This session only displays the reservation linked to the verified guest.</p></div>
+        <div class="sidebar-security"><strong data-i18n="privateAccess">Private guest access</strong><p data-i18n="sessionPrivacy">This session only displays information connected to your verified reservation.</p></div>
       </aside>
 
       <div class="portal-content">
-        <div class="portal-mobile-nav"><label for="mobileViewSelect">View</label><select id="mobileViewSelect"><option value="overview">Overview</option><option value="reservation">Reservation</option><option value="arrival">Arrival &amp; stay</option><option value="payments">Payments</option><option value="requests">Requests</option></select></div>
+        <div class="portal-mobile-nav"><label for="mobileViewSelect" data-i18n="viewLabel">View</label><select id="mobileViewSelect"><option value="overview" data-i18n="navOverview">Overview</option><option value="reservation" data-i18n="navReservation">Reservation</option><option value="arrival" data-i18n="navArrival">Arrival &amp; stay</option><option value="payments" data-i18n="navPayments">Payments</option><option value="requests" data-i18n="navRequests">Requests</option></select></div>
 
-        <section class="portal-view active" data-view="overview">
-          <div class="portal-view-heading"><div><p class="portal-kicker" id="overviewKicker">Your upcoming stay</p><h1>Welcome to<br><em>Ichkiichpan.</em></h1></div><div class="reservation-status"><i></i><span id="overviewStatus">Confirmed</span></div></div>
-          <div class="stay-hero-card"><div class="stay-hero-image"></div><div class="stay-hero-copy"><span id="overviewCountdown">Your stay is coming up</span><h2 id="overviewDates">—</h2><p>Private lagoon retreat · Bacalar, Quintana Roo</p><div class="stay-hero-facts"><div><small>Guests</small><strong id="overviewGuests">—</strong></div><div><small>Nights</small><strong id="overviewNights">—</strong></div><div><small>Bedrooms</small><strong>5</strong></div></div></div></div>
+        <section class="portal-view active" data-view="overview" tabindex="-1">
+          <div class="portal-view-heading"><div><p class="portal-kicker" id="overviewKicker">Your upcoming stay</p><h1 data-i18n="overviewTitle">Welcome to<br><em>Ichkiichpan.</em></h1></div><div class="reservation-status"><i></i><span id="overviewStatus">Confirmed</span></div></div>
+          <div class="stay-hero-card"><div class="stay-hero-image" role="img" aria-label="Aerial view of Ichkiichpan and the lagoon" data-i18n-aria="aerialImage"></div><div class="stay-hero-copy"><span id="overviewCountdown">Your stay is coming up</span><h2 id="overviewDates">—</h2><p data-i18n="propertySubtitle">Private lagoon retreat · Bacalar, Quintana Roo</p><div class="stay-hero-facts"><div><small data-i18n="guests">Guests</small><strong id="overviewGuests">—</strong></div><div><small data-i18n="nights">Nights</small><strong id="overviewNights">—</strong></div><div><small data-i18n="bedrooms">Bedrooms</small><strong>5</strong></div></div></div></div>
           <div class="overview-grid">
-            <article class="portal-card payment-overview-card"><div class="card-heading"><span>Payment</span><strong class="status-pill paid" id="overviewPaymentStatus">Paid in full</strong></div><div class="large-value" id="overviewBalance">MXN 0</div><p>Balance remaining</p><button type="button" class="portal-secondary" data-go-view="payments">View payments</button></article>
-            <article class="portal-card arrival-overview-card"><div class="card-heading"><span>Arrival</span><strong id="overviewCheckIn">—</strong></div><div class="large-value">3:00 PM</div><p>Standard check-in time</p><button type="button" class="portal-secondary" data-go-view="arrival">Arrival details</button></article>
-            <article class="portal-card request-overview-card"><div class="card-heading"><span>Need something?</span><strong>We can help</strong></div><div class="large-value smaller">Send us a request.</div><p>Changes, arrival notes or questions about your stay.</p><button type="button" class="portal-secondary" data-go-view="requests">New request</button></article>
+            <article class="portal-card payment-overview-card"><div class="card-heading"><span data-i18n="payment">Payment</span><strong class="status-pill paid" id="overviewPaymentStatus">Paid in full</strong></div><div class="large-value" id="overviewBalance">MXN 0</div><p data-i18n="balanceRemaining">Balance remaining</p><button type="button" class="portal-secondary" data-go-view="payments" data-i18n="viewPayments">View payments</button></article>
+            <article class="portal-card arrival-overview-card"><div class="card-heading"><span data-i18n="arrival">Arrival</span><strong id="overviewCheckIn">—</strong></div><div class="large-value">3:00 PM</div><p data-i18n="standardCheckIn">Standard check-in time</p><button type="button" class="portal-secondary" data-go-view="arrival" data-i18n="arrivalDetails">Arrival details</button></article>
+            <article class="portal-card request-overview-card"><div class="card-heading"><span data-i18n="needSomething">Need something?</span><strong data-i18n="weCanHelp">We can help</strong></div><div class="large-value smaller" data-i18n="sendRequestLead">Send us a request.</div><p data-i18n="requestOverviewBody">Questions, arrival notes or changes you would like us to review.</p><button type="button" class="portal-secondary" data-go-view="requests" data-i18n="newRequest">New request</button></article>
           </div>
-          <div class="privacy-strip"><span>🔒</span><div><strong>Your information stays private.</strong><p>Guests can only access their own reservation after email verification. Internal notes, other reservations and owner information are never shown here.</p></div></div>
+          <div class="privacy-strip"><span aria-hidden="true">🔒</span><div><strong data-i18n="privacyTitle">Your information stays private.</strong><p data-i18n="privacyBody">Only information connected to this verified reservation is displayed. Internal notes and other reservations are never shown.</p></div></div>
         </section>
 
-        <section class="portal-view" data-view="reservation" hidden>
-          <div class="portal-view-heading compact"><div><p class="portal-kicker">Reservation</p><h1>Your booking.</h1></div><div class="reservation-status"><i></i><span id="reservationStatus">Confirmed</span></div></div>
+        <section class="portal-view" data-view="reservation" hidden tabindex="-1">
+          <div class="portal-view-heading compact"><div><p class="portal-kicker" data-i18n="navReservation">Reservation</p><h1 data-i18n="bookingTitle">Your booking.</h1></div><div class="reservation-status"><i></i><span id="reservationStatus">Confirmed</span></div></div>
           <div class="detail-grid">
-            <article class="portal-card detail-card wide"><div class="card-heading"><span>Stay details</span><strong id="reservationCodeDisplay">—</strong></div><dl class="detail-list"><div><dt>Check-in</dt><dd id="reservationCheckIn">—</dd></div><div><dt>Check-out</dt><dd id="reservationCheckOut">—</dd></div><div><dt>Length of stay</dt><dd id="reservationNights">—</dd></div><div><dt>Guests</dt><dd id="reservationGuests">—</dd></div><div><dt>Booking source</dt><dd id="reservationSource">—</dd></div><div><dt>Property</dt><dd>Entire Ichkiichpan retreat</dd></div></dl></article>
-            <article class="portal-card detail-card"><div class="card-heading"><span>Primary guest</span></div><dl class="detail-list single"><div><dt>Name</dt><dd id="reservationGuestName">—</dd></div><div><dt>Email</dt><dd id="reservationGuestEmail">—</dd></div><div><dt>Language</dt><dd id="reservationLanguage">—</dd></div></dl></article>
-            <article class="portal-card detail-card"><div class="card-heading"><span>Included with your stay</span></div><ul class="included-list"><li>Entire private retreat</li><li>5 bedrooms · 7 beds</li><li>Direct lagoon access</li><li>2 docks</li><li>Kayaks</li><li>Wi-Fi &amp; parking</li></ul></article>
+            <article class="portal-card detail-card wide"><div class="card-heading"><span data-i18n="stayDetails">Stay details</span><strong id="reservationCodeDisplay">—</strong></div><dl class="detail-list"><div><dt data-i18n="checkIn">Check-in</dt><dd id="reservationCheckIn">—</dd></div><div><dt data-i18n="checkOut">Check-out</dt><dd id="reservationCheckOut">—</dd></div><div><dt data-i18n="lengthStay">Length of stay</dt><dd id="reservationNights">—</dd></div><div><dt data-i18n="guests">Guests</dt><dd id="reservationGuests">—</dd></div><div><dt data-i18n="bookingSource">Booking source</dt><dd id="reservationSource">—</dd></div><div><dt data-i18n="property">Property</dt><dd data-i18n="entireRetreat">Entire Ichkiichpan retreat</dd></div></dl></article>
+            <article class="portal-card detail-card"><div class="card-heading"><span data-i18n="primaryGuest">Primary guest</span></div><dl class="detail-list single"><div><dt data-i18n="name">Name</dt><dd id="reservationGuestName">—</dd></div><div><dt data-i18n="email">Email</dt><dd id="reservationGuestEmail">—</dd></div><div><dt data-i18n="language">Language</dt><dd id="reservationLanguage">—</dd></div></dl></article>
+            <article class="portal-card detail-card"><div class="card-heading"><span data-i18n="includedStay">Included with your stay</span></div><ul class="included-list"><li data-i18n="includedRetreat">Entire private retreat</li><li data-i18n="includedRooms">5 bedrooms · 7 beds</li><li data-i18n="includedLagoon">Direct lagoon access</li><li data-i18n="includedDocks">2 docks</li><li data-i18n="includedKayaks">Kayaks</li><li data-i18n="includedWifi">Wi-Fi &amp; parking</li></ul></article>
           </div>
-          <div class="portal-actions-row"><button class="portal-primary small" type="button" data-go-view="requests">Request a change</button><button class="portal-secondary" id="copyCodeButton" type="button">Copy reservation code</button></div>
+          <div class="portal-actions-row"><button class="portal-primary small" type="button" data-go-view="requests" data-i18n="requestChange">Request a change</button><button class="portal-secondary" id="copyCodeButton" type="button" data-i18n="copyCode">Copy reservation code</button></div>
         </section>
 
-        <section class="portal-view" data-view="arrival" hidden>
-          <div class="portal-view-heading compact"><div><p class="portal-kicker">Arrival &amp; stay</p><h1 id="arrivalTitle">Before you arrive.</h1></div></div>
-          <div class="arrival-banner"><div><span>Check-in</span><strong>3:00 PM</strong><small id="arrivalCheckIn">—</small></div><div><span>Check-out</span><strong>11:00 AM</strong><small id="arrivalCheckOut">—</small></div></div>
+        <section class="portal-view" data-view="arrival" hidden tabindex="-1">
+          <div class="portal-view-heading compact"><div><p class="portal-kicker" data-i18n="navArrival">Arrival &amp; stay</p><h1 id="arrivalTitle">Before you arrive.</h1></div></div>
+          <div class="arrival-banner"><div><span data-i18n="checkIn">Check-in</span><strong>3:00 PM</strong><small id="arrivalCheckIn">—</small></div><div><span data-i18n="checkOut">Check-out</span><strong>11:00 AM</strong><small id="arrivalCheckOut">—</small></div></div>
           <div class="detail-grid arrival-grid">
-            <article class="portal-card detail-card wide"><div class="card-heading"><span>Arrival information</span><strong id="arrivalAvailability">Available before check-in</strong></div><p class="body-copy" id="arrivalCopy">Exact property access instructions, contact details and entry information can be released here shortly before arrival so they are not exposed publicly.</p><div class="locked-detail" id="accessInstructionBox"><span id="accessInstructionIcon">🔒</span><div><strong id="accessInstructionTitle">Access instructions are protected</strong><p id="accessInstructionText">Sensitive check-in instructions become visible only within the configured arrival window.</p></div></div></article>
-            <article class="portal-card detail-card"><div class="card-heading"><span>Your arrival time</span></div><label class="portal-field standalone"><span>Estimated arrival</span><select id="arrivalTime"><option>Not sure yet</option><option>3:00–4:00 PM</option><option>4:00–5:00 PM</option><option>5:00–6:00 PM</option><option>After 6:00 PM</option></select></label><button class="portal-secondary full" id="saveArrivalButton" type="button">Save arrival time</button></article>
-            <article class="portal-card detail-card"><div class="card-heading"><span>Good to know</span></div><ul class="included-list"><li>Free parking on site</li><li>Equipped kitchen</li><li>Coffee maker</li><li>Wi-Fi</li><li>Kayaks for guest use</li><li>Nearest store about 10 minutes away</li></ul></article>
+            <article class="portal-card detail-card wide"><div class="card-heading"><span data-i18n="arrivalInformation">Arrival information</span><strong id="arrivalAvailability">Available before check-in</strong></div><p class="body-copy" id="arrivalCopy"></p><div class="locked-detail" id="accessInstructionBox"><span id="accessInstructionIcon" aria-hidden="true">🔒</span><div><strong id="accessInstructionTitle">Access instructions are protected</strong><p id="accessInstructionText"></p></div></div><div class="guest-location-card" id="guestLocationCard" hidden><div><span data-i18n="exactLocation">Exact location</span><strong>Ichkiichpan</strong><p data-i18n="locationPlace">Pedro Antonio Santos · Quintana Roo · México</p></div><a href="https://maps.app.goo.gl/G43nz4ibD5nMp6gG7" target="_blank" rel="noopener noreferrer" data-i18n="openMaps">Open in Google Maps ↗</a></div></article>
+            <article class="portal-card detail-card"><div class="card-heading"><span data-i18n="yourArrivalTime">Your arrival time</span></div><label class="portal-field standalone"><span data-i18n="estimatedArrival">Estimated arrival</span><select id="arrivalTime"><option value="unknown" data-i18n="arrivalUnknown">Not sure yet</option><option value="15-16">3:00–4:00 PM</option><option value="16-17">4:00–5:00 PM</option><option value="17-18">5:00–6:00 PM</option><option value="after18" data-i18n="arrivalAfter">After 6:00 PM</option></select></label><button class="portal-secondary full" id="saveArrivalButton" type="button" data-i18n="saveArrival">Save arrival time</button><p class="inline-feedback" id="arrivalFeedback" aria-live="polite"></p></article>
+            <article class="portal-card detail-card"><div class="card-heading"><span data-i18n="goodToKnow">Good to know</span></div><ul class="included-list"><li data-i18n="parking">Free parking on site</li><li data-i18n="kitchen">Equipped kitchen</li><li data-i18n="coffee">Coffee maker</li><li>Wi-Fi</li><li data-i18n="kayakUse">Kayaks for guest use</li><li data-i18n="storeDistance">Nearest store about 10 minutes away</li></ul></article>
           </div>
         </section>
 
-        <section class="portal-view" data-view="payments" hidden>
-          <div class="portal-view-heading compact"><div><p class="portal-kicker">Payments</p><h1>Simple &amp; clear.</h1></div><strong class="status-pill paid" id="paymentPageStatus">Paid in full</strong></div>
-          <div class="payment-summary-grid"><article><span>Reservation total</span><strong id="paymentTotal">—</strong><small>Demo amount</small></article><article><span>Paid</span><strong id="paymentPaid">—</strong><small>Payment received</small></article><article><span>Balance</span><strong id="paymentBalance">—</strong><small id="paymentBalanceCaption">Nothing due</small></article></div>
-          <article class="portal-card transaction-card"><div class="card-heading"><span>Payment history</span><strong id="transactionCount">1 transaction</strong></div><div id="transactionList"></div><p class="demo-note payment-demo-note">Amounts shown on this page are sample data for the guest-portal demo and are not live Ichkiichpan pricing.</p></article>
-          <div class="portal-actions-row"><button class="portal-secondary" id="receiptButton" type="button">View receipt</button><button class="portal-primary small" id="payBalanceButton" type="button">Pay balance</button></div>
+        <section class="portal-view" data-view="payments" hidden tabindex="-1">
+          <div class="portal-view-heading compact"><div><p class="portal-kicker" data-i18n="navPayments">Payments</p><h1 data-i18n="paymentsTitle">Simple &amp; clear.</h1></div><strong class="status-pill paid" id="paymentPageStatus">Paid in full</strong></div>
+          <div class="payment-summary-grid"><article><span data-i18n="reservationTotal">Reservation total</span><strong id="paymentTotal">—</strong><small data-i18n="confirmedAmount">Confirmed amount</small></article><article><span data-i18n="paid">Paid</span><strong id="paymentPaid">—</strong><small data-i18n="paymentReceived">Payment received</small></article><article><span data-i18n="balance">Balance</span><strong id="paymentBalance">—</strong><small id="paymentBalanceCaption">Nothing due</small></article></div>
+          <article class="portal-card transaction-card"><div class="card-heading"><span data-i18n="paymentHistory">Payment history</span><strong id="transactionCount">—</strong></div><div id="transactionList"></div></article>
+          <div class="portal-actions-row"><button class="portal-secondary disabled-action" id="receiptButton" type="button" disabled data-i18n="receiptAfterBackend">Receipt available after connection</button><button class="portal-primary small disabled-action" id="payBalanceButton" type="button" disabled data-i18n="paymentAfterBackend">Payment available after connection</button></div>
+          <p class="backend-note" data-i18n="paymentBackendNote">No payment can be initiated from this frontend preview.</p>
         </section>
 
-        <section class="portal-view" data-view="requests" hidden>
-          <div class="portal-view-heading compact"><div><p class="portal-kicker">Requests</p><h1>How can we help?</h1><p>Send a request without exposing internal staff notes or changing the confirmed reservation automatically.</p></div></div>
+        <section class="portal-view" data-view="requests" hidden tabindex="-1">
+          <div class="portal-view-heading compact"><div><p class="portal-kicker" data-i18n="navRequests">Requests</p><h1 data-i18n="requestsTitle">How can we help?</h1><p data-i18n="requestsBody">Send a question or request for the team to review. Nothing changes automatically, and the response will remain connected to your stay.</p></div></div>
+          <div class="request-assurance"><span aria-hidden="true">✓</span><div><strong data-i18n="requestAssuranceTitle">Every request is acknowledged.</strong><p data-i18n="requestAssuranceBody">You will first see “Received,” followed by an update when the team reviews or answers it.</p></div></div>
           <div class="request-layout">
-            <form class="portal-card request-form" id="requestForm"><label class="portal-field standalone"><span>Request type</span><select name="type" required><option value="">Select a request</option><option>Change dates</option><option>Change guest count</option><option>Arrival question</option><option>House / amenity question</option><option>Special request</option><option>Other</option></select></label><label class="portal-field standalone"><span>Message</span><textarea name="message" rows="6" placeholder="Tell us what you need…" required></textarea></label><button class="portal-primary small" type="submit">Send request</button><p class="portal-message" id="requestMessage" aria-live="polite"></p></form>
-            <div class="request-history"><p class="portal-kicker">Request history</p><div id="requestHistory"></div></div>
+            <form class="portal-card request-form" id="requestForm" method="post" novalidate><label class="portal-field standalone"><span data-i18n="requestType">Request type</span><select name="type" required><option value="" data-i18n="selectRequest">Select a request</option><option value="dates" data-i18n="changeDates">Change dates</option><option value="guests" data-i18n="changeGuests">Change guest count</option><option value="arrival" data-i18n="arrivalQuestion">Arrival question</option><option value="amenity" data-i18n="amenityQuestion">House / amenity question</option><option value="special" data-i18n="specialRequest">Special request</option><option value="other" data-i18n="other">Other</option></select></label><label class="portal-field standalone"><span data-i18n="message">Message</span><textarea name="message" rows="6" placeholder="Tell us what you need…" data-i18n-placeholder="messagePlaceholder" required></textarea></label><button class="portal-primary small" type="submit" data-i18n="sendRequest">Send request</button><p class="portal-message" id="requestMessage" aria-live="polite"></p></form>
+            <div class="request-history"><p class="portal-kicker" data-i18n="requestHistory">Request history</p><div id="requestHistory"></div></div>
           </div>
         </section>
       </div>
     </section>
   </main>
+
   <div class="portal-toast" id="portalToast" role="status" aria-live="polite"></div>
-  <script src="guest-portal.js?v=20260825-02"></script>
+  <script src="guest-portal.js?v=20260830-01"></script>
 </body>
 </html>
