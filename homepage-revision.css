@@ -195,6 +195,11 @@
   text-transform: uppercase;
 }
 
+.hero-mobile-cta,
+.home-mobile-booking-bar {
+  display: none;
+}
+
 @media (max-width: 1050px) {
   .practical {
     grid-template-columns: 1fr;
@@ -211,6 +216,137 @@
 }
 
 @media (max-width: 760px) {
+  body {
+    padding-bottom: calc(68px + env(safe-area-inset-bottom));
+  }
+
+  .site-header {
+    min-height: 76px;
+    padding: 10px 16px;
+  }
+
+  .site-header.scrolled {
+    min-height: 68px;
+    padding: 7px 16px;
+  }
+
+  .site-header .wordmark {
+    width: 118px;
+    height: 54px;
+  }
+
+  .site-header .menu-button {
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+  }
+
+  .mobile-menu {
+    padding: max(20px, env(safe-area-inset-top)) 20px calc(24px + env(safe-area-inset-bottom));
+  }
+
+  .mobile-menu-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .mobile-menu-wordmark {
+    width: 126px;
+    height: 58px;
+    background: url("assets/logo-cropped.png") center/contain no-repeat;
+  }
+
+  .mobile-close {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 8px 0 8px 12px;
+  }
+
+  .mobile-menu nav {
+    gap: 8px;
+    margin: auto 0 36px;
+  }
+
+  .mobile-menu nav a {
+    width: max-content;
+    max-width: 100%;
+    padding: 4px 0;
+    font-size: clamp(38px, 11.5vw, 48px);
+    line-height: 1.02;
+  }
+
+  .mobile-menu-actions {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 12px;
+    align-items: stretch;
+  }
+
+  .mobile-lang-button {
+    min-width: 76px;
+    min-height: 52px;
+    border: 1px solid var(--ink);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--ink);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .1em;
+  }
+
+  .mobile-lang-button span {
+    opacity: .45;
+  }
+
+  .mobile-menu-actions .solid-button {
+    min-height: 52px;
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  .hero {
+    height: 100svh;
+    min-height: 600px;
+  }
+
+  .hero-photo {
+    background-image: url("assets/hero.webp");
+    background-position: 34% center;
+  }
+
+  .hero-shade {
+    background: linear-gradient(180deg, rgba(7,17,13,.3), rgba(7,17,13,.06) 38%, rgba(7,17,13,.42)), linear-gradient(90deg, rgba(8,17,13,.22), rgba(8,17,13,.02), rgba(8,17,13,.18));
+  }
+
+  .hero-center {
+    padding: 48px 20px 82px;
+    transform: none;
+  }
+
+  .hero-name {
+    max-width: 100%;
+    font-size: clamp(43px, 13vw, 52px);
+    line-height: .9;
+    white-space: nowrap;
+  }
+
+  .hero-center h1,
+  .hero-location {
+    font-size: 9px;
+    letter-spacing: .2em;
+    text-indent: .2em;
+  }
+
+  .hero-center h1 {
+    margin-top: 18px;
+  }
+
+  .hero-rule {
+    width: 48px;
+    margin: 15px 0;
+  }
+
   .hero-summary {
     max-width: 300px;
     margin-top: 14px;
@@ -218,8 +354,194 @@
     line-height: 1.5;
   }
 
+  .hero-mobile-cta {
+    display: inline-flex;
+    min-height: 48px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 24px;
+    padding: 13px 20px;
+    border: 1px solid rgba(255, 255, 255, .82);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+
+  .scroll-cue {
+    bottom: 86px;
+    height: 36px;
+  }
+
+  .section-pad {
+    padding: 72px 20px;
+  }
+
+  .glance {
+    padding-top: 76px;
+    padding-bottom: 68px;
+  }
+
+  .glance-head {
+    margin-bottom: 32px;
+  }
+
+  .intro-copy h2,
+  .section-heading h2,
+  .glance-head h2,
+  .practical-heading h2 {
+    font-size: clamp(44px, 12vw, 52px);
+    line-height: .96;
+  }
+
+  .fact-row {
+    margin-bottom: 32px;
+  }
+
+  .fact-row div {
+    min-width: 0;
+    padding: 16px 8px 16px 0;
+  }
+
+  .fact-row div:nth-child(even) {
+    padding-left: 16px;
+    border-left: 1px solid var(--line);
+  }
+
+  .fact-row div:last-child {
+    grid-column: 1 / -1;
+    border-left: 0;
+    padding-left: 0;
+  }
+
+  .fact-row strong {
+    font-size: clamp(30px, 9.5vw, 38px);
+    overflow-wrap: anywhere;
+  }
+
+  .glance-images {
+    display: flex;
+    gap: 12px;
+    margin-right: -20px;
+    overflow-x: auto;
+    padding-right: 20px;
+    scroll-padding-left: 0;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .glance-images::-webkit-scrollbar,
+  .gallery-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .glance-main,
+  .glance-side {
+    width: min(82vw, 390px);
+    height: 430px;
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+  }
+
+  .glance-main {
+    background-image: url("assets/room-king.webp");
+  }
+
+  .mobile-lazy-bg:not(.is-loaded) {
+    background-image: none !important;
+    background-color: #516a5d;
+  }
+
+  .lagoon-story {
+    min-height: 680px;
+  }
+
+  .lagoon-copy {
+    padding: 0 20px 148px;
+  }
+
+  .lagoon-copy h2 {
+    font-size: clamp(46px, 12.5vw, 56px);
+  }
+
+  .lagoon-copy p:last-child {
+    max-width: 330px;
+    margin-top: 22px;
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  .lagoon-copy .text-link {
+    margin-top: 16px;
+    padding: 8px 0 5px;
+  }
+
+  .lagoon-stats {
+    right: 20px;
+    bottom: 22px;
+    left: 20px;
+    gap: 8px;
+  }
+
+  .lagoon-stats strong {
+    font-size: 27px;
+  }
+
+  .lagoon-stats span {
+    max-width: 86px;
+    line-height: 1.35;
+  }
+
+  .section-heading {
+    margin-bottom: 34px;
+  }
+
+  .space-card {
+    margin-bottom: 34px;
+  }
+
+  .space-image,
+  .space-card-wide .space-image {
+    height: 360px;
+  }
+
+  .space-card-wide .space-image {
+    height: 410px;
+  }
+
+  .space-caption {
+    grid-template-columns: 30px 1fr;
+    gap: 10px;
+    padding-top: 16px;
+  }
+
+  .space-caption strong {
+    font-size: 28px;
+  }
+
+  .space-caption p {
+    margin-top: 4px;
+    font-size: 13px;
+  }
+
+  .card-link {
+    min-height: 36px;
+    padding-top: 7px;
+  }
+
+  .practical {
+    gap: 30px;
+    padding-top: 72px;
+    padding-bottom: 62px;
+  }
+
   .practical-grid {
     grid-template-columns: 1fr;
+  }
+
+  .practical-grid > div {
+    padding: 20px 0 12px;
   }
 
   .practical-grid > div + div {
@@ -227,12 +549,138 @@
     padding-left: 0;
   }
 
+  .practical-grid span {
+    margin-bottom: 14px;
+  }
+
+  .practical-grid strong {
+    font-size: 25px;
+  }
+
+  .practical-grid p {
+    margin: 8px 0 12px;
+  }
+
+  .gallery {
+    padding-bottom: 68px;
+  }
+
   .gallery-link {
-    margin-top: 24px;
+    min-height: 40px;
+    margin-top: 18px;
+    padding-top: 8px;
+  }
+
+  .gallery-grid {
+    display: flex;
+    grid-auto-rows: auto;
+    gap: 12px;
+    margin-right: -20px;
+    overflow-x: auto;
+    padding-right: 20px;
+    scroll-padding-left: 0;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .gallery-tile,
+  .gallery-tile.tall,
+  .gallery-tile.wide {
+    width: min(82vw, 390px);
+    height: 430px;
+    min-height: 430px;
+    flex: 0 0 auto;
+    scroll-snap-align: start;
   }
 
   .gallery-cta-card {
-    min-height: 380px;
+    display: none;
+  }
+
+  .shared-closing {
+    min-height: 570px;
+  }
+
+  .shared-closing-copy {
+    padding: 72px 20px 102px;
+  }
+
+  .shared-closing-copy h2 {
+    font-size: 34px;
+    line-height: 1.02;
+  }
+
+  .closing-assurance {
+    max-width: 300px;
+    margin: 18px auto 0;
+    font-size: 10px;
+    line-height: 1.6;
+  }
+
+  .shared-closing-copy .solid-button {
+    width: min(100%, 320px);
+    margin-top: 26px;
+  }
+
+  .home-mobile-booking-bar {
+    position: fixed;
+    z-index: 80;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+    padding: 8px 12px calc(8px + env(safe-area-inset-bottom));
+    border-top: 1px solid rgba(23, 33, 28, .14);
+    background: rgba(245, 241, 232, .96);
+    backdrop-filter: blur(16px);
+  }
+
+  .home-mobile-booking-bar a {
+    display: flex;
+    min-height: 48px;
+    align-items: center;
+    justify-content: center;
+    background: var(--green);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+  }
+
+  .social-float {
+    right: 12px;
+    bottom: calc(82px + env(safe-area-inset-bottom));
+  }
+
+  .social-float-link {
+    width: 42px;
+    height: 42px;
+  }
+
+  .site-footer {
+    padding-bottom: 36px;
+  }
+}
+
+@media (max-width: 380px) {
+  .hero-name {
+    font-size: 42px;
+  }
+
+  .hero-center h1,
+  .hero-location {
+    font-size: 8px;
+    letter-spacing: .17em;
+    text-indent: .17em;
+  }
+
+  .glance-main,
+  .glance-side,
+  .gallery-tile,
+  .gallery-tile.tall,
+  .gallery-tile.wide {
+    width: 84vw;
   }
 }
 

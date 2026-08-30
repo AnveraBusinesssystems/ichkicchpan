@@ -3,6 +3,7 @@ const menu = document.getElementById('mobileMenu');
 const menuButton = document.getElementById('menuButton');
 const menuClose = document.getElementById('menuClose');
 const langButton = document.getElementById('langButton');
+const mobileLangButton = document.getElementById('mobileLangButton');
 
 function syncHeader() {
   header?.classList.toggle('scrolled', window.scrollY > 40);
@@ -11,6 +12,7 @@ function syncHeader() {
 function openMenu() {
   menu?.classList.add('open');
   menu?.setAttribute('aria-hidden', 'false');
+  menuButton?.setAttribute('aria-expanded', 'true');
   document.body.style.overflow = 'hidden';
   menuClose?.focus();
 }
@@ -18,6 +20,7 @@ function openMenu() {
 function closeMenu() {
   menu?.classList.remove('open');
   menu?.setAttribute('aria-hidden', 'true');
+  menuButton?.setAttribute('aria-expanded', 'false');
   document.body.style.overflow = '';
   menuButton?.focus();
 }
@@ -28,7 +31,22 @@ menuButton?.addEventListener('click', openMenu);
 menuClose?.addEventListener('click', closeMenu);
 menu?.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
 document.addEventListener('keydown', event => {
-  if (event.key === 'Escape' && menu?.classList.contains('open')) closeMenu();
+  if (!menu?.classList.contains('open')) return;
+  if (event.key === 'Escape') {
+    closeMenu();
+    return;
+  }
+  if (event.key !== 'Tab') return;
+  const focusable = [...menu.querySelectorAll('a[href], button:not([disabled])')];
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+  if (event.shiftKey && document.activeElement === first) {
+    event.preventDefault();
+    last?.focus();
+  } else if (!event.shiftKey && document.activeElement === last) {
+    event.preventDefault();
+    first?.focus();
+  }
 });
 
 function syncGalleryLinks() {
@@ -42,7 +60,7 @@ const copy = {
     title: 'Ichkiichpan — Bacalar Lagoon Retreat',
     description: 'Ichkiichpan is a private Bacalar lagoon retreat with five bedrooms, seven beds and direct water access for groups of up to 14 guests.',
     navRetreat: 'The Retreat', navStay: 'Your Stay', navLagoon: 'The Experience', navGallery: 'Gallery',
-    planStay: 'Plan your stay', heroLine: 'BETWEEN JUNGLE AND LAGOON',
+    planStay: 'Plan your stay', checkAvailability: 'Check availability', heroLine: 'BETWEEN JUNGLE AND LAGOON',
     heroSummary: 'A private lagoon retreat for groups of up to 14.',
     glanceLabel: 'At a glance', glanceTitle: 'A place<br><em>of your own.</em>',
     factPrivate: 'Private', factEntireRetreat: 'Entire retreat', factGuests: 'Guests', factBedrooms: 'Bedrooms', factBeds: 'Beds', factDirect: 'Direct', factLagoon: 'Lagoon access',
@@ -70,7 +88,7 @@ const copy = {
     title: 'Ichkiichpan — Retiro privado en la Laguna de Bacalar',
     description: 'Ichkiichpan es un retiro privado en la Laguna de Bacalar con cinco habitaciones, siete camas y acceso directo al agua para grupos de hasta 14 huéspedes.',
     navRetreat: 'El Refugio', navStay: 'Tu Estancia', navLagoon: 'La Experiencia', navGallery: 'Galería',
-    planStay: 'Planea tu estancia', heroLine: 'ENTRE LA SELVA Y LA LAGUNA',
+    planStay: 'Planea tu estancia', checkAvailability: 'Consultar disponibilidad', heroLine: 'ENTRE LA SELVA Y LA LAGUNA',
     heroSummary: 'Un retiro privado junto a la laguna para grupos de hasta 14 personas.',
     glanceLabel: 'De un vistazo', glanceTitle: 'Un lugar<br><em>solo para ustedes.</em>',
     factPrivate: 'Privado', factEntireRetreat: 'Todo el retiro', factGuests: 'Huéspedes', factBedrooms: 'Habitaciones', factBeds: 'Camas', factDirect: 'Directo', factLagoon: 'Acceso a la laguna',
@@ -117,9 +135,33 @@ function applyLanguage(lang) {
     langButton.innerHTML = language === 'en' ? 'EN <span>·</span> ES' : 'ES <span>·</span> EN';
     langButton.setAttribute('aria-label', translated.languageLabel);
   }
+  if (mobileLangButton) {
+    mobileLangButton.innerHTML = language === 'en' ? 'EN <span>·</span> ES' : 'ES <span>·</span> EN';
+    mobileLangButton.setAttribute('aria-label', translated.languageLabel);
+  }
   localStorage.setItem('ichkiichpan-language', language);
   syncGalleryLinks();
 }
 
 langButton?.addEventListener('click', () => applyLanguage(language === 'en' ? 'es' : 'en'));
+mobileLangButton?.addEventListener('click', () => applyLanguage(language === 'en' ? 'es' : 'en'));
 applyLanguage(language);
+
+function initMobileLazyBackgrounds() {
+  const backgrounds = [...document.querySelectorAll('.mobile-lazy-bg')];
+  if (!backgrounds.length) return;
+  if (!window.matchMedia('(max-width: 760px)').matches || !('IntersectionObserver' in window)) {
+    backgrounds.forEach(element => element.classList.add('is-loaded'));
+    return;
+  }
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('is-loaded');
+      observer.unobserve(entry.target);
+    });
+  }, { rootMargin: '500px 0px' });
+  backgrounds.forEach(element => observer.observe(element));
+}
+
+initMobileLazyBackgrounds();
