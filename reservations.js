@@ -91,6 +91,8 @@ const copy = {
     phone: 'Phone',
     dialCodeLabel: 'Country calling code',
     phoneNumberLabel: 'Phone number',
+    northAmerica: 'North America',
+    europe: 'Europe',
     country: 'Country',
     preferredLanguage: 'Preferred language',
     requests: 'Anything we should know?',
@@ -200,6 +202,8 @@ const copy = {
     phone: 'Teléfono',
     dialCodeLabel: 'Código telefónico del país',
     phoneNumberLabel: 'Número de teléfono',
+    northAmerica: 'Norteamérica',
+    europe: 'Europa',
     country: 'País',
     preferredLanguage: 'Idioma preferido',
     requests: '¿Hay algo que debamos saber?',
@@ -246,6 +250,73 @@ const copy = {
   }
 };
 
+const callingCodeGroups = [
+  {
+    labelKey: 'northAmerica',
+    countries: [
+      { iso: 'MX', code: '+52', en: 'Mexico', es: 'México' },
+      { iso: 'CA', code: '+1', en: 'Canada', es: 'Canadá' },
+      { iso: 'US', code: '+1', en: 'United States', es: 'Estados Unidos' }
+    ]
+  },
+  {
+    labelKey: 'europe',
+    countries: [
+      { iso: 'AL', code: '+355', en: 'Albania', es: 'Albania' },
+      { iso: 'AD', code: '+376', en: 'Andorra', es: 'Andorra' },
+      { iso: 'AM', code: '+374', en: 'Armenia', es: 'Armenia' },
+      { iso: 'AT', code: '+43', en: 'Austria', es: 'Austria' },
+      { iso: 'AZ', code: '+994', en: 'Azerbaijan', es: 'Azerbaiyán' },
+      { iso: 'BY', code: '+375', en: 'Belarus', es: 'Bielorrusia' },
+      { iso: 'BE', code: '+32', en: 'Belgium', es: 'Bélgica' },
+      { iso: 'BA', code: '+387', en: 'Bosnia and Herzegovina', es: 'Bosnia y Herzegovina' },
+      { iso: 'BG', code: '+359', en: 'Bulgaria', es: 'Bulgaria' },
+      { iso: 'HR', code: '+385', en: 'Croatia', es: 'Croacia' },
+      { iso: 'CY', code: '+357', en: 'Cyprus', es: 'Chipre' },
+      { iso: 'CZ', code: '+420', en: 'Czechia', es: 'Chequia' },
+      { iso: 'DK', code: '+45', en: 'Denmark', es: 'Dinamarca' },
+      { iso: 'EE', code: '+372', en: 'Estonia', es: 'Estonia' },
+      { iso: 'FI', code: '+358', en: 'Finland', es: 'Finlandia' },
+      { iso: 'FR', code: '+33', en: 'France', es: 'Francia' },
+      { iso: 'GE', code: '+995', en: 'Georgia', es: 'Georgia' },
+      { iso: 'DE', code: '+49', en: 'Germany', es: 'Alemania' },
+      { iso: 'GR', code: '+30', en: 'Greece', es: 'Grecia' },
+      { iso: 'HU', code: '+36', en: 'Hungary', es: 'Hungría' },
+      { iso: 'IS', code: '+354', en: 'Iceland', es: 'Islandia' },
+      { iso: 'IE', code: '+353', en: 'Ireland', es: 'Irlanda' },
+      { iso: 'IT', code: '+39', en: 'Italy', es: 'Italia' },
+      { iso: 'KZ', code: '+7', en: 'Kazakhstan', es: 'Kazajistán' },
+      { iso: 'XK', code: '+383', en: 'Kosovo', es: 'Kosovo' },
+      { iso: 'LV', code: '+371', en: 'Latvia', es: 'Letonia' },
+      { iso: 'LI', code: '+423', en: 'Liechtenstein', es: 'Liechtenstein' },
+      { iso: 'LT', code: '+370', en: 'Lithuania', es: 'Lituania' },
+      { iso: 'LU', code: '+352', en: 'Luxembourg', es: 'Luxemburgo' },
+      { iso: 'MT', code: '+356', en: 'Malta', es: 'Malta' },
+      { iso: 'MD', code: '+373', en: 'Moldova', es: 'Moldavia' },
+      { iso: 'MC', code: '+377', en: 'Monaco', es: 'Mónaco' },
+      { iso: 'ME', code: '+382', en: 'Montenegro', es: 'Montenegro' },
+      { iso: 'NL', code: '+31', en: 'Netherlands', es: 'Países Bajos' },
+      { iso: 'MK', code: '+389', en: 'North Macedonia', es: 'Macedonia del Norte' },
+      { iso: 'NO', code: '+47', en: 'Norway', es: 'Noruega' },
+      { iso: 'PL', code: '+48', en: 'Poland', es: 'Polonia' },
+      { iso: 'PT', code: '+351', en: 'Portugal', es: 'Portugal' },
+      { iso: 'RO', code: '+40', en: 'Romania', es: 'Rumania' },
+      { iso: 'RU', code: '+7', en: 'Russia', es: 'Rusia' },
+      { iso: 'SM', code: '+378', en: 'San Marino', es: 'San Marino' },
+      { iso: 'RS', code: '+381', en: 'Serbia', es: 'Serbia' },
+      { iso: 'SK', code: '+421', en: 'Slovakia', es: 'Eslovaquia' },
+      { iso: 'SI', code: '+386', en: 'Slovenia', es: 'Eslovenia' },
+      { iso: 'ES', code: '+34', en: 'Spain', es: 'España' },
+      { iso: 'SE', code: '+46', en: 'Sweden', es: 'Suecia' },
+      { iso: 'CH', code: '+41', en: 'Switzerland', es: 'Suiza' },
+      { iso: 'TR', code: '+90', en: 'Turkey', es: 'Turquía' },
+      { iso: 'UA', code: '+380', en: 'Ukraine', es: 'Ucrania' },
+      { iso: 'GB', code: '+44', en: 'United Kingdom', es: 'Reino Unido' },
+      { iso: 'VA', code: '+39', en: 'Vatican City', es: 'Ciudad del Vaticano' }
+    ]
+  }
+];
+
 let language = copy[localStorage.getItem('ichkiichpan-language')] ? localStorage.getItem('ichkiichpan-language') : 'en';
 const state = { step: 1, maxStep: 1, checkIn: '', checkOut: '', adults: 2, children: 0, nights: 0, guest: {}, calendarStart: null };
 const steps = [...document.querySelectorAll('.booking-step')];
@@ -258,6 +329,17 @@ const guestMessage = document.getElementById('guestMessage');
 const mobileBookingBar = document.getElementById('mobileBookingBar');
 
 function currentCopy() { return copy[language]; }
+
+function renderCallingCodes() {
+  const select = document.getElementById('dialCode');
+  if (!select) return;
+  const selectedValue = select.value || 'MX|+52';
+  select.innerHTML = callingCodeGroups.map(group => {
+    const options = group.countries.map(country => `<option value="${country.iso}|${country.code}">${country[language]} · ${country.code}</option>`).join('');
+    return `<optgroup label="${currentCopy()[group.labelKey]}">${options}</optgroup>`;
+  }).join('');
+  select.value = [...select.options].some(option => option.value === selectedValue) ? selectedValue : 'MX|+52';
+}
 function isoToday() { const now = new Date(); return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`; }
 function toIso(date) { return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`; }
 function fromIso(value) { return new Date(`${value}T12:00:00`); }
@@ -403,6 +485,7 @@ function applyLanguage(lang) {
   if (langButton) langButton.innerHTML = language === 'en' ? 'EN <span>·</span> ES' : 'ES <span>·</span> EN';
   const preferredLanguage = guestForm?.elements.preferredLanguage;
   if (preferredLanguage) preferredLanguage.value = language === 'es' ? 'Español' : 'English';
+  renderCallingCodes();
   if (dateMessage.textContent) dateMessage.textContent = translated.dateError;
   if (guestMessage.textContent) guestMessage.textContent = translated.guestError;
   localStorage.setItem('ichkiichpan-language', language);
