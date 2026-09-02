@@ -1,11 +1,11 @@
 .retreat-page{background:var(--stone)}
-.retreat-hero,.retreat-landscape,.retreat-closing{position:relative;overflow:hidden;color:#fff}
+.retreat-hero,.retreat-landscape{position:relative;overflow:hidden;color:#fff}
 .retreat-hero{height:100svh;min-height:700px;display:flex;align-items:flex-end}
-.retreat-hero-photo,.retreat-landscape-photo,.retreat-closing-image{position:absolute;inset:0;background-size:cover;background-position:center}
+.retreat-hero-photo,.retreat-landscape-photo{position:absolute;inset:0;background-size:cover;background-position:center}
 .retreat-hero-photo{background-image:url("assets/cabin-portrait.jpg");background-position:center 36%}
 .retreat-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,17,13,.18),rgba(7,17,13,.04) 42%,rgba(7,17,13,.58)),linear-gradient(90deg,rgba(8,17,13,.34),rgba(8,17,13,.04) 70%)}
 .retreat-hero-copy{position:relative;z-index:2;padding:0 6.5vw 10vh;max-width:1120px}
-.retreat-hero-copy h1,.retreat-landscape-copy h2,.retreat-closing-copy h2{font-family:var(--serif);font-weight:400;margin:0;font-size:clamp(72px,7.4vw,118px);line-height:.92;letter-spacing:-.02em}
+.retreat-hero-copy h1,.retreat-landscape-copy h2{font-family:var(--serif);font-weight:400;margin:0;font-size:clamp(72px,7.4vw,118px);line-height:.92;letter-spacing:-.02em}
 .retreat-hero-copy>p:last-child{font-size:18px;margin:28px 0 0;color:rgba(255,255,255,.9)}
 .retreat-intro{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(360px,.75fr);gap:4vw;align-items:end;padding-top:124px;padding-bottom:88px}
 .retreat-intro-heading{max-width:620px}
@@ -52,10 +52,68 @@
 .retreat-landscape-copy{position:relative;z-index:2;padding-left:6.5vw;max-width:880px}
 .retreat-landscape-copy>p:not(.kicker){max-width:520px;font-size:17px;line-height:1.75;color:rgba(255,255,255,.9);margin-top:30px}
 .retreat-landscape-copy .retreat-text-cta{margin-top:18px}
-.retreat-closing{min-height:76vh;display:flex;align-items:center;justify-content:center;text-align:center}
-.retreat-closing-image{background-image:url("assets/sunset-dock.jpg")}
-.retreat-closing-copy{position:relative;z-index:2;padding:80px 24px}
-.retreat-closing-copy .solid-button{margin-top:34px}
-.closing-assurance{margin:22px 0 0;color:rgba(255,255,255,.86);font-size:12px;font-weight:600;letter-spacing:.11em;text-transform:uppercase}
 @media(max-width:1050px){.retreat-editorial{grid-template-columns:1.15fr .85fr}.retreat-fact-row{grid-template-columns:repeat(2,1fr)}.retreat-character-head{grid-template-columns:1fr}.retreat-character-head p:last-child{margin:0}.retreat-character-grid{grid-template-columns:1fr 1fr}.retreat-character figure:first-child{grid-column:1/-1}.retreat-character figure:first-child .character-image{height:620px}}
-@media(max-width:760px){.retreat-hero{min-height:690px}.retreat-hero-copy{padding:0 24px 90px}.retreat-hero-copy h1,.retreat-landscape-copy h2,.retreat-closing-copy h2{font-size:58px}.retreat-hero-copy>p:last-child{font-size:16px}.retreat-intro{grid-template-columns:1fr;gap:35px;padding-top:88px;padding-bottom:88px}.retreat-intro-heading .intro-label{margin-bottom:35px}.retreat-intro-heading h2,.retreat-editorial-copy h2,.retreat-facts-head h2,.retreat-character-head h2{font-size:54px}.retreat-intro-copy{padding-bottom:0}.retreat-intro-copy>p,.retreat-editorial-copy>p:not(.kicker),.retreat-landscape-copy>p:not(.kicker),.retreat-character-head p:last-child{font-size:16px}.retreat-editorial{display:flex;flex-direction:column;align-items:stretch}.retreat-editorial-image{min-height:580px}.retreat-editorial-copy{padding:38px 0 0}.retreat-editorial-copy .number{margin-bottom:36px}.retreat-fact-row{grid-template-columns:1fr 1fr}.retreat-fact-row strong{font-size:38px}.retreat-fact-row strong[data-i18n="privateFact"]{font-size:32px}.retreat-facts-image{height:520px}.retreat-character{padding-top:88px;padding-bottom:88px}.retreat-character-grid{grid-template-columns:1fr}.retreat-character figure:first-child{grid-column:auto}.character-image,.retreat-character figure:first-child .character-image{height:500px}.retreat-landscape{min-height:740px;align-items:flex-end}.retreat-landscape-copy{padding:0 24px 95px}.retreat-closing{min-height:660px}}
+@media(max-width:760px){
+  .retreat-hero{height:100svh;min-height:600px}
+  .retreat-hero-photo{background-image:url("assets/retreat-hero-mobile.jpg");background-position:center 42%}
+  .retreat-hero-copy{padding:0 20px 120px;max-width:560px}
+  .retreat-hero-copy h1{font-size:clamp(44px,12vw,52px);line-height:.94}
+  .retreat-hero-copy h1 br{display:none}
+  .retreat-hero-copy>p:last-of-type{max-width:330px;margin-top:20px;font-size:15px;line-height:1.55}
+  .retreat-hero .scroll-cue{bottom:86px;height:36px}
+
+  .retreat-intro{grid-template-columns:1fr;gap:28px;padding-top:72px;padding-bottom:64px}
+  .retreat-intro-heading{max-width:100%}
+  .retreat-intro-heading .intro-label{margin-bottom:28px}
+  .retreat-intro-heading h2,.retreat-editorial-copy h2,.retreat-facts-head h2,.retreat-character-head h2{font-size:clamp(44px,12vw,52px);line-height:.96}
+  .retreat-intro-copy{max-width:100%;padding-bottom:0}
+  .retreat-intro-copy>p,.retreat-editorial-copy>p:not(.kicker),.retreat-landscape-copy>p:not(.kicker),.retreat-character-head p:last-child{font-size:15px;line-height:1.7}
+  .retreat-text-cta{min-height:44px;margin-top:18px;padding:10px 0 5px}
+
+  .retreat-editorial{display:flex;flex-direction:column;align-items:stretch;padding-top:0}
+  .retreat-editorial-image{min-height:430px;background-image:url("assets/retreat-together-mobile.jpg");background-position:center 54%}
+  .retreat-editorial-copy{padding:32px 0 0}
+  .retreat-editorial-copy .number{margin-bottom:22px;font-size:42px}
+  .retreat-editorial-copy>p:not(.kicker){margin-top:20px}
+
+  .retreat-facts{padding-top:72px;padding-bottom:64px}
+  .retreat-facts-head{margin-bottom:34px}
+  .retreat-fact-row{grid-template-columns:1fr 1fr;margin-bottom:32px}
+  .retreat-fact-row div{min-width:0;padding:18px 10px 18px 0}
+  .retreat-fact-row div:nth-child(even){padding-left:16px;border-left:1px solid var(--line)}
+  .retreat-fact-row div:nth-child(n+3){border-top:1px solid var(--line)}
+  .retreat-fact-row strong{font-size:clamp(32px,9vw,38px);overflow-wrap:anywhere}
+  .retreat-fact-row strong[data-i18n="privateFact"]{font-size:clamp(27px,7.5vw,32px)}
+  .retreat-facts-image{height:420px;background-image:url("assets/retreat-property-mobile.jpg");background-position:center 52%}
+
+  .retreat-landscape{min-height:680px;align-items:flex-end}
+  .retreat-landscape-photo{background-image:url("assets/retreat-landscape-mobile.jpg");background-position:center}
+  .retreat-landscape-copy{max-width:560px;padding:0 20px 116px}
+  .retreat-landscape-copy h2{font-size:clamp(46px,12.5vw,56px);line-height:.95}
+  .retreat-landscape-copy>p:not(.kicker){max-width:340px;margin-top:22px}
+
+  .retreat-character{padding-top:72px;padding-bottom:64px;overflow:hidden}
+  .retreat-character-head{display:block;margin-bottom:34px}
+  .retreat-character-head .kicker{margin-bottom:28px}
+  .retreat-character-head p:last-child{max-width:100%;margin-top:24px}
+  .retreat-character-grid{display:flex;gap:12px;margin-right:-20px;overflow-x:auto;padding-right:20px;scroll-padding-left:0;scroll-snap-type:x mandatory;scrollbar-width:none}
+  .retreat-character-grid::-webkit-scrollbar{display:none}
+  .retreat-character figure,.retreat-character figure:first-child{width:min(84vw,390px);flex:0 0 auto;grid-column:auto;scroll-snap-align:start}
+  .character-image,.retreat-character figure:first-child .character-image{height:410px}
+  .character-path{background-image:url("assets/retreat-path-mobile.jpg")}
+  .character-cabin{background-image:url("assets/retreat-shelter-mobile.jpg");background-position:center 38%}
+  .character-water{background-image:url("assets/retreat-water-mobile.jpg");background-position:center 56%}
+  .retreat-character figcaption strong{font-size:28px}
+  .retreat-character figcaption p{font-size:13px}
+
+  .retreat-page .shared-closing{min-height:570px}
+  .retreat-page .shared-closing-image{background-image:url("assets/retreat-closing-mobile.jpg")}
+  .retreat-page .shared-closing-copy{padding:72px 20px 102px}
+  .retreat-page .shared-closing-copy h2{font-size:34px;line-height:1.02}
+  .retreat-page .shared-closing-copy .solid-button{width:min(100%,320px);margin-top:26px}
+  .retreat-page .closing-assurance{max-width:300px;margin:18px auto 0;font-size:10px;line-height:1.6}
+}
+@media(max-width:380px){
+  .retreat-hero-copy h1{font-size:42px}
+  .retreat-character figure,.retreat-character figure:first-child{width:86vw}
+}

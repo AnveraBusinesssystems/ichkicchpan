@@ -1,29 +1,4 @@
-const header = document.getElementById('siteHeader');
-const menu = document.getElementById('mobileMenu');
-const menuButton = document.getElementById('menuButton');
-const menuClose = document.getElementById('menuClose');
 const langButton = document.getElementById('langButton');
-
-function openMenu() {
-  menu?.classList.add('open');
-  menu?.setAttribute('aria-hidden', 'false');
-  document.body.style.overflow = 'hidden';
-  menuClose?.focus();
-}
-
-function closeMenu() {
-  menu?.classList.remove('open');
-  menu?.setAttribute('aria-hidden', 'true');
-  document.body.style.overflow = '';
-  menuButton?.focus();
-}
-
-menuButton?.addEventListener('click', openMenu);
-menuClose?.addEventListener('click', closeMenu);
-menu?.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
-document.addEventListener('keydown', event => {
-  if (event.key === 'Escape' && menu?.classList.contains('open')) closeMenu();
-});
 
 const copy = {
   en: {

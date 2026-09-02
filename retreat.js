@@ -1,35 +1,4 @@
-const header = document.getElementById('siteHeader');
-const menu = document.getElementById('mobileMenu');
-const menuButton = document.getElementById('menuButton');
-const menuClose = document.getElementById('menuClose');
 const langButton = document.getElementById('langButton');
-
-function syncHeader() {
-  header?.classList.toggle('scrolled', window.scrollY > 40);
-}
-
-function openMenu() {
-  menu?.classList.add('open');
-  menu?.setAttribute('aria-hidden', 'false');
-  document.body.style.overflow = 'hidden';
-  menuClose?.focus();
-}
-
-function closeMenu() {
-  menu?.classList.remove('open');
-  menu?.setAttribute('aria-hidden', 'true');
-  document.body.style.overflow = '';
-  menuButton?.focus();
-}
-
-syncHeader();
-window.addEventListener('scroll', syncHeader, { passive: true });
-menuButton?.addEventListener('click', openMenu);
-menuClose?.addEventListener('click', closeMenu);
-menu?.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
-document.addEventListener('keydown', event => {
-  if (event.key === 'Escape' && menu?.classList.contains('open')) closeMenu();
-});
 
 const copy = {
   en: {
@@ -42,7 +11,7 @@ const copy = {
     heroBody: 'Private by nature. Open to the lagoon.',
     introTitle: 'A retreat<br><em>entirely your own.</em>',
     introBody: 'Ichkiichpan is an entire private retreat on the Bacalar Lagoon, created for families and groups who want to stay together with space, quiet and direct access to the water.',
-    introCta: 'Explore dates for your group →',
+    introCta: 'Check dates for your group →',
     experienceLabel: 'The experience',
     experienceTitle: 'Made for<br><em>being together.</em>',
     experienceBody: 'Shared spaces make it easy to gather around meals, conversation and long days outside, while five bedrooms and different corners of the property give everyone room to slow down in their own way.',
@@ -67,6 +36,7 @@ const copy = {
     shelterBody: 'Wood, shade and palapa roofs keep the architecture grounded in the landscape.',
     waterTitle: 'Water',
     waterBody: 'The property opens toward the lagoon, docks and wide views beyond.',
+    characterCarouselAria: 'Paths, shelter and water at Ichkiichpan',
     closingLabel: 'Your stay',
     closingTitle: 'Come together.<br><em>Then make the place your own.</em>',
     closingAssurance: 'Five bedrooms · Seven beds · Up to 14 guests',
@@ -91,11 +61,11 @@ const copy = {
     heroBody: 'Privado por naturaleza. Abierto a la laguna.',
     introTitle: 'Un refugio<br><em>solo para ustedes.</em>',
     introBody: 'Ichkiichpan es un refugio completo y privado en la Laguna de Bacalar, creado para familias y grupos que desean compartir con amplitud, tranquilidad y acceso directo al agua.',
-    introCta: 'Explora fechas para tu grupo →',
+    introCta: 'Consultar fechas para su grupo →',
     experienceLabel: 'La experiencia',
     experienceTitle: 'Creado para<br><em>estar juntos.</em>',
     experienceBody: 'Los espacios compartidos invitan a reunirse alrededor de la mesa, conversar y disfrutar largos días al aire libre, mientras cinco habitaciones y distintos rincones ofrecen a todos un lugar para descansar a su manera.',
-    experienceCta: 'Conoce las habitaciones y áreas comunes →',
+    experienceCta: 'Conocer las habitaciones y áreas comunes →',
     propertyLabel: 'La propiedad',
     propertyTitle: 'Espacio para reunirse.<br><em>Calma para descansar.</em>',
     guests: 'Huéspedes',
@@ -106,7 +76,7 @@ const copy = {
     landscapeLabel: 'Diseñado alrededor del paisaje',
     landscapeTitle: 'El paisaje<br><em>da forma a la estancia.</em>',
     landscapeBody: 'Senderos, sombra, madera, techos de palapa y espacios abiertos crean una transición natural desde la cabaña hasta la laguna.',
-    landscapeCta: 'Descubre la experiencia en la laguna →',
+    landscapeCta: 'Descubrir la experiencia en la laguna →',
     characterLabel: 'El carácter de Ichkiichpan',
     characterTitle: 'De la sombra<br><em>al agua abierta.</em>',
     characterBody: 'La propiedad avanza suavemente desde los senderos entre la selva y las estructuras de madera hasta las palapas, los espacios abiertos y la laguna. Esa transición define el carácter de Ichkiichpan.',
@@ -116,6 +86,7 @@ const copy = {
     shelterBody: 'La madera, la sombra y los techos de palapa integran la arquitectura con el paisaje.',
     waterTitle: 'Agua',
     waterBody: 'La propiedad se abre hacia la laguna, los muelles y las amplias vistas.',
+    characterCarouselAria: 'Senderos, refugio y agua en Ichkiichpan',
     closingLabel: 'Tu estancia',
     closingTitle: 'Vengan juntos.<br><em>Luego hagan suyo el lugar.</em>',
     closingAssurance: 'Cinco habitaciones · Siete camas · Hasta 14 huéspedes',

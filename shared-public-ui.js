@@ -1,6 +1,10 @@
 (() => {
   const footer = document.querySelector('.site-footer');
   const social = document.querySelector('.social-float');
+  const header = document.getElementById('siteHeader');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const menuButton = document.getElementById('menuButton');
+  const languageButton = document.getElementById('langButton');
   const pageName = location.pathname.split('/').pop();
   const fullyTranslatedPages = new Set(['', 'index.html', 'the-retreat.html', 'your-stay.html', 'the-experience.html', 'gallery.html', 'reservations.html']);
   const supportsFullTranslation = fullyTranslatedPages.has(pageName);
@@ -20,6 +24,7 @@
       gallery: 'Gallery',
       reservations: 'Reservations',
       portal: 'Guest Portal',
+      availability: 'Check availability',
       plan: 'Plan your stay',
       planLink: 'Plan your stay',
       manage: 'Manage my stay',
@@ -44,6 +49,7 @@
       gallery: 'Galería',
       reservations: 'Reservaciones',
       portal: 'Portal del huésped',
+      availability: 'Consultar disponibilidad',
       plan: 'Planea tu estancia',
       planLink: 'Planea tu estancia',
       manage: 'Gestiona tu estancia',
@@ -71,19 +77,94 @@
     { href: 'guest-portal.html', label: 'portal', pages: ['guest-portal.html'] }
   ];
 
-  document.querySelectorAll('.mobile-menu nav').forEach(navigation => {
+  if (mobileMenu) {
+    const bookingHref = pageName === 'reservations.html' ? '#book' : 'reservations.html#book';
+    mobileMenu.setAttribute('role', 'dialog');
+    mobileMenu.setAttribute('aria-modal', 'true');
+    mobileMenu.innerHTML = `
+      <div class="mobile-menu-top">
+        <a class="mobile-menu-wordmark" href="index.html" aria-label="Ichkiichpan home"></a>
+        <button class="mobile-close" id="menuClose" type="button" data-shared="close">Close ×</button>
+      </div>
+      <nav aria-label="Mobile navigation"></nav>
+      <div class="mobile-menu-actions">
+        <button class="mobile-lang-button" type="button" data-mobile-language aria-label="Change language">EN <span>·</span> ES</button>
+        <a class="solid-button" href="${bookingHref}" data-shared="availability">Check availability</a>
+      </div>`;
+
+    const navigation = mobileMenu.querySelector('nav');
     navigation.innerHTML = mobileNavigation.map(item => {
       const current = item.pages.includes(pageName) ? ' aria-current="page"' : '';
       return `<a href="${item.href}" data-shared="${item.label}"${current}>${text.en[item.label]}</a>`;
     }).join('');
-    navigation.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
-      const mobileMenu = navigation.closest('.mobile-menu');
-      mobileMenu?.classList.remove('open');
-      mobileMenu?.setAttribute('aria-hidden', 'true');
-      document.querySelector('.menu-button')?.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-    }));
+  }
+
+  function syncHeader() {
+    header?.classList.toggle('scrolled', window.scrollY > 40);
+  }
+
+  function openMenu() {
+    if (!mobileMenu) return;
+    mobileMenu.classList.add('open');
+    mobileMenu.setAttribute('aria-hidden', 'false');
+    menuButton?.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+    mobileMenu.querySelector('.mobile-close')?.focus();
+  }
+
+  function closeMenu({ restoreFocus = true } = {}) {
+    if (!mobileMenu) return;
+    mobileMenu.classList.remove('open');
+    mobileMenu.setAttribute('aria-hidden', 'true');
+    menuButton?.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+    if (restoreFocus) menuButton?.focus();
+  }
+
+  menuButton?.setAttribute('aria-controls', 'mobileMenu');
+  menuButton?.setAttribute('aria-expanded', 'false');
+  menuButton?.addEventListener('click', openMenu);
+  mobileMenu?.querySelector('.mobile-close')?.addEventListener('click', () => closeMenu());
+  mobileMenu?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => closeMenu({ restoreFocus: false })));
+  mobileMenu?.querySelector('[data-mobile-language]')?.addEventListener('click', () => languageButton?.click());
+  document.addEventListener('keydown', event => {
+    if (!mobileMenu?.classList.contains('open')) return;
+    if (event.key === 'Escape') {
+      closeMenu();
+      return;
+    }
+    if (event.key !== 'Tab') return;
+    const focusable = [...mobileMenu.querySelectorAll('a[href], button:not([disabled])')];
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last?.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first?.focus();
+    }
   });
+  syncHeader();
+  window.addEventListener('scroll', syncHeader, { passive: true });
+
+  const lazyBackgrounds = [...document.querySelectorAll('.mobile-lazy-bg')];
+  if (lazyBackgrounds.length) {
+    if (!window.matchMedia('(max-width: 760px)').matches || !('IntersectionObserver' in window)) {
+      lazyBackgrounds.forEach(element => element.classList.add('is-loaded'));
+    } else {
+      const backgroundObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-loaded');
+          backgroundObserver.unobserve(entry.target);
+        });
+      }, { rootMargin: '500px 0px' });
+      lazyBackgrounds.forEach(element => backgroundObserver.observe(element));
+    }
+  }
+
+  if (document.querySelector('.mobile-booking-bar')) document.body.classList.add('has-mobile-booking-bar');
 
   if (footer) {
     footer.innerHTML = `
@@ -129,15 +210,18 @@
         if (navigationLabels[index]) link.textContent = navigationLabels[index];
       });
     });
-    document.querySelectorAll('.site-header .outline-button:not(.booking-current), .mobile-menu > .solid-button:not([data-i18n]), .shared-closing .solid-button, .stay-closing .solid-button').forEach(link => {
+    document.querySelectorAll('.site-header .outline-button:not(.booking-current):not([data-shared]):not([data-i18n]), .shared-closing .solid-button:not([data-shared]):not([data-i18n]), .stay-closing .solid-button:not([data-shared]):not([data-i18n])').forEach(link => {
       link.textContent = translated.planLink;
     });
-    const languageButton = document.querySelector('.lang-button');
-    const menuButton = document.querySelector('.menu-button');
     languageButton?.setAttribute('aria-label', translated.language);
     menuButton?.setAttribute('aria-label', translated.menu);
     const menuClose = document.querySelector('.mobile-close');
     if (menuClose) menuClose.textContent = translated.close;
+    const mobileLanguageButton = mobileMenu?.querySelector('[data-mobile-language]');
+    if (mobileLanguageButton) {
+      mobileLanguageButton.innerHTML = lang === 'en' ? 'EN <span>·</span> ES' : 'ES <span>·</span> EN';
+      mobileLanguageButton.setAttribute('aria-label', translated.language);
+    }
     social?.setAttribute('aria-label', translated.contactGroup);
     const instagram = social?.querySelector('.instagram');
     const whatsapp = social?.querySelector('.whatsapp');

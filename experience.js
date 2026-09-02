@@ -1,7 +1,3 @@
-const header = document.getElementById('siteHeader');
-const menu = document.getElementById('mobileMenu');
-const menuButton = document.getElementById('menuButton');
-const menuClose = document.getElementById('menuClose');
 const langButton = document.getElementById('langButton');
 const introParagraph = document.querySelector('.experience-intro-copy > p');
 const introLink = document.createElement('a');
@@ -11,33 +7,6 @@ if (introParagraph) {
   introLink.href = 'reservations.html#book';
   introParagraph.insertAdjacentElement('afterend', introLink);
 }
-
-function syncHeader() {
-  header?.classList.toggle('scrolled', window.scrollY > 40);
-}
-
-function openMenu() {
-  menu?.classList.add('open');
-  menu?.setAttribute('aria-hidden', 'false');
-  document.body.style.overflow = 'hidden';
-  menuClose?.focus();
-}
-
-function closeMenu() {
-  menu?.classList.remove('open');
-  menu?.setAttribute('aria-hidden', 'true');
-  document.body.style.overflow = '';
-  menuButton?.focus();
-}
-
-syncHeader();
-window.addEventListener('scroll', syncHeader, { passive: true });
-menuButton?.addEventListener('click', openMenu);
-menuClose?.addEventListener('click', closeMenu);
-menu?.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
-document.addEventListener('keydown', event => {
-  if (event.key === 'Escape' && menu?.classList.contains('open')) closeMenu();
-});
 
 const copy = {
   en: {

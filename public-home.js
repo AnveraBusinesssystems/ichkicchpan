@@ -1,53 +1,4 @@
-const header = document.getElementById('siteHeader');
-const menu = document.getElementById('mobileMenu');
-const menuButton = document.getElementById('menuButton');
-const menuClose = document.getElementById('menuClose');
 const langButton = document.getElementById('langButton');
-const mobileLangButton = document.getElementById('mobileLangButton');
-
-function syncHeader() {
-  header?.classList.toggle('scrolled', window.scrollY > 40);
-}
-
-function openMenu() {
-  menu?.classList.add('open');
-  menu?.setAttribute('aria-hidden', 'false');
-  menuButton?.setAttribute('aria-expanded', 'true');
-  document.body.style.overflow = 'hidden';
-  menuClose?.focus();
-}
-
-function closeMenu() {
-  menu?.classList.remove('open');
-  menu?.setAttribute('aria-hidden', 'true');
-  menuButton?.setAttribute('aria-expanded', 'false');
-  document.body.style.overflow = '';
-  menuButton?.focus();
-}
-
-syncHeader();
-window.addEventListener('scroll', syncHeader, { passive: true });
-menuButton?.addEventListener('click', openMenu);
-menuClose?.addEventListener('click', closeMenu);
-menu?.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
-document.addEventListener('keydown', event => {
-  if (!menu?.classList.contains('open')) return;
-  if (event.key === 'Escape') {
-    closeMenu();
-    return;
-  }
-  if (event.key !== 'Tab') return;
-  const focusable = [...menu.querySelectorAll('a[href], button:not([disabled])')];
-  const first = focusable[0];
-  const last = focusable[focusable.length - 1];
-  if (event.shiftKey && document.activeElement === first) {
-    event.preventDefault();
-    last?.focus();
-  } else if (!event.shiftKey && document.activeElement === last) {
-    event.preventDefault();
-    first?.focus();
-  }
-});
 
 function syncGalleryLinks() {
   document.querySelectorAll('.desktop-nav a[data-i18n="navGallery"],.mobile-menu nav a[data-shared="gallery"]').forEach(link => {
@@ -135,33 +86,9 @@ function applyLanguage(lang) {
     langButton.innerHTML = language === 'en' ? 'EN <span>·</span> ES' : 'ES <span>·</span> EN';
     langButton.setAttribute('aria-label', translated.languageLabel);
   }
-  if (mobileLangButton) {
-    mobileLangButton.innerHTML = language === 'en' ? 'EN <span>·</span> ES' : 'ES <span>·</span> EN';
-    mobileLangButton.setAttribute('aria-label', translated.languageLabel);
-  }
   localStorage.setItem('ichkiichpan-language', language);
   syncGalleryLinks();
 }
 
 langButton?.addEventListener('click', () => applyLanguage(language === 'en' ? 'es' : 'en'));
-mobileLangButton?.addEventListener('click', () => applyLanguage(language === 'en' ? 'es' : 'en'));
 applyLanguage(language);
-
-function initMobileLazyBackgrounds() {
-  const backgrounds = [...document.querySelectorAll('.mobile-lazy-bg')];
-  if (!backgrounds.length) return;
-  if (!window.matchMedia('(max-width: 760px)').matches || !('IntersectionObserver' in window)) {
-    backgrounds.forEach(element => element.classList.add('is-loaded'));
-    return;
-  }
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add('is-loaded');
-      observer.unobserve(entry.target);
-    });
-  }, { rootMargin: '500px 0px' });
-  backgrounds.forEach(element => observer.observe(element));
-}
-
-initMobileLazyBackgrounds();
