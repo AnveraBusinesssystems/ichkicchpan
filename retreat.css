@@ -56,9 +56,9 @@
 @media(max-width:760px){
   .retreat-hero{height:100svh;min-height:600px}
   .retreat-hero-photo{background-image:url("assets/retreat-hero-mobile.jpg");background-position:center 42%}
+  .retreat-hero .retreat-shade{background:linear-gradient(180deg,rgba(7,17,13,.36),rgba(7,17,13,.05) 34%,rgba(7,17,13,.62)),linear-gradient(90deg,rgba(8,17,13,.32),rgba(8,17,13,.04) 72%)}
   .retreat-hero-copy{padding:0 20px 120px;max-width:560px}
   .retreat-hero-copy h1{font-size:clamp(44px,12vw,52px);line-height:.94}
-  .retreat-hero-copy h1 br{display:none}
   .retreat-hero-copy>p:last-of-type{max-width:330px;margin-top:20px;font-size:15px;line-height:1.55}
   .retreat-hero .scroll-cue{bottom:86px;height:36px}
 
