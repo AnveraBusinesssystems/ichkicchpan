@@ -21,7 +21,7 @@ const copy = {
     queenBody: 'A queen bed, natural textures and filtered jungle light create a calmer, more intimate sleeping space.',
     queenMeta: 'Bedrooms · 1 queen bed in each',
     summaryLabel: 'Sleeping arrangements', summaryTitle: 'Five rooms.<br><em>Seven beds.</em>',
-    summaryAssurance: 'Five bedrooms · Seven beds · Up to 14 guests', datesCta: 'Explore dates for your group →',
+    summaryAssurance: 'Five bedrooms · Seven beds · Up to 14 guests', datesCta: 'Check availability →',
     summaryDoubleTitle: '2 bedrooms', summaryDoubleBody: '2 double beds in each',
     summaryKingTitle: '1 bedroom', summaryKingBody: '1 king bed',
     summaryQueenTitle: '2 bedrooms', summaryQueenBody: '1 queen bed in each',
@@ -42,7 +42,7 @@ const copy = {
     locationMapEyebrow: 'Location', locationMapTitle: 'Map showing the location of Ichkiichpan',
     locationMapAria: 'Open the Ichkiichpan location in Google Maps', locationBookCta: 'Check availability',
     closingLabel: 'Your stay', closingTitle: 'Come together.<br><em>Then make the place your own.</em>',
-    closingAssurance: 'Five bedrooms · Seven beds · Up to 14 guests', planStay: 'Plan your stay',
+    closingAssurance: 'Five bedrooms · Seven beds · Up to 14 guests',
     languageLabel: 'Change language', previousPhoto: 'Previous photo', nextPhoto: 'Next photo',
     choosePhoto: 'Choose photo', showPhoto: 'Show photo',
     heroImageAlt: 'Shared living room at Ichkiichpan with a Frida Kahlo mural',
@@ -56,7 +56,9 @@ const copy = {
     queenCarouselLabel: 'Queen room photo', queenImage1Alt: 'Queen bedroom surrounded by filtered jungle light',
     outdoorImageAlt: 'Private dock opening onto the Bacalar Lagoon',
     gatherImageAlt: 'Shared living room at Ichkiichpan', restImageAlt: 'Prepared bedroom at Ichkiichpan',
-    closingImageAlt: 'Private Ichkiichpan dock at sunset'
+    gatherCarouselLabel: 'Shared spaces at Ichkiichpan',
+    closingImageAlt: 'Private Ichkiichpan dock at sunset',
+    pauseSlideshow: 'Pause slideshow', playSlideshow: 'Play slideshow'
   },
   es: {
     title: 'Tu Estancia — Ichkiichpan',
@@ -78,7 +80,7 @@ const copy = {
     queenBody: 'Una cama queen, texturas naturales y luz filtrada por la selva crean un espacio más tranquilo e íntimo.',
     queenMeta: 'Habitaciones · 1 cama queen en cada una',
     summaryLabel: 'Distribución para dormir', summaryTitle: 'Cinco habitaciones.<br><em>Siete camas.</em>',
-    summaryAssurance: 'Cinco habitaciones · Siete camas · Hasta 14 huéspedes', datesCta: 'Explora fechas para tu grupo →',
+    summaryAssurance: 'Cinco habitaciones · Siete camas · Hasta 14 huéspedes', datesCta: 'Consultar disponibilidad →',
     summaryDoubleTitle: '2 habitaciones', summaryDoubleBody: '2 camas dobles en cada una',
     summaryKingTitle: '1 habitación', summaryKingBody: '1 cama king',
     summaryQueenTitle: '2 habitaciones', summaryQueenBody: '1 cama queen en cada una',
@@ -87,7 +89,7 @@ const copy = {
     outdoorTitle: 'Vivir al aire libre', outdoorBody: 'Los espacios abiertos mantienen cerca la laguna y el entorno tropical.',
     gatherCardTitle: 'Reunirse', gatherCardBody: 'Dos salas hacen que compartir tiempo juntos sea sencillo.',
     restTitle: 'Descansar', restBody: 'Cinco habitaciones dan al grupo espacio para recuperar energía.',
-    experienceCta: 'Descubre la experiencia en la laguna →',
+    experienceCta: 'Descubrir la experiencia en la laguna →',
     amenitiesLabel: 'Amenidades confirmadas', amenitiesTitle: 'Detalles sencillos que<br><em>facilitan la estancia.</em>',
     essentialsTitle: 'Esenciales', essentialsBody: 'Wi-Fi · estacionamiento gratuito · cocina equipada · cafetera',
     waterTitle: 'Laguna', waterBody: 'Acceso directo a la laguna · dos muelles · kayaks para huéspedes',
@@ -99,7 +101,7 @@ const copy = {
     locationMapEyebrow: 'Ubicación', locationMapTitle: 'Mapa con la ubicación de Ichkiichpan',
     locationMapAria: 'Abrir la ubicación de Ichkiichpan en Google Maps', locationBookCta: 'Consultar disponibilidad',
     closingLabel: 'Tu estancia', closingTitle: 'Vengan juntos.<br><em>Luego hagan suyo el lugar.</em>',
-    closingAssurance: 'Cinco habitaciones · Siete camas · Hasta 14 huéspedes', planStay: 'Planea tu estancia',
+    closingAssurance: 'Cinco habitaciones · Siete camas · Hasta 14 huéspedes',
     languageLabel: 'Cambiar idioma', previousPhoto: 'Foto anterior', nextPhoto: 'Foto siguiente',
     choosePhoto: 'Elegir foto', showPhoto: 'Mostrar foto',
     heroImageAlt: 'Sala compartida de Ichkiichpan con un mural de Frida Kahlo',
@@ -113,27 +115,34 @@ const copy = {
     queenCarouselLabel: 'Foto de la habitación queen', queenImage1Alt: 'Habitación queen rodeada de luz filtrada por la selva',
     outdoorImageAlt: 'Muelle privado que se abre hacia la Laguna de Bacalar',
     gatherImageAlt: 'Sala compartida de Ichkiichpan', restImageAlt: 'Habitación preparada en Ichkiichpan',
-    closingImageAlt: 'Muelle privado de Ichkiichpan al atardecer'
+    gatherCarouselLabel: 'Espacios compartidos de Ichkiichpan',
+    closingImageAlt: 'Muelle privado de Ichkiichpan al atardecer',
+    pauseSlideshow: 'Pausar presentación', playSlideshow: 'Reproducir presentación'
   }
 };
 
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const phoneMedia = window.matchMedia('(max-width: 760px)');
 
 function initializeCarousel(carousel) {
   const slides = [...carousel.querySelectorAll('.carousel-slide')];
   const dotsWrap = carousel.querySelector('.carousel-dots');
   const previous = carousel.querySelector('.carousel-arrow.prev');
   const next = carousel.querySelector('.carousel-arrow.next');
+  const toggle = carousel.querySelector('[data-carousel-toggle]');
   const interval = Number(carousel.dataset.interval) || 5500;
   let index = 0;
   let timer = null;
   let visible = false;
+  let userPaused = false;
+  let touchStartX = 0;
+  let touchStartY = 0;
 
   if (slides.length < 2) carousel.classList.add('single-slide');
 
   function loadSlide(slide) {
     if (!slide || slide.dataset.loaded || slide.dataset.loading) return;
-    const src = slide.dataset.src;
+    const src = phoneMedia.matches && slide.dataset.mobileSrc ? slide.dataset.mobileSrc : slide.dataset.src;
     if (!src) return;
     slide.dataset.loading = 'true';
     const image = new Image();
@@ -150,9 +159,9 @@ function initializeCarousel(carousel) {
     image.src = src;
   }
 
-  function show(nextIndex) {
+  function show(nextIndex, loadImage = true) {
     index = (nextIndex + slides.length) % slides.length;
-    loadSlide(slides[index]);
+    if (loadImage) loadSlide(slides[index]);
     slides.forEach((slide, slideIndex) => {
       const active = slideIndex === index;
       slide.classList.toggle('active', active);
@@ -172,38 +181,79 @@ function initializeCarousel(carousel) {
 
   function start() {
     stop();
-    if (reduceMotion || slides.length < 2 || !visible) return;
+    if (reduceMotion || userPaused || slides.length < 2 || !visible) return;
     loadSlide(slides[(index + 1) % slides.length]);
     timer = window.setInterval(() => show(index + 1), interval);
+  }
+
+  function syncToggle() {
+    if (!toggle) return;
+    const translated = copy[document.documentElement.lang === 'es' ? 'es' : 'en'];
+    toggle.dataset.paused = String(userPaused);
+    toggle.setAttribute('aria-pressed', userPaused ? 'true' : 'false');
+    toggle.setAttribute('aria-label', userPaused ? translated.playSlideshow : translated.pauseSlideshow);
+    toggle.textContent = userPaused ? '▶' : 'Ⅱ';
+  }
+
+  function showFromUser(nextIndex) {
+    userPaused = true;
+    stop();
+    show(nextIndex);
+    syncToggle();
   }
 
   slides.forEach((slide, slideIndex) => {
     const dot = document.createElement('button');
     dot.type = 'button';
     dot.dataset.slideIndex = String(slideIndex);
-    dot.addEventListener('click', () => {
-      show(slideIndex);
-      start();
-    });
+    dot.addEventListener('click', () => showFromUser(slideIndex));
     dotsWrap?.appendChild(dot);
   });
 
-  previous?.addEventListener('click', () => { show(index - 1); start(); });
-  next?.addEventListener('click', () => { show(index + 1); start(); });
+  previous?.addEventListener('click', () => showFromUser(index - 1));
+  next?.addEventListener('click', () => showFromUser(index + 1));
+  toggle?.addEventListener('click', () => {
+    userPaused = !userPaused;
+    syncToggle();
+    if (userPaused) stop(); else start();
+  });
   carousel.addEventListener('mouseenter', stop);
   carousel.addEventListener('mouseleave', start);
   carousel.addEventListener('focusin', stop);
   carousel.addEventListener('focusout', () => { if (!carousel.matches(':hover')) start(); });
+  carousel.addEventListener('touchstart', event => {
+    touchStartX = event.changedTouches[0]?.clientX || 0;
+    touchStartY = event.changedTouches[0]?.clientY || 0;
+    stop();
+  }, { passive: true });
+  carousel.addEventListener('touchend', event => {
+    const endX = event.changedTouches[0]?.clientX || 0;
+    const endY = event.changedTouches[0]?.clientY || 0;
+    const distanceX = endX - touchStartX;
+    const distanceY = endY - touchStartY;
+    if (Math.abs(distanceX) > 45 && Math.abs(distanceX) > Math.abs(distanceY)) {
+      showFromUser(index + (distanceX < 0 ? 1 : -1));
+    } else {
+      start();
+    }
+  }, { passive: true });
 
-  show(0);
+  show(0, false);
+  syncToggle();
 
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(entries => {
       visible = entries[0]?.isIntersecting || false;
-      if (visible) start(); else stop();
+      if (visible) {
+        loadSlide(slides[index]);
+        start();
+      } else {
+        stop();
+      }
     }, { rootMargin: '300px 0px', threshold: .05 }).observe(carousel);
   } else {
     visible = true;
+    loadSlide(slides[index]);
     start();
   }
 }
@@ -238,6 +288,10 @@ function applyLanguage(lang) {
   });
   document.querySelectorAll('.carousel-dots button').forEach(dot => {
     dot.setAttribute('aria-label', `${translated.showPhoto} ${Number(dot.dataset.slideIndex) + 1}`);
+  });
+  document.querySelectorAll('[data-carousel-toggle]').forEach(toggle => {
+    const paused = toggle.dataset.paused === 'true';
+    toggle.setAttribute('aria-label', paused ? translated.playSlideshow : translated.pauseSlideshow);
   });
   langButton?.setAttribute('aria-label', translated.languageLabel);
   if (langButton) langButton.innerHTML = language === 'en' ? 'EN <span>·</span> ES' : 'ES <span>·</span> EN';

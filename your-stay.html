@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css?v=20260818-0102"/>
-<link rel="stylesheet" href="your-stay.css?v=20260829-02"/>
+<link rel="stylesheet" href="your-stay.css?v=20260904-01"/>
 <link rel="stylesheet" href="social-float.css?v=20260824-01"/>
 <link rel="stylesheet" href="shared-public.css?v=20260901-01"/>
 </head>
@@ -35,7 +35,7 @@
 <div class="header-actions">
 <button class="lang-button" id="langButton" type="button" aria-label="Change language">EN <span>·</span> ES</button>
 <a class="outline-button" href="reservations.html#book">Check availability</a>
-<button class="menu-button" id="menuButton" type="button" aria-label="Open menu">
+<button class="menu-button" id="menuButton" type="button" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false">
 <span>
 </span>
 <span>
@@ -45,7 +45,10 @@
 </header>
 <main id="top">
 <section class="stay-hero">
-<img class="stay-hero-photo" src="IMGL7834.jpg" alt="Shared living room at Ichkiichpan with a Frida Kahlo mural" data-i18n-alt="heroImageAlt" fetchpriority="high" style="width:100%;height:100%;object-fit:cover;object-position:center 45%;"/>
+<picture>
+<source media="(max-width: 760px)" srcset="assets/stay-hero-mobile.jpg"/>
+<img class="stay-hero-photo" src="IMGL7834.jpg" alt="Shared living room at Ichkiichpan with a Frida Kahlo mural" data-i18n-alt="heroImageAlt" fetchpriority="high"/>
+</picture>
 <div class="stay-shade">
 </div>
 <div class="stay-hero-copy">
@@ -54,6 +57,7 @@
 <em>Space for everyone.</em>
 </h1>
 <p data-i18n="heroBody">Five private bedrooms and seven beds let groups stay together without giving up personal space.</p>
+<a class="mobile-hero-cta" href="reservations.html#book" data-shared="availability">Check availability</a>
 </div>
 <div class="scroll-cue" aria-hidden="true">
 <span>
@@ -88,17 +92,18 @@
 </div>
 </section>
 <section class="room-story room-story-double section-pad-tight">
-<div class="room-carousel" data-carousel data-interval="5200" aria-label="Double-bed room photos" data-i18n-aria="doubleCarouselLabel">
+<div class="room-carousel" data-carousel data-interval="6000" aria-label="Double-bed room photos" data-i18n-aria="doubleCarouselLabel" aria-roledescription="carousel">
 <div class="carousel-stage">
-<div class="carousel-slide upload-placeholder active" role="img" data-src="assets/room-double-1-optimized.jpg" data-file="room-double-1-optimized.jpg" data-i18n-aria="doubleImage1Alt">
+<div class="carousel-slide upload-placeholder active" role="img" data-src="assets/room-double-1-optimized.jpg" data-mobile-src="assets/room-double-1-mobile.jpg" data-i18n-aria="doubleImage1Alt">
 </div>
-<div class="carousel-slide upload-placeholder" role="img" data-src="assets/room-double-2-optimized.jpg" data-file="room-double-2-optimized.jpg" data-i18n-aria="doubleImage2Alt">
+<div class="carousel-slide upload-placeholder" role="img" data-src="assets/room-double-2-optimized.jpg" data-mobile-src="assets/room-double-2-mobile.jpg" data-i18n-aria="doubleImage2Alt">
 </div>
-<div class="carousel-slide upload-placeholder" role="img" data-src="assets/room-double-3-optimized.jpg" data-file="room-double-3-optimized.jpg" data-i18n-aria="doubleImage3Alt">
+<div class="carousel-slide upload-placeholder" role="img" data-src="assets/room-double-3-optimized.jpg" data-mobile-src="assets/room-double-3-mobile.jpg" data-i18n-aria="doubleImage3Alt">
 </div>
 </div>
 <button class="carousel-arrow prev" type="button" aria-label="Previous photo" data-i18n-aria="previousPhoto">←</button>
 <button class="carousel-arrow next" type="button" aria-label="Next photo" data-i18n-aria="nextPhoto">→</button>
+<button class="carousel-toggle" type="button" aria-label="Pause slideshow" data-carousel-toggle>Ⅱ</button>
 <div class="carousel-dots" aria-label="Choose photo" data-i18n-aria="choosePhoto">
 </div>
 </div>
@@ -116,23 +121,25 @@
 </div>
 </section>
 <section class="room-feature room-feature-king">
-<div class="room-carousel room-carousel-feature" data-carousel data-interval="5800" aria-label="King room photos" data-i18n-aria="kingCarouselLabel">
+<div class="room-carousel room-carousel-feature" data-carousel data-interval="6500" aria-label="King room photos" data-i18n-aria="kingCarouselLabel" aria-roledescription="carousel">
 <div class="carousel-stage">
-<div class="carousel-slide upload-placeholder active" role="img" data-src="assets/room-king-1-optimized.jpg" data-file="room-king-1-optimized.jpg" data-i18n-aria="kingImage1Alt">
+<div class="carousel-slide upload-placeholder active" role="img" data-src="assets/room-king-1-optimized.jpg" data-mobile-src="assets/room-king-1-mobile.jpg" data-i18n-aria="kingImage1Alt">
 </div>
-<div class="carousel-slide upload-placeholder" role="img" data-src="assets/room-king-2-optimized.jpg" data-file="room-king-2-optimized.jpg" data-i18n-aria="kingImage2Alt">
+<div class="carousel-slide upload-placeholder" role="img" data-src="assets/room-king-2-optimized.jpg" data-mobile-src="assets/room-king-2-mobile.jpg" data-i18n-aria="kingImage2Alt">
 </div>
-<div class="carousel-slide upload-placeholder" role="img" data-src="assets/room-king-3-optimized.jpg" data-file="room-king-3-optimized.jpg" data-i18n-aria="kingImage3Alt">
+<div class="carousel-slide upload-placeholder" role="img" data-src="assets/room-king-3-optimized.jpg" data-mobile-src="assets/room-king-3-mobile.jpg" data-i18n-aria="kingImage3Alt">
 </div>
 </div>
 <button class="carousel-arrow prev" type="button" aria-label="Previous photo" data-i18n-aria="previousPhoto">←</button>
 <button class="carousel-arrow next" type="button" aria-label="Next photo" data-i18n-aria="nextPhoto">→</button>
+<button class="carousel-toggle" type="button" aria-label="Pause slideshow" data-carousel-toggle>Ⅱ</button>
 <div class="carousel-dots" aria-label="Choose photo" data-i18n-aria="choosePhoto">
 </div>
 </div>
 <div class="room-feature-shade">
 </div>
 <div class="room-feature-copy">
+<span class="room-feature-number">02</span>
 <p class="kicker light" data-i18n="kingLabel">King room</p>
 <h2 data-i18n="kingTitle">The most open room<br>
 <em>in the house.</em>
@@ -157,13 +164,14 @@
 <span data-i18n="queenMeta">Bedrooms · 1 queen bed in each</span>
 </div>
 </div>
-<div class="room-carousel" data-carousel data-interval="5500" aria-label="Queen room photos" data-i18n-aria="queenCarouselLabel">
+<div class="room-carousel" data-carousel aria-label="Queen room photos" data-i18n-aria="queenCarouselLabel" aria-roledescription="carousel">
 <div class="carousel-stage">
-<div class="carousel-slide upload-placeholder active" role="img" data-src="assets/room-queen-1-optimized.jpg" data-file="room-queen-1-optimized.jpg" data-i18n-aria="queenImage1Alt">
+<div class="carousel-slide upload-placeholder active" role="img" data-src="assets/room-queen-1-optimized.jpg" data-mobile-src="assets/room-queen-1-mobile.jpg" data-i18n-aria="queenImage1Alt">
 </div>
 </div>
 <button class="carousel-arrow prev" type="button" aria-label="Previous photo" data-i18n-aria="previousPhoto">←</button>
 <button class="carousel-arrow next" type="button" aria-label="Next photo" data-i18n-aria="nextPhoto">→</button>
+<button class="carousel-toggle" type="button" aria-label="Pause slideshow" data-carousel-toggle>Ⅱ</button>
 <div class="carousel-dots" aria-label="Choose photo" data-i18n-aria="choosePhoto">
 </div>
 </div>
@@ -203,9 +211,9 @@
 </h2>
 <p data-i18n="gatherBody">An equipped kitchen, two living areas and direct outdoor access give the group places to cook, gather and spend time together throughout the day.</p>
 </div>
-<div class="gather-grid">
+<div class="gather-grid" role="region" aria-label="Shared spaces at Ichkiichpan" data-i18n-aria="gatherCarouselLabel">
 <figure class="gather-large">
-<div class="gather-image gather-outdoor" role="img" aria-label="Private dock opening onto the Bacalar Lagoon" data-i18n-aria="outdoorImageAlt">
+<div class="gather-image gather-outdoor mobile-lazy-bg" role="img" aria-label="Private dock opening onto the Bacalar Lagoon" data-i18n-aria="outdoorImageAlt">
 </div>
 <figcaption>
 <span>01</span>
@@ -214,7 +222,7 @@
 </figcaption>
 </figure>
 <figure>
-<div class="gather-image gather-house" role="img" aria-label="Shared living room at Ichkiichpan" data-i18n-aria="gatherImageAlt">
+<div class="gather-image gather-house mobile-lazy-bg" role="img" aria-label="Shared living room at Ichkiichpan" data-i18n-aria="gatherImageAlt">
 </div>
 <figcaption>
 <span>02</span>
@@ -223,7 +231,7 @@
 </figcaption>
 </figure>
 <figure>
-<div class="gather-image gather-bedroom" role="img" aria-label="Prepared bedroom at Ichkiichpan" data-i18n-aria="restImageAlt">
+<div class="gather-image gather-bedroom mobile-lazy-bg" role="img" aria-label="Prepared bedroom at Ichkiichpan" data-i18n-aria="restImageAlt">
 </div>
 <figcaption>
 <span>03</span>
@@ -289,7 +297,7 @@
 </div>
 </section>
 <section class="stay-closing">
-<div class="stay-closing-image" role="img" aria-label="Private Ichkiichpan dock at sunset" data-i18n-aria="closingImageAlt">
+<div class="stay-closing-image mobile-lazy-bg" role="img" aria-label="Private Ichkiichpan dock at sunset" data-i18n-aria="closingImageAlt">
 </div>
 <div class="stay-shade">
 </div>
@@ -299,41 +307,18 @@
 <em>Then make the place your own.</em>
 </h2>
 <p class="closing-assurance" data-i18n="closingAssurance">Five bedrooms · Seven beds · Up to 14 guests</p>
-<a class="solid-button light-button" href="reservations.html#book" data-i18n="planStay">Plan your stay</a>
+<a class="solid-button light-button" href="reservations.html#book" data-shared="availability">Check availability</a>
 </div>
 </section>
 </main>
-<footer class="site-footer">
-<div class="footer-brand">
-<strong>ICHKIICHPAN</strong>
-<span>BACALAR · QUINTANA ROO · MÉXICO</span>
-</div>
-<div class="footer-links">
-<a href="the-retreat.html">The retreat</a>
-<a href="your-stay.html">Your stay</a>
-<a href="the-experience.html">The experience</a>
-<a href="gallery.html">Gallery</a>
-</div>
-<div class="footer-bottom">
-<span>Private lagoon retreat</span>
-<a href="#top">Back to top ↑</a>
-</div>
-</footer>
+<footer class="site-footer"></footer>
 <div class="social-float" aria-label="Contact Ichkiichpan">
 </div>
-<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
-<button class="mobile-close" id="menuClose" type="button">Close ×</button>
-<nav>
-<a href="the-retreat.html">The retreat</a>
-<a href="your-stay.html" aria-current="page">Your stay</a>
-<a href="the-experience.html">The experience</a>
-<a href="gallery.html">Gallery</a>
-</nav>
-<a class="solid-button" href="reservations.html#book">Check availability</a>
-</div>
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true"><nav></nav></div>
+<div class="mobile-booking-bar"><a href="reservations.html#book" data-shared="availability">Check availability</a></div>
 <script src="social-float.js?v=20260824-01">
 </script>
-<script src="your-stay.js?v=20260901-01">
+<script src="your-stay.js?v=20260904-01">
 </script>
 <script src="shared-public-ui.js?v=20260901-01">
 </script>
