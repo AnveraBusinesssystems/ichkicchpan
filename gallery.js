@@ -1,4 +1,12 @@
 const langButton = document.getElementById('langButton');
+const lightbox = document.getElementById('galleryLightbox');
+const lightboxImage = lightbox?.querySelector('figure img');
+const lightboxTitle = lightbox?.querySelector('#galleryLightboxTitle');
+const lightboxCount = lightbox?.querySelector('[data-gallery-count]');
+const lightboxPrevious = lightbox?.querySelector('[data-gallery-prev]');
+const lightboxNext = lightbox?.querySelector('[data-gallery-next]');
+const trackControllers = [];
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 const copy = {
   en: {
@@ -10,7 +18,6 @@ const copy = {
     heroBody: 'A visual walk from the lagoon and jungle paths to the rooms and shared spaces your group can make its own.',
     introTitle: 'The whole stay,<br><em>in one place.</em>',
     introBody: 'A closer look at the water, architecture and private spaces waiting for your group at Ichkiichpan.',
-    planArrow: 'Plan your stay →',
     waterLabel: '01 · Water & Landscape',
     waterTitle: 'Where the property<br><em>meets the lagoon.</em>',
     lagoonCaption: 'Lagoon',
@@ -68,7 +75,21 @@ const copy = {
     kingAlt2: 'Sitting area inside the king room at Ichkiichpan',
     kingAlt3: 'Interior of the king room at Ichkiichpan',
     queenAlt1: 'Queen-bed room at Ichkiichpan',
-    queenAlt2: 'Interior of a queen-bed room at Ichkiichpan'
+    trackLabels: {
+      water: 'Water and landscape gallery',
+      retreat: 'Retreat architecture gallery',
+      double: 'Double-bed room gallery',
+      king: 'King room gallery',
+      queen: 'Queen room gallery'
+    },
+    swipe: 'Swipe to explore',
+    openImage: 'Open image',
+    previousImage: 'Previous image',
+    nextImage: 'Next image',
+    closeViewer: 'Close image viewer',
+    closeText: 'Close ×',
+    image: 'Image',
+    of: 'of'
   },
   es: {
     title: 'Galería — Ichkiichpan',
@@ -79,7 +100,6 @@ const copy = {
     heroBody: 'Un recorrido visual desde la laguna y los senderos entre la selva hasta las habitaciones y los espacios compartidos que su grupo podrá hacer suyos.',
     introTitle: 'Toda la estancia,<br><em>en un solo lugar.</em>',
     introBody: 'Una mirada cercana al agua, la arquitectura y los espacios privados que esperan a su grupo en Ichkiichpan.',
-    planArrow: 'Planea tu estancia →',
     waterLabel: '01 · Agua y paisaje',
     waterTitle: 'Donde la propiedad<br><em>se encuentra con la laguna.</em>',
     lagoonCaption: 'Laguna',
@@ -137,14 +157,164 @@ const copy = {
     kingAlt2: 'Sala dentro de la habitación king en Ichkiichpan',
     kingAlt3: 'Interior de la habitación king en Ichkiichpan',
     queenAlt1: 'Habitación queen en Ichkiichpan',
-    queenAlt2: 'Interior de una habitación queen en Ichkiichpan'
+    trackLabels: {
+      water: 'Galería de agua y paisaje',
+      retreat: 'Galería de arquitectura del refugio',
+      double: 'Galería de habitaciones con camas matrimoniales',
+      king: 'Galería de la habitación king',
+      queen: 'Galería de habitaciones queen'
+    },
+    swipe: 'Desliza para explorar',
+    openImage: 'Abrir imagen',
+    previousImage: 'Imagen anterior',
+    nextImage: 'Siguiente imagen',
+    closeViewer: 'Cerrar visor de imágenes',
+    closeText: 'Cerrar ×',
+    image: 'Imagen',
+    of: 'de'
   }
 };
 
 let language = 'en';
+let lightboxItems = [];
+let lightboxIndex = 0;
+let lightboxReturnFocus = null;
+let lightboxPointerStart = null;
+
 try {
   language = localStorage.getItem('ichkiichpan-language') || 'en';
 } catch {}
+
+function trackItems(track) {
+  return [...track.children].filter(element => element.matches('figure'));
+}
+
+function itemTitle(item) {
+  return item.querySelector('figcaption strong')?.textContent.trim()
+    || item.closest('.room-gallery-group')?.querySelector('.room-gallery-label strong')?.textContent.trim()
+    || item.querySelector('img')?.alt
+    || '';
+}
+
+function updateLightbox() {
+  if (!lightboxItems.length || !lightboxImage) return;
+  const item = lightboxItems[lightboxIndex];
+  const source = item.querySelector('img');
+  const translated = copy[language];
+  lightboxImage.src = source.currentSrc || source.src;
+  lightboxImage.alt = source.alt;
+  if (lightboxTitle) lightboxTitle.textContent = itemTitle(item);
+  if (lightboxCount) lightboxCount.textContent = `${translated.image} ${lightboxIndex + 1} ${translated.of} ${lightboxItems.length}`;
+}
+
+function openLightbox(item) {
+  if (!lightbox) return;
+  const track = item.closest('[data-gallery-track]');
+  lightboxItems = trackItems(track);
+  lightboxIndex = Math.max(0, lightboxItems.indexOf(item));
+  lightboxReturnFocus = item;
+  updateLightbox();
+  lightbox.hidden = false;
+  lightbox.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('gallery-lightbox-open');
+  lightbox.querySelector('.gallery-lightbox-close')?.focus();
+}
+
+function closeLightbox() {
+  if (!lightbox || lightbox.hidden) return;
+  lightbox.hidden = true;
+  lightbox.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('gallery-lightbox-open');
+  lightboxReturnFocus?.focus();
+}
+
+function moveLightbox(step) {
+  if (!lightboxItems.length) return;
+  lightboxIndex = (lightboxIndex + step + lightboxItems.length) % lightboxItems.length;
+  updateLightbox();
+}
+
+function setupTrack(track) {
+  const items = trackItems(track);
+  const key = track.dataset.galleryKey;
+  let current = 0;
+  let scrollFrame;
+  let status;
+
+  track.setAttribute('role', 'region');
+  track.setAttribute('aria-roledescription', 'carousel');
+
+  if (items.length > 1) {
+    const controls = document.createElement('div');
+    controls.className = 'gallery-track-controls';
+    controls.innerHTML = `
+      <span class="gallery-track-status" aria-live="polite"></span>
+      <span class="gallery-track-actions">
+        <button type="button" data-track-prev>←</button>
+        <button type="button" data-track-next>→</button>
+      </span>`;
+    track.insertAdjacentElement('afterend', controls);
+    status = controls.querySelector('.gallery-track-status');
+
+    function moveTrack(step) {
+      current = Math.max(0, Math.min(items.length - 1, current + step));
+      track.scrollTo({ left: items[current].offsetLeft - track.offsetLeft, behavior: reduceMotion ? 'auto' : 'smooth' });
+      updateTrackLanguage();
+    }
+
+    controls.querySelector('[data-track-prev]').addEventListener('click', () => moveTrack(-1));
+    controls.querySelector('[data-track-next]').addEventListener('click', () => moveTrack(1));
+    track.addEventListener('scroll', () => {
+      cancelAnimationFrame(scrollFrame);
+      scrollFrame = requestAnimationFrame(() => {
+        const trackLeft = track.getBoundingClientRect().left;
+        current = items.reduce((closest, item, index) => {
+          const distance = Math.abs(item.getBoundingClientRect().left - trackLeft);
+          return distance < closest.distance ? { index, distance } : closest;
+        }, { index: 0, distance: Infinity }).index;
+        updateTrackLanguage();
+      });
+    }, { passive: true });
+  }
+
+  items.forEach(item => {
+    item.dataset.galleryOpen = '';
+    item.tabIndex = 0;
+    item.setAttribute('role', 'button');
+    item.addEventListener('click', () => openLightbox(item));
+    item.addEventListener('keydown', event => {
+      if (event.key !== 'Enter' && event.key !== ' ') return;
+      event.preventDefault();
+      openLightbox(item);
+    });
+  });
+
+  function updateTrackLanguage() {
+    const translated = copy[language];
+    track.setAttribute('aria-label', translated.trackLabels[key]);
+    items.forEach(item => item.setAttribute('aria-label', `${translated.openImage}: ${itemTitle(item)}`));
+    if (!status) return;
+    status.textContent = `${current + 1} / ${items.length} · ${translated.swipe}`;
+    const controls = status.closest('.gallery-track-controls');
+    controls.querySelector('[data-track-prev]').setAttribute('aria-label', translated.previousImage);
+    controls.querySelector('[data-track-next]').setAttribute('aria-label', translated.nextImage);
+  }
+
+  const controller = { updateLanguage: updateTrackLanguage };
+  trackControllers.push(controller);
+  return controller;
+}
+
+function updateGalleryLanguage() {
+  const translated = copy[language];
+  trackControllers.forEach(controller => controller.updateLanguage());
+  lightbox?.querySelectorAll('[data-gallery-close]').forEach(button => button.setAttribute('aria-label', translated.closeViewer));
+  const closeButton = lightbox?.querySelector('.gallery-lightbox-close');
+  if (closeButton) closeButton.textContent = translated.closeText;
+  lightboxPrevious?.setAttribute('aria-label', translated.previousImage);
+  lightboxNext?.setAttribute('aria-label', translated.nextImage);
+  if (lightbox && !lightbox.hidden) updateLightbox();
+}
 
 function applyLanguage(lang) {
   language = copy[lang] ? lang : 'en';
@@ -165,7 +335,43 @@ function applyLanguage(lang) {
   try {
     localStorage.setItem('ichkiichpan-language', language);
   } catch {}
+  updateGalleryLanguage();
 }
 
+document.querySelectorAll('[data-gallery-track]').forEach(setupTrack);
 langButton?.addEventListener('click', () => applyLanguage(language === 'en' ? 'es' : 'en'));
+lightbox?.querySelectorAll('[data-gallery-close]').forEach(element => element.addEventListener('click', closeLightbox));
+lightboxPrevious?.addEventListener('click', () => moveLightbox(-1));
+lightboxNext?.addEventListener('click', () => moveLightbox(1));
+lightbox?.addEventListener('pointerdown', event => {
+  lightboxPointerStart = event.clientX;
+});
+lightbox?.addEventListener('pointerup', event => {
+  if (lightboxPointerStart === null) return;
+  const distance = event.clientX - lightboxPointerStart;
+  lightboxPointerStart = null;
+  if (Math.abs(distance) > 45) moveLightbox(distance > 0 ? -1 : 1);
+});
+lightbox?.addEventListener('pointercancel', () => {
+  lightboxPointerStart = null;
+});
+
+document.addEventListener('keydown', event => {
+  if (!lightbox || lightbox.hidden) return;
+  if (event.key === 'Escape') closeLightbox();
+  if (event.key === 'ArrowLeft') moveLightbox(-1);
+  if (event.key === 'ArrowRight') moveLightbox(1);
+  if (event.key !== 'Tab') return;
+  const focusable = [...lightbox.querySelectorAll('button:not([disabled])')];
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+  if (event.shiftKey && document.activeElement === first) {
+    event.preventDefault();
+    last.focus();
+  } else if (!event.shiftKey && document.activeElement === last) {
+    event.preventDefault();
+    first.focus();
+  }
+});
+
 applyLanguage(language);

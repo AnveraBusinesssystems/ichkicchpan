@@ -6,12 +6,19 @@
   <meta name="theme-color" content="#1c3028"/>
   <meta name="description" content="Explore Ichkiichpan through the Bacalar Lagoon, architecture, bedrooms and private spaces shared by your group."/>
   <title>Gallery — Ichkiichpan</title>
+  <link rel="canonical" href="https://anverabusinesssystems.github.io/ichkicchpan/gallery.html"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="Gallery — Ichkiichpan"/>
+  <meta property="og:description" content="See the lagoon, architecture, bedrooms and private spaces at Ichkiichpan."/>
+  <meta property="og:url" content="https://anverabusinesssystems.github.io/ichkicchpan/gallery.html"/>
+  <meta property="og:image" content="https://anverabusinesssystems.github.io/ichkicchpan/assets/sunset-wide.jpg"/>
+  <meta name="twitter:card" content="summary_large_image"/>
   <link rel="icon" href="assets/logo-cropped.png" type="image/png"/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css?v=20260818-0102"/>
-  <link rel="stylesheet" href="gallery.css?v=20260829-01"/>
+  <link rel="stylesheet" href="gallery.css?v=20260904-01"/>
   <link rel="stylesheet" href="closing.css?v=20260824-01"/>
   <link rel="stylesheet" href="social-float.css?v=20260824-01"/>
   <link rel="stylesheet" href="shared-public.css?v=20260904-01"/>
@@ -27,19 +34,23 @@
     </nav>
     <div class="header-actions">
       <button class="lang-button" id="langButton" type="button">EN <span>·</span> ES</button>
-      <a class="outline-button" href="reservations.html#book">Plan your stay</a>
-      <button class="menu-button" id="menuButton" type="button" aria-label="Open menu"><span></span><span></span></button>
+      <a class="outline-button" href="reservations.html#book" data-shared="availability">Check availability</a>
+      <button class="menu-button" id="menuButton" type="button" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false"><span></span><span></span></button>
     </div>
   </header>
 
   <main id="top">
     <section class="gallery-hero">
-      <img src="assets/sunset-wide.jpg" data-i18n-alt="heroAlt" alt="Sunset over Bacalar Lagoon at Ichkiichpan" fetchpriority="high" decoding="async"/>
+      <picture>
+        <source media="(max-width: 760px)" srcset="assets/gallery-hero-mobile.webp"/>
+        <img src="assets/sunset-wide.jpg" data-i18n-alt="heroAlt" alt="Sunset over Bacalar Lagoon at Ichkiichpan" fetchpriority="high" decoding="async"/>
+      </picture>
       <div class="gallery-hero-shade"></div>
       <div class="gallery-hero-copy">
         <p class="kicker light" data-i18n="heroLabel">Gallery</p>
         <h1 data-i18n="heroTitle">See the retreat.<br><em>Feel the setting.</em></h1>
         <p data-i18n="heroBody">A visual walk from the lagoon and jungle paths to the rooms and shared spaces your group can make its own.</p>
+        <a class="mobile-hero-cta" href="reservations.html#book" data-shared="availability">Check availability</a>
       </div>
       <div class="scroll-cue" aria-hidden="true"><span></span></div>
     </section>
@@ -50,7 +61,7 @@
         <h2 data-i18n="introTitle">The whole stay,<br><em>in one place.</em></h2>
         <div class="gallery-intro-support">
           <p data-i18n="introBody">A closer look at the water, architecture and private spaces waiting for your group at Ichkiichpan.</p>
-          <a class="gallery-text-link" href="reservations.html#book" data-i18n="planArrow">Plan your stay →</a>
+          <a class="gallery-text-link" href="reservations.html#book" data-shared="availability">Check availability</a>
         </div>
       </div>
     </section>
@@ -60,12 +71,12 @@
         <p class="kicker" data-i18n="waterLabel">01 · Water &amp; Landscape</p>
         <h2 data-i18n="waterTitle">Where the property<br><em>meets the lagoon.</em></h2>
       </div>
-      <div class="mosaic mosaic-landscape">
-        <figure class="gallery-item"><img src="assets/aerial-lagoon.jpg" data-i18n-alt="aerialAlt" alt="Aerial view of Ichkiichpan and Bacalar Lagoon" loading="lazy" decoding="async"><figcaption><span data-i18n="lagoonCaption">Lagoon</span><strong data-i18n="aboveCaption">From above</strong></figcaption></figure>
-        <figure class="gallery-item"><img src="assets/dock-path.jpg" data-i18n-alt="pathAlt" alt="Jungle path leading toward the lagoon" loading="lazy" decoding="async"><figcaption><span data-i18n="retreatCaption">Retreat</span><strong data-i18n="pathCaption">Path to the water</strong></figcaption></figure>
-        <figure class="gallery-item"><img src="assets/lagoon-blue.jpg" data-i18n-alt="waterAlt" alt="Blue water of Bacalar Lagoon" loading="lazy" decoding="async"><figcaption><span data-i18n="lagoonCaption">Lagoon</span><strong data-i18n="waterCaption">The water</strong></figcaption></figure>
-        <figure class="gallery-item"><img src="assets/sunset-dock.jpg" data-i18n-alt="dockAlt" alt="Dock at sunset on Bacalar Lagoon" loading="lazy" decoding="async"><figcaption><span data-i18n="eveningCaption">Evening</span><strong data-i18n="dockCaption">At the dock</strong></figcaption></figure>
-        <figure class="gallery-item"><img src="assets/hero-sunset.jpg" data-i18n-alt="lastLightAlt" alt="Sunset across Bacalar Lagoon" loading="lazy" decoding="async"><figcaption><span data-i18n="eveningCaption">Evening</span><strong data-i18n="lastLightCaption">Last light</strong></figcaption></figure>
+      <div class="mosaic mosaic-landscape" data-gallery-track data-gallery-key="water">
+        <figure class="gallery-item"><picture><source media="(max-width: 760px)" srcset="assets/gallery-aerial-mobile.webp"/><img src="assets/aerial-lagoon.jpg" data-i18n-alt="aerialAlt" alt="Aerial view of Ichkiichpan and Bacalar Lagoon" loading="lazy" decoding="async"/></picture><figcaption><span data-i18n="lagoonCaption">Lagoon</span><strong data-i18n="aboveCaption">From above</strong></figcaption></figure>
+        <figure class="gallery-item"><picture><source media="(max-width: 760px)" srcset="assets/gallery-path-mobile.webp"/><img src="assets/dock-path.jpg" data-i18n-alt="pathAlt" alt="Jungle path leading toward the lagoon" loading="lazy" decoding="async"/></picture><figcaption><span data-i18n="retreatCaption">Retreat</span><strong data-i18n="pathCaption">Path to the water</strong></figcaption></figure>
+        <figure class="gallery-item"><picture><source media="(max-width: 760px)" srcset="assets/gallery-water-mobile.webp"/><img src="assets/lagoon-blue.jpg" data-i18n-alt="waterAlt" alt="Blue water of Bacalar Lagoon" loading="lazy" decoding="async"/></picture><figcaption><span data-i18n="lagoonCaption">Lagoon</span><strong data-i18n="waterCaption">The water</strong></figcaption></figure>
+        <figure class="gallery-item"><picture><source media="(max-width: 760px)" srcset="assets/gallery-dock-mobile.webp"/><img src="assets/sunset-dock.jpg" data-i18n-alt="dockAlt" alt="Dock at sunset on Bacalar Lagoon" loading="lazy" decoding="async"/></picture><figcaption><span data-i18n="eveningCaption">Evening</span><strong data-i18n="dockCaption">At the dock</strong></figcaption></figure>
+        <figure class="gallery-item"><picture><source media="(max-width: 760px)" srcset="assets/gallery-last-light-mobile.webp"/><img src="assets/hero-sunset.jpg" data-i18n-alt="lastLightAlt" alt="Sunset across Bacalar Lagoon" loading="lazy" decoding="async"/></picture><figcaption><span data-i18n="eveningCaption">Evening</span><strong data-i18n="lastLightCaption">Last light</strong></figcaption></figure>
       </div>
     </section>
 
@@ -74,15 +85,15 @@
         <p class="kicker" data-i18n="retreatLabel">02 · The Retreat</p>
         <h2 data-i18n="retreatTitle">Wood, shade<br><em>and open air.</em></h2>
       </div>
-      <div class="mosaic mosaic-retreat">
-        <figure class="gallery-item item-tall"><img src="assets/cabin-portrait.jpg" data-i18n-alt="treesAlt" alt="Ichkiichpan cabin surrounded by vegetation" loading="lazy" decoding="async"><figcaption><span data-i18n="architectureCaption">Architecture</span><strong data-i18n="treesCaption">Hidden in the trees</strong></figcaption></figure>
-        <figure class="gallery-item item-wide"><img src="assets/cabin-exterior.jpg" data-i18n-alt="houseAlt" alt="Exterior of the main Ichkiichpan cabin" loading="lazy" decoding="async"><figcaption><span data-i18n="architectureCaption">Architecture</span><strong data-i18n="houseCaption">The main house</strong></figcaption></figure>
-        <figure class="gallery-item"><img src="assets/outdoor.jpg" data-i18n-alt="outdoorAlt" alt="Outdoor living area at Ichkiichpan" loading="lazy" decoding="async"><figcaption><span data-i18n="outdoorsCaption">Outdoors</span><strong data-i18n="livingCaption">Living outside</strong></figcaption></figure>
-        <figure class="gallery-item"><img src="assets/bedroom.jpg" data-i18n-alt="woodAlt" alt="Bedroom with warm wood details at Ichkiichpan" loading="lazy" decoding="async"><figcaption><span data-i18n="interiorCaption">Interior</span><strong data-i18n="woodCaption">Warm wood details</strong></figcaption></figure>
+      <div class="mosaic mosaic-retreat" data-gallery-track data-gallery-key="retreat">
+        <figure class="gallery-item item-tall"><picture><source media="(max-width: 760px)" srcset="assets/gallery-trees-mobile.webp"/><img src="assets/cabin-portrait.jpg" data-i18n-alt="treesAlt" alt="Ichkiichpan cabin surrounded by vegetation" loading="lazy" decoding="async"/></picture><figcaption><span data-i18n="architectureCaption">Architecture</span><strong data-i18n="treesCaption">Hidden in the trees</strong></figcaption></figure>
+        <figure class="gallery-item item-wide"><picture><source media="(max-width: 760px)" srcset="assets/gallery-house-mobile.webp"/><img src="assets/cabin-exterior.jpg" data-i18n-alt="houseAlt" alt="Exterior of the main Ichkiichpan cabin" loading="lazy" decoding="async"/></picture><figcaption><span data-i18n="architectureCaption">Architecture</span><strong data-i18n="houseCaption">The main house</strong></figcaption></figure>
+        <figure class="gallery-item"><picture><source media="(max-width: 760px)" srcset="assets/gallery-outdoor-mobile.webp"/><img src="assets/outdoor.jpg" data-i18n-alt="outdoorAlt" alt="Outdoor living area at Ichkiichpan" loading="lazy" decoding="async"/></picture><figcaption><span data-i18n="outdoorsCaption">Outdoors</span><strong data-i18n="livingCaption">Living outside</strong></figcaption></figure>
+        <figure class="gallery-item"><picture><source media="(max-width: 760px)" srcset="assets/gallery-wood-mobile.webp"/><img src="assets/bedroom.jpg" data-i18n-alt="woodAlt" alt="Bedroom with warm wood details at Ichkiichpan" loading="lazy" decoding="async"/></picture><figcaption><span data-i18n="interiorCaption">Interior</span><strong data-i18n="woodCaption">Warm wood details</strong></figcaption></figure>
       </div>
       <div class="gallery-booking-prompt">
         <div><p class="kicker" data-i18n="privateLabel">Your private retreat</p><h3 data-i18n="privateTitle">A place to gather without sharing it with anyone else.</h3><p data-i18n="privateAssurance">Five bedrooms · Up to 14 guests · Direct lagoon access</p></div>
-        <a class="gallery-text-link" href="reservations.html#book" data-i18n="planArrow">Plan your stay →</a>
+        <a class="gallery-text-link" href="reservations.html#book" data-shared="availability">Check availability</a>
       </div>
     </section>
 
@@ -94,20 +105,20 @@
       <div class="room-gallery">
         <article class="room-gallery-group">
           <div class="room-gallery-label"><span>01</span><div><strong data-i18n="doubleTitle">Double-Bed Rooms</strong><p data-i18n="doubleBody">Two double beds, wood details and hand-painted character.</p></div></div>
-          <div class="room-photo-row three"><figure><img src="assets/room-double-1.jpg" data-i18n-alt="doubleAlt1" alt="Double-bed room at Ichkiichpan" loading="lazy" decoding="async"></figure><figure><img src="assets/room-double-2.jpg" data-i18n-alt="doubleAlt2" alt="Double-bed room detail at Ichkiichpan" loading="lazy" decoding="async"></figure><figure><img src="assets/room-double-3.jpg" data-i18n-alt="doubleAlt3" alt="Double-bed room interior at Ichkiichpan" loading="lazy" decoding="async"></figure></div>
+          <div class="room-photo-row three" data-gallery-track data-gallery-key="double"><figure><picture><source media="(max-width: 760px)" srcset="assets/room-double-1-mobile.jpg"/><img src="assets/room-double-1.jpg" data-i18n-alt="doubleAlt1" alt="Double-bed room at Ichkiichpan" loading="lazy" decoding="async"/></picture></figure><figure><picture><source media="(max-width: 760px)" srcset="assets/room-double-2-mobile.jpg"/><img src="assets/room-double-2.jpg" data-i18n-alt="doubleAlt2" alt="Double-bed room detail at Ichkiichpan" loading="lazy" decoding="async"/></picture></figure><figure><picture><source media="(max-width: 760px)" srcset="assets/room-double-3-mobile.jpg"/><img src="assets/room-double-3.jpg" data-i18n-alt="doubleAlt3" alt="Double-bed room interior at Ichkiichpan" loading="lazy" decoding="async"/></picture></figure></div>
         </article>
         <article class="room-gallery-group">
           <div class="room-gallery-label"><span>02</span><div><strong data-i18n="kingTitle">King Room</strong><p data-i18n="kingBody">The most open sleeping space beneath the palapa roof.</p></div></div>
-          <div class="room-photo-row three"><figure><img src="assets/room-king-1.jpg" data-i18n-alt="kingAlt1" alt="King room at Ichkiichpan" loading="lazy" decoding="async"></figure><figure><img src="assets/room-king-2.jpg" data-i18n-alt="kingAlt2" alt="King room sitting area at Ichkiichpan" loading="lazy" decoding="async"></figure><figure><img src="assets/room-king-3.jpg" data-i18n-alt="kingAlt3" alt="King room interior at Ichkiichpan" loading="lazy" decoding="async"></figure></div>
+          <div class="room-photo-row three" data-gallery-track data-gallery-key="king"><figure><picture><source media="(max-width: 760px)" srcset="assets/room-king-1-mobile.jpg"/><img src="assets/room-king-1.jpg" data-i18n-alt="kingAlt1" alt="King room at Ichkiichpan" loading="lazy" decoding="async"/></picture></figure><figure><picture><source media="(max-width: 760px)" srcset="assets/room-king-2-mobile.jpg"/><img src="assets/room-king-2.jpg" data-i18n-alt="kingAlt2" alt="King room sitting area at Ichkiichpan" loading="lazy" decoding="async"/></picture></figure><figure><picture><source media="(max-width: 760px)" srcset="assets/room-king-3-mobile.jpg"/><img src="assets/room-king-3.jpg" data-i18n-alt="kingAlt3" alt="King room interior at Ichkiichpan" loading="lazy" decoding="async"/></picture></figure></div>
         </article>
         <article class="room-gallery-group">
           <div class="room-gallery-label"><span>03</span><div><strong data-i18n="queenTitle">Queen-Bed Rooms</strong><p data-i18n="queenBody">Quieter rooms tucked into the greenery.</p></div></div>
-          <div class="room-photo-row one"><figure><img src="assets/room-queen-1.jpg" data-i18n-alt="queenAlt1" alt="Queen room at Ichkiichpan" loading="lazy" decoding="async"></figure></div>
+          <div class="room-photo-row one" data-gallery-track data-gallery-key="queen"><figure><picture><source media="(max-width: 760px)" srcset="assets/room-queen-1-mobile.jpg"/><img src="assets/room-queen-1.jpg" data-i18n-alt="queenAlt1" alt="Queen room at Ichkiichpan" loading="lazy" decoding="async"/></picture></figure></div>
         </article>
       </div>
       <div class="gallery-booking-prompt gallery-room-prompt">
         <div><p class="kicker" data-i18n="groupLabel">For the whole group</p><h3 data-i18n="groupTitle">Five bedrooms. One retreat, entirely yours.</h3><p data-i18n="groupAssurance">Up to 14 guests · Seven beds · Complete privacy</p></div>
-        <a class="gallery-text-link" href="reservations.html#book" data-i18n="planArrow">Plan your stay →</a>
+        <a class="gallery-text-link" href="reservations.html#book" data-shared="availability">Check availability</a>
       </div>
     </section>
 
@@ -116,17 +127,28 @@
       <div class="gallery-bridge-copy"><p data-i18n="beyondBody">Begin with the water at Ichkiichpan, then discover Bacalar, Chacchoben and the Caribbean coast at your own pace.</p><a class="gallery-text-link" href="the-experience.html" data-i18n="experienceArrow">Explore the experience →</a></div>
     </section>
 
-    <section class="shared-closing">
-      <div class="shared-closing-image"></div><div class="shared-closing-shade"></div>
-      <div class="shared-closing-copy"><p class="kicker light" data-i18n="closingLabel">Your stay</p><h2 data-i18n="closingTitle">Come together.<br><em>Then make the place your own.</em></h2><p class="closing-assurance" data-i18n="closingAssurance">Five bedrooms · Seven beds · Up to 14 guests</p><a class="solid-button light-button" href="reservations.html#book">Plan your stay</a></div>
+    <section class="shared-closing mobile-standard-closing">
+      <div class="shared-closing-image mobile-lazy-bg"></div><div class="shared-closing-shade"></div>
+      <div class="shared-closing-copy"><p class="kicker light" data-i18n="closingLabel">Your stay</p><h2 data-i18n="closingTitle">Come together.<br><em>Then make the place your own.</em></h2><p class="closing-assurance" data-i18n="closingAssurance">Five bedrooms · Seven beds · Up to 14 guests</p><a class="solid-button light-button" href="reservations.html#book" data-shared="availability">Check availability</a></div>
     </section>
   </main>
 
   <footer class="site-footer"></footer>
   <div class="social-float" aria-label="Contact Ichkiichpan"></div>
-  <div class="mobile-menu" id="mobileMenu" aria-hidden="true"><button class="mobile-close" id="menuClose" type="button">Close ×</button><nav><a href="the-retreat.html">The Retreat</a><a href="your-stay.html">Your Stay</a><a href="the-experience.html">The Experience</a><a href="gallery.html" aria-current="page">Gallery</a></nav><a class="solid-button" href="reservations.html#book">Plan your stay</a></div>
+  <div class="mobile-booking-bar"><a href="reservations.html#book" data-shared="availability">Check availability</a></div>
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true"></div>
+
+  <div class="gallery-lightbox" id="galleryLightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="galleryLightboxTitle" hidden>
+    <div class="gallery-lightbox-backdrop" data-gallery-close></div>
+    <div class="gallery-lightbox-panel">
+      <button class="gallery-lightbox-close" type="button" data-gallery-close aria-label="Close image viewer">Close ×</button>
+      <button class="gallery-lightbox-arrow gallery-lightbox-prev" type="button" data-gallery-prev aria-label="Previous image">←</button>
+      <figure><img alt=""/><figcaption><strong id="galleryLightboxTitle"></strong><span data-gallery-count></span></figcaption></figure>
+      <button class="gallery-lightbox-arrow gallery-lightbox-next" type="button" data-gallery-next aria-label="Next image">→</button>
+    </div>
+  </div>
   <script src="social-float.js?v=20260824-01"></script>
-  <script src="gallery.js?v=20260901-01"></script>
+  <script src="gallery.js?v=20260904-01"></script>
   <script src="shared-public-ui.js?v=20260901-01"></script>
 </body>
 </html>
