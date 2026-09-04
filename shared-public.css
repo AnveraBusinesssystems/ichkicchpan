@@ -84,6 +84,15 @@
   display: none;
 }
 
+.mobile-standard-closing .closing-assurance {
+  margin: 20px 0 0;
+  color: rgba(255, 255, 255, .86);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+}
+
 @media (max-width: 900px) {
   .site-footer {
     grid-template-columns: 1fr 1fr;
@@ -234,6 +243,35 @@
   .mobile-lazy-bg:not(.is-loaded) {
     background-image: none !important;
     background-color: #516a5d;
+  }
+
+  .mobile-standard-closing {
+    min-height: 570px;
+  }
+
+  .mobile-standard-closing .shared-closing-image {
+    background-image: url("assets/retreat-closing-mobile.jpg");
+  }
+
+  .mobile-standard-closing .shared-closing-copy {
+    padding: 72px 20px 102px;
+  }
+
+  .mobile-standard-closing .shared-closing-copy h2 {
+    font-size: 34px;
+    line-height: 1.02;
+  }
+
+  .mobile-standard-closing .closing-assurance {
+    max-width: 300px;
+    margin: 18px auto 0;
+    font-size: 10px;
+    line-height: 1.6;
+  }
+
+  .mobile-standard-closing .shared-closing-copy .solid-button {
+    width: min(100%, 320px);
+    margin-top: 26px;
   }
 
   .site-footer {
