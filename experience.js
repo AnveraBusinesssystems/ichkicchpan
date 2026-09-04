@@ -1,13 +1,4 @@
 const langButton = document.getElementById('langButton');
-const introParagraph = document.querySelector('.experience-intro-copy > p');
-const introLink = document.createElement('a');
-
-if (introParagraph) {
-  introLink.className = 'experience-intro-link';
-  introLink.href = 'reservations.html#book';
-  introParagraph.insertAdjacentElement('afterend', introLink);
-}
-
 const copy = {
   en: {
     title: 'The Experience — Ichkiichpan',
@@ -16,18 +7,21 @@ const copy = {
     heroLabel: 'The Experience',
     heroTitle: 'The lagoon at your door.<br><em>The Maya world beyond it.</em>',
     heroBody: 'Begin on the water at Ichkiichpan, then decide whether the day stays slow or takes you farther into southern Quintana Roo.',
+    heroImageAlt: "Aerial view of Ichkiichpan's private docks, palapas and turquoise lagoon",
     introLabel: 'FROM ICHKIICHPAN',
     introTitle: 'Start with the water.<br><em>Then choose how far to go.</em>',
     introBody: 'The experience begins with direct access to Bacalar Lagoon and the kayaks at the property. Beyond the retreat, Bacalar town, the Maya city of Chacchoben and the Caribbean coast at Mahahual each offer a completely different kind of day.',
-    introCta: 'Plan your stay →',
+    introCta: 'Check availability',
     lagoonLabel: 'Bacalar Lagoon',
     lagoonTitle: 'The Seven Colors<br><em>start right outside.</em>',
     lagoonBody: 'Bacalar is a freshwater lagoon known for its changing blue tones. From Ichkiichpan, the water is not an excursion—it is part of the stay: swim, sit on the dock or move out across the lagoon at your own pace.',
+    lagoonImageAlt: 'Wooden loungers overlooking the bright turquoise water of Bacalar Lagoon',
     direct: 'Direct',
     lagoonAccess: 'Lagoon access from the property',
     kayakLabel: 'Kayaks',
     kayakTitle: 'Leave from<br><em>your own dock.</em>',
     kayakBody: 'Kayaks are available for guest use, making one of Bacalar’s signature ways of exploring the lagoon part of the property itself. Go out when the conditions feel right, return when you want, and keep the day entirely your own.',
+    kayakImageAlt: 'Colorful guest kayaks stored beneath the palms at Ichkiichpan',
     included: 'Included',
     guestUse: 'For guest use',
     beyondLabel: 'Beyond the lagoon',
@@ -42,14 +36,14 @@ const copy = {
     promptLabel: 'Your Bacalar stay',
     promptTitle: 'Build the days around your group.',
     assurance: 'Private retreat · Up to 14 guests · Direct lagoon access',
-    availability: 'Plan your stay →',
+    availability: 'Check availability',
     careLabel: 'Respect the lagoon',
     careTitle: 'Beautiful because<br><em>it is alive.</em>',
     careBody: 'Bacalar is also an unusually delicate ecosystem, including living stromatolites. Enjoy the water responsibly: never touch or stand on stromatolites and follow local conservation guidance while on the lagoon.',
     closingLabel: 'Your stay',
     closingTitle: 'Come together.<br><em>Then make the place your own.</em>',
     closingAssurance: 'Private retreat · Up to 14 guests · Direct lagoon access',
-    closingButton: 'Plan your stay',
+    closingButton: 'Check availability',
     carouselLabels: ['Bacalar photo gallery', 'Chacchoben photo gallery', 'Mahahual photo gallery'],
     previousLabels: ['Previous Bacalar image', 'Previous Chacchoben image', 'Previous Mahahual image'],
     nextLabels: ['Next Bacalar image', 'Next Chacchoben image', 'Next Mahahual image'],
@@ -73,18 +67,21 @@ const copy = {
     heroLabel: 'La Experiencia',
     heroTitle: 'La laguna a sus puertas.<br><em>El mundo maya más allá.</em>',
     heroBody: 'Comiencen en el agua de Ichkiichpan y decidan si el día transcurre sin prisa o los lleva más lejos por el sur de Quintana Roo.',
+    heroImageAlt: 'Vista aérea de los muelles privados, palapas y agua turquesa de Ichkiichpan',
     introLabel: 'DESDE ICHKIICHPAN',
     introTitle: 'Empiecen por el agua.<br><em>Luego elijan hasta dónde llegar.</em>',
     introBody: 'La experiencia comienza con acceso directo a la Laguna de Bacalar y los kayaks de la propiedad. Más allá del refugio, el pueblo de Bacalar, la ciudad maya de Chacchoben y la costa caribeña de Mahahual ofrecen tres formas completamente distintas de vivir el día.',
-    introCta: 'Planea tu estancia →',
+    introCta: 'Consultar disponibilidad',
     lagoonLabel: 'Laguna de Bacalar',
     lagoonTitle: 'Los Siete Colores<br><em>comienzan aquí mismo.</em>',
     lagoonBody: 'Bacalar es una laguna de agua dulce conocida por sus tonos cambiantes de azul. Desde Ichkiichpan, el agua no es una excursión: es parte de la estancia. Naden, descansen en el muelle o recorran la laguna a su propio ritmo.',
+    lagoonImageAlt: 'Camastros de madera frente al agua turquesa de la Laguna de Bacalar',
     direct: 'Directo',
     lagoonAccess: 'Acceso a la laguna desde la propiedad',
     kayakLabel: 'Kayaks',
     kayakTitle: 'Salgan desde<br><em>su propio muelle.</em>',
     kayakBody: 'Los kayaks están disponibles para los huéspedes, convirtiendo una de las mejores formas de explorar Bacalar en parte de la propiedad. Salgan cuando las condiciones sean ideales, regresen cuando quieran y disfruten el día a su manera.',
+    kayakImageAlt: 'Kayaks para huéspedes bajo las palmeras de Ichkiichpan',
     included: 'Incluidos',
     guestUse: 'Para uso de los huéspedes',
     beyondLabel: 'Más allá de la laguna',
@@ -99,14 +96,14 @@ const copy = {
     promptLabel: 'Tu estancia en Bacalar',
     promptTitle: 'Diseñen los días a su manera.',
     assurance: 'Retiro privado · Hasta 14 huéspedes · Acceso directo a la laguna',
-    availability: 'Planea tu estancia →',
+    availability: 'Consultar disponibilidad',
     careLabel: 'Cuiden la laguna',
     careTitle: 'Hermosa porque<br><em>está viva.</em>',
     careBody: 'Bacalar también es un ecosistema extraordinariamente delicado que incluye estromatolitos vivos. Disfruten el agua de manera responsable: nunca los toquen ni se paren sobre ellos y sigan las recomendaciones locales de conservación.',
     closingLabel: 'Tu estancia',
     closingTitle: 'Vengan juntos.<br><em>Luego hagan suyo el lugar.</em>',
     closingAssurance: 'Retiro privado · Hasta 14 huéspedes · Acceso directo a la laguna',
-    closingButton: 'Planea tu estancia',
+    closingButton: 'Consultar disponibilidad',
     carouselLabels: ['Galería de fotos de Bacalar', 'Galería de fotos de Chacchoben', 'Galería de fotos de Mahahual'],
     previousLabels: ['Imagen anterior de Bacalar', 'Imagen anterior de Chacchoben', 'Imagen anterior de Mahahual'],
     nextLabels: ['Siguiente imagen de Bacalar', 'Siguiente imagen de Chacchoben', 'Siguiente imagen de Mahahual'],
@@ -144,7 +141,8 @@ function applyLanguage(lang) {
 
   setHtml('.experience-hero-copy .kicker', translated.heroLabel);
   setHtml('.experience-hero-copy h1', translated.heroTitle);
-  setHtml('.experience-hero-copy > p:last-child', translated.heroBody);
+  setHtml('.experience-hero-copy > p:last-of-type', translated.heroBody);
+  document.querySelector('.experience-hero-media')?.setAttribute('alt', translated.heroImageAlt);
   setHtml('.experience-intro-label .kicker', translated.introLabel);
   setHtml('.experience-intro-copy h2', translated.introTitle);
   setHtml('.experience-intro-copy p', translated.introBody);
@@ -155,6 +153,7 @@ function applyLanguage(lang) {
     features[0].querySelector('.kicker').textContent = translated.lagoonLabel;
     features[0].querySelector('h2').innerHTML = translated.lagoonTitle;
     features[0].querySelector('h2 + p').textContent = translated.lagoonBody;
+    document.querySelector('.lagoon-feature-media')?.setAttribute('alt', translated.lagoonImageAlt);
     features[0].querySelector('.fact-line strong').textContent = translated.direct;
     features[0].querySelector('.fact-line span').textContent = translated.lagoonAccess;
   }
@@ -162,6 +161,7 @@ function applyLanguage(lang) {
     features[1].querySelector('.kicker').textContent = translated.kayakLabel;
     features[1].querySelector('h2').innerHTML = translated.kayakTitle;
     features[1].querySelector('h2 + p').textContent = translated.kayakBody;
+    document.querySelector('.kayak-feature-media')?.setAttribute('alt', translated.kayakImageAlt);
     features[1].querySelector('.fact-line strong').textContent = translated.included;
     features[1].querySelector('.fact-line span').textContent = translated.guestUse;
   }
@@ -309,6 +309,9 @@ document.querySelectorAll('[data-carousel]').forEach(carousel => {
     const distance = event.clientX - pointerStart;
     pointerStart = null;
     if (Math.abs(distance) > 45) move(distance > 0 ? -1 : 1);
+  });
+  carousel.addEventListener('pointercancel', () => {
+    pointerStart = null;
   });
   document.addEventListener('experience:language', () => show(current));
   if ('IntersectionObserver' in window) {
