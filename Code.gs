@@ -801,6 +801,8 @@ function getCalendarConfiguration_() {
 // -----------------------------------------------------------------------------
 
 function runScheduledAlerts() {
+  // Email notifications disabled; retain the handler for any existing trigger.
+  return { checked: 0, sent: 0, skipped: 0, disabled: true, runAt: formatDateTime_(new Date()) };
   const reservations = readReservations_('owner', {});
   const today = parseDateOnly_(todayIso_());
   let sent = 0;
@@ -843,6 +845,8 @@ function sendReservationEventEmail_(type, reservation, options) {
 }
 
 function sendAlertEmail_(type, reservation, alertId) {
+  // Disable all reservation-event and scheduled emails.
+  return;
   const recipientGroup = recipientGroupForAlert_(type);
   const recipients = getEmailRecipients_(recipientGroup);
   if (!recipients.length) {
@@ -982,11 +986,6 @@ function setupIchkiichpan() {
   deleteTriggersByHandler_('runScheduledAlerts');
   deleteTriggersByHandler_('syncICalFeeds');
 
-  ScriptApp.newTrigger('runScheduledAlerts')
-    .timeBased()
-    .everyHours(1)
-    .create();
-
   ScriptApp.newTrigger('syncICalFeeds')
     .timeBased()
     .everyHours(6)
@@ -996,7 +995,7 @@ function setupIchkiichpan() {
     ok: true,
     message: 'Setup complete. Fill the three iCal URL properties before calendar synchronization.',
     propertiesCreated: Object.keys(defaults),
-    alertTrigger: 'Hourly',
+    alertTrigger: 'Disabled',
     calendarTrigger: 'Every 6 hours'
   };
 }
